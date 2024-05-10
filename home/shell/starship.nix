@@ -19,7 +19,7 @@ in
 
             add_newline = true;
 
-            format = " $nix_shell$username$hostname$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+            format = " $nix_shell$username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration$character";
 
             right_format = "$time";
 
@@ -76,6 +76,7 @@ in
                 disabled = false;
                 use_12hr = true;
                 format = "[$time]($style) 🕙";
+                style = "#00ffc3";
             };
             jobs = {
                 disabled = false;

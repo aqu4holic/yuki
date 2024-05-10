@@ -76,4 +76,12 @@
         eza.enable = true; # A modern replacement for ‘ls’
         jq.enable = true; # A lightweight and flexible command-line JSON processor
     };
+
+    home.file.".config/btop" = {
+        enable = true;
+
+        source = ./btop;
+
+        recursive = true;
+    };
 }
