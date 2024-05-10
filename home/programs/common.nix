@@ -6,8 +6,6 @@
         # here is some command line tools I use frequently
         # feel free to add your own or remove some of them
 
-        # neofetch
-        fastfetch
         nnn # terminal file manager
 
         # archives
@@ -17,7 +15,6 @@
         p7zip
 
         # utils
-        ranger
         ripgrep # recursively searches directories for a regex pattern
         jq # A lightweight and flexible command-line JSON processor
         yq-go # yaml processor https://github.com/mikefarah/yq
@@ -76,13 +73,5 @@
         btop.enable = true; # replacement of htop/nmon
         eza.enable = true; # A modern replacement for ‘ls’
         jq.enable = true; # A lightweight and flexible command-line JSON processor
-    };
-
-    home.file.".config/btop" = {
-        enable = true;
-
-        source = ./btop;
-
-        recursive = true;
     };
 }

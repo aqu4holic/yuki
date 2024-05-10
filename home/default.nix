@@ -43,26 +43,26 @@
     };
 
     services.sxhkd = {
-    enable = true;
+        enable = true;
 
-    keybindings = {
-        "super + Return" = "kitty";
-        "super + Tab" = "bspc desktop -last f";
-        "super + f" = "bspc node -t '~fullscreen'";
-    };
+        keybindings = {
+            "super + Return" = "kitty";
+            "super + Tab" = "bspc desktop -last f";
+            "super + f" = "bspc node -t '~fullscreen'";
+        };
     };
 
     xsession = {
-    windowManager = {
-        bspwm = {
-        enable = true;
+        windowManager = {
+            bspwm = {
+                enable = true;
 
-        startupPrograms = [
-            "picom"
-            "polybar -q bar"
-        ];
+                startupPrograms = [
+                    "picom"
+                    "polybar -q bar"
+                ];
+            };
         };
-    };
     };
 
     # Let home Manager install and manage itself.
