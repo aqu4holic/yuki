@@ -6,6 +6,9 @@
         ./shell
         ./bspwm
         ./sxhkd
+        # ./rofi
+        ./polybar
+        # ./picom
     ];
 
     # link the configuration file in current directory to the specified location in home directory

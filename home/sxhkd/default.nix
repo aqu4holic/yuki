@@ -5,7 +5,7 @@
 
         keybindings = {
             "super + Return" = "kitty";
-            "super + Tab" = "bspc desktop -last f";
+            "super + Tab" = "bspc node -last f";
             "super + f" = "bspc node -t '~fullscreen'";
         };
     };
