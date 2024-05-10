@@ -9,17 +9,11 @@ in
     programs.fish = {
         enable = true;
         
-        # shellInit = ''
-        #     set -g fish_greeting "hiiii blackwhite!" # Disable greeting;
-        #     # fastfetch
-        # '';
-    };
-
-    home.file.".config/fish" = {
-        enable = true;
-
-        source = ./fish;
-
-        recursive = true;
+        shellInit = ''
+            function fish_greeting
+                echo hiiiii (set_color 00C8FF)$USER (set_color white)@ (set_color FF006A)$hostname(set_color white)!
+            end
+            # fastfetch
+        '';
     };
 }

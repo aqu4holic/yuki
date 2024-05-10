@@ -12,7 +12,7 @@
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-        nixosConfigurations.blackwhite = nixpkgs.lib.nixosSystem {
+        nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
             specialArgs = {inherit inputs;};
             modules = [
                 # Import the previous configuration.nix we used,
