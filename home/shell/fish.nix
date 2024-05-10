@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 # fish
 
@@ -9,9 +9,17 @@ in
     programs.fish = {
         enable = true;
         
-        interactiveShellInit = ''
-            set -g fish_greeting "hiiii blackwhite!" # Disable greeting;
-            # neofetch
-        '';
+        # shellInit = ''
+        #     set -g fish_greeting "hiiii blackwhite!" # Disable greeting;
+        #     # fastfetch
+        # '';
+    };
+
+    home.file.".config/fish" = {
+        enable = true;
+
+        source = ./fish;
+
+        recursive = true;
     };
 }

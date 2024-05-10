@@ -10,7 +10,5 @@
         EDITOR = "vim";
         BROWSER = "firefox";
         TERMINAL = "kitty";
-
-
     };
 }
