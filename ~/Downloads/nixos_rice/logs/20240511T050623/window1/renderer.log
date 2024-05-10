@@ -1,0 +1,8 @@
+2024-05-11 05:06:25.642 [info] Started local extension host with pid 3482.
+2024-05-11 05:06:28.719 [info] [perf] Render performance baseline is 25ms
+2024-05-11 05:07:51.507 [info] Started local extension host with pid 3979.
+2024-05-11 05:07:54.458 [info] [perf] Render performance baseline is 22ms
+2024-05-11 05:08:00.751 [error] Cannot read properties of undefined (reading 'accessToken'): TypeError: Cannot read properties of undefined (reading 'accessToken')
+    at p.z (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1686:21851)
+    at p.C (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1686:22484)
+    at d.value (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1686:21653)
