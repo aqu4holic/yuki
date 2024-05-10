@@ -82,23 +82,6 @@ in {
 	xkbVariant = "";
     };
 
-    xsession.enable = true;
-
-    xsession = {
-	windowManager = {
-	    bspwm = {
-		startupPrograms = [
-		    "picom"
-		    "polybar -q bar"
-		];
-	    };
-	};
-    };
-
-    # services.sxhkd = {
-	# enable = true;
-    # };
-
     fonts = {
         packages = with pkgs; [
         # icon fonts

@@ -42,6 +42,27 @@
         "Xft.dpi" = 172;
     };
 
+    services.sxhkd = {
+	enable = true;
+
+	keybindings = {
+	    "super + Return" = "kitty";
+	};
+    };
+
+    xsession = {
+	windowManager = {
+	    bspwm = {
+		enable = true;
+
+		startupPrograms = [
+		    "picom"
+		    "polybar -q bar"
+		];
+	    };
+	};
+    };
+
     # Let home Manager install and manage itself.
     # programs.home-manager.enable = true;
 }
