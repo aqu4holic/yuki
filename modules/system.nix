@@ -52,17 +52,52 @@ in {
     };
 
     # Enable the X11 windowing system.
-    services.xserver.enable = true;
+    # services.xserver.enable = true;
 
     # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = false;
+    # services.xserver.displayManager.gdm.enable = true;
+    # services.xserver.desktopManager.gnome.enable = false;
+
 
     # Configure keymap in X11
+    # services.xserver = {
+    #    layout = "us";
+    #    xkbVariant = "";
+    # };
+
     services.xserver = {
-        layout = "us";
-        xkbVariant = "";
+	enable = true;
+	
+	displayManager = {
+	    lightdm = {
+		enable = true;
+	    };
+	};
+
+	windowManager.bspwm = {
+	    enable = true;
+	};
+
+	layout = "us";
+	xkbVariant = "";
     };
+
+    xsession.enable = true;
+
+    xsession = {
+	windowManager = {
+	    bspwm = {
+		startupPrograms = [
+		    "picom"
+		    "polybar -q bar"
+		];
+	    };
+	};
+    };
+
+    # services.sxhkd = {
+	# enable = true;
+    # };
 
     fonts = {
         packages = with pkgs; [
@@ -117,6 +152,16 @@ in {
         fastfetch
         xfce.thunar # xfce4's file manager
         nnn # terminal file manager
+	ranger # same as the above
+	zathura # pdf viewer
+
+	# for bspwm
+	bspwm
+	sxhkd
+	rofi
+	dunst
+	picom
+	polybar
     ];
 
     # Enable CUPS to print documents.
