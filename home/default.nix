@@ -4,6 +4,8 @@
     imports = [
         ./programs
         ./shell
+        ./bspwm
+        ./sxhkd
     ];
 
     # link the configuration file in current directory to the specified location in home directory
@@ -40,29 +42,6 @@
     xresources.properties = {
         "Xcursor.size" = 16;
         "Xft.dpi" = 172;
-    };
-
-    services.sxhkd = {
-        enable = true;
-
-        keybindings = {
-            "super + Return" = "kitty";
-            "super + Tab" = "bspc desktop -last f";
-            "super + f" = "bspc node -t '~fullscreen'";
-        };
-    };
-
-    xsession = {
-        windowManager = {
-            bspwm = {
-                enable = true;
-
-                startupPrograms = [
-                    "picom"
-                    "polybar -q bar"
-                ];
-            };
-        };
     };
 
     # Let home Manager install and manage itself.
