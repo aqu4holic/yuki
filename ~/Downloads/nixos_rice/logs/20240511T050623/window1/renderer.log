@@ -6,3 +6,23 @@
     at p.z (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1686:21851)
     at p.C (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1686:22484)
     at d.value (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1686:21653)
+2024-05-11 05:24:59.296 [error] Error: Unable to move/copy '/home/blackwhite/Downloads/nixos_rice/home/shell/fish/default.nix' because target '/home/blackwhite/Downloads/nixos_rice/home/shell/default.nix' already exists at destination.
+    at s.Q (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:658:23214)
+    at async s.M (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:658:21375)
+    at async i.n (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2195:49265)
+    at async b.perform (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:18063)
+    at async g.apply (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:22720)
+    at async h.n (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:24571)
+    at async h.perform (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:24280)
+    at async m.apply (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:26100)
+    at async vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1639:13724
+2024-05-11 05:24:59.310 [error] Unable to move/copy '/home/blackwhite/Downloads/nixos_rice/home/shell/fish/default.nix' because target '/home/blackwhite/Downloads/nixos_rice/home/shell/default.nix' already exists at destination.: Error: Unable to move/copy '/home/blackwhite/Downloads/nixos_rice/home/shell/fish/default.nix' because target '/home/blackwhite/Downloads/nixos_rice/home/shell/default.nix' already exists at destination.
+    at s.Q (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:658:23214)
+    at async s.M (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:658:21375)
+    at async i.n (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2195:49265)
+    at async b.perform (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:18063)
+    at async g.apply (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:22720)
+    at async h.n (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:24571)
+    at async h.perform (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:24280)
+    at async m.apply (vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:2201:26100)
+    at async vscode-file://vscode-app/nix/store/4vh4smgliqr0bkcml19vg5ljn2lw15rd-vscode-1.89.0/lib/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1639:13724

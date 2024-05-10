@@ -7,3 +7,4 @@
 2024-05-11 05:06:53.877 [info] update#setState available for download
 2024-05-11 05:07:50.691 [info] Extension host with pid 3482 exited with code: 0, signal: unknown.
 2024-05-11 05:08:04.978 [error] Blocked vscode-webview request vscode-webview://0tjdsf8r5qf68kpefdeents5bf49ga0p91cf0hk5j8ejrag04aa3/index.html?id=dc54e513-3664-475c-a8ae-9bfe207cbbac&origin=dc54e513-3664-475c-a8ae-9bfe207cbbac&swVersion=4&extensionId=&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app
+2024-05-11 05:26:18.224 [warning] No ptyHost heartbeat after 6 seconds

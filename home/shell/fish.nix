@@ -10,7 +10,7 @@ in
         enable = true;
         
         shellInit = ''
-            fish fish_ssh_agennt.fish
+            eval (ssh-agent -c)
 
             function fish_greeting
                 echo hiiiii (set_color 00C8FF)$USER (set_color white)@ (set_color FF006A)$hostname(set_color white)!
