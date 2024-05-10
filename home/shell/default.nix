@@ -3,6 +3,7 @@
     imports = [
         ./common.nix
         ./terminals.nix
+        ./fish.nix
     ];
 
     home.sessionVariables = {

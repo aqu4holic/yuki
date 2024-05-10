@@ -11,7 +11,7 @@ in
         
         interactiveShellInit = ''
             set -g fish_greeting "hiiii blackwhite!" # Disable greeting;
-            neofetch
+            # neofetch
         '';
     };
 }
