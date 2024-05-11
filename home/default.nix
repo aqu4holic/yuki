@@ -8,7 +8,7 @@
         ./sxhkd
         # ./rofi
         ./polybar
-        # ./picom
+        ./picom
     ];
 
     # link the configuration file in current directory to the specified location in home directory

@@ -17,7 +17,7 @@ in
             italic_font = "auto";
             bold_italic_font = "auto";
 
-            font_size = 10;
+            font_size = 12;
 
             cursor =  "#f530ff";
 
