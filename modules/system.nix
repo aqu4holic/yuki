@@ -60,20 +60,38 @@ in {
     # };
 
     services.xserver = {
-        enable = true;
-        
-        displayManager = {
-            lightdm = {
-            enable = true;
-            };
-        };
+        enable = true; 
 
         windowManager.bspwm = {
             enable = true;
         };
 
+    displayManager = {
+        startx = {
+        enable = true;
+        };
+    };
+
+    xkb = {
         layout = "us";
-        xkbVariant = "";
+        variant = "";
+    };
+    };
+
+    # wm
+    services.displayManager = {
+    defaultSession = "none+bspwm";
+    };
+
+    # touchpad config
+    services.libinput = {
+    enable = true;
+
+    touchpad = {
+        tapping = true;
+        middleEmulation = true;
+        naturalScrolling = true;
+    };
     };
 
     fonts = {
@@ -115,24 +133,20 @@ in {
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
-        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-        #  wget
-        fish
-        kitty
-        curl
-        git
-        sysstat
-        lm_sensors # for `sensors` command
-        # minimal screen capture tool, used by i3 blur lock to take a screenshot
-        # print screen key is also bound to this tool in i3 config
-        scrot
-        fastfetch
-        xfce.thunar # xfce4's file manager
-        nnn # terminal file manager
-        ranger # same as the above
-        zathura # pdf viewer
-
         # for bspwm
+    vim
+    vscode
+    fish
+    kitty
+    curl
+    git
+    sysstat
+    lm_sensors # for `sensors` command
+    fastfetch
+    ranger # terminal file manager
+    zathura # pdf viewer
+
+    # for customization
         bspwm
         sxhkd
         rofi
@@ -160,7 +174,4 @@ in {
         # no need to redefine it in your config for now)
         #media-session.enable = true;
     };
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    # services.xserver.libinput.enable = true;
 }

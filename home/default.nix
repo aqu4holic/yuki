@@ -8,7 +8,7 @@
         ./sxhkd
         # ./rofi
         ./polybar
-        ./picom
+        # ./picom
     ];
 
     # link the configuration file in current directory to the specified location in home directory
@@ -45,6 +45,10 @@
     xresources.properties = {
         "Xcursor.size" = 16;
         "Xft.dpi" = 192;
+    };
+
+    home.file.".xinitrc" = {
+        source = ./.xinitrc;
     };
 
     # Let home Manager install and manage itself.
