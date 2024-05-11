@@ -8,6 +8,7 @@
                 ForwardAgent yes
                 User aqu4holic
                 IdentityFile ~/.ssh/blackwhite_git
+                AddKeysToAgent yes
         '';
     };
 }
