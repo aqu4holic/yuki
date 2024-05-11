@@ -10,12 +10,6 @@ in {
         isNormalUser = true;
         description = "blackwhite";
         extraGroups = [ "networkmanager" "wheel" ];
-        packages = with pkgs; [
-            #  thunderbird
-            vim
-            wget
-            vscode
-        ];
     };
 
     nix.settings = {

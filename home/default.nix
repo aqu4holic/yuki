@@ -8,7 +8,7 @@
         ./sxhkd
         # ./rofi
         ./polybar
-        # ./picom
+        ./picom
     ];
 
     # link the configuration file in current directory to the specified location in home directory
@@ -44,7 +44,7 @@
     # set cursor size and dpi for 4k monitor
     xresources.properties = {
         "Xcursor.size" = 16;
-        "Xft.dpi" = 172;
+        "Xft.dpi" = 192;
     };
 
     # Let home Manager install and manage itself.

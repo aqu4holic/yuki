@@ -10,6 +10,10 @@
         script = "polybar main &";
 
         settings = {
+            "bar/main" = {
+                
+            };
+
             "module/volume" = {
                 type = "internal/pulseaudio";
                 format.volume = "<ramp-volume> <label-volume>";
