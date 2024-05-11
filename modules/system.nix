@@ -27,6 +27,8 @@ in {
         options = lib.mkDefault "--delete-older-than 7d";
     };
 
+    nix.settings.auto-optimise-store = true;
+
     # Set your time zone.
     time.timeZone = "Asia/Ho_Chi_Minh";
 
