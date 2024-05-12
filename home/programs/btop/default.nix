@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
     programs.btop = {
-        enable = true;
+        enable = true; # replacement of htop/nmon
     };
 
     home.file.".config/btop/btop.conf" = {

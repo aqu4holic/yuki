@@ -1,11 +1,11 @@
 {
     imports = [
-        # ./browsers.nix
         ./common.nix
-        ./git.nix
-        ./ssh.nix
+        ./xdg
+        ./git_ssh
+
         ./btop
         # ./media.nix
-        # ./xdg.nix
+        # ./browsers.nix
     ];
 }

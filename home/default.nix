@@ -4,6 +4,8 @@
     imports = [
         ./programs
         ./shell
+
+        ./x11
         ./bspwm
         ./sxhkd
         # ./rofi
@@ -39,16 +41,6 @@
         # the home Manager release notes for a list of state version
         # changes in each release.
         stateVersion = "23.11";
-    };
-
-    # set cursor size and dpi for 4k monitor
-    xresources.properties = {
-        "Xcursor.size" = 16;
-        "Xft.dpi" = 192;
-    };
-
-    home.file.".xinitrc" = {
-        source = ./.xinitrc;
     };
 
     # Let home Manager install and manage itself.
