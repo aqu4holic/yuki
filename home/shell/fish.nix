@@ -10,7 +10,7 @@ in
         enable = true;
 
         shellInit = ''
-            source "~/.profile"
+            source ~/.profile
 
             eval (ssh-agent -c) &>/dev/null
 

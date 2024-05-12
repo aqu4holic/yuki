@@ -1,7 +1,6 @@
 {config, ...}:
 {
     imports = [
-        ./common.nix
         ./terminals.nix
         ./fish.nix
         ./starship.nix

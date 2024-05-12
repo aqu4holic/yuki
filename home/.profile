@@ -1,3 +1,5 @@
-if [ -z "$DISPLAY" ] && ( [ "$XDG_VTNR" = 1 ] || [ "$(tty)" = "/dev/tty1" ] ); then
+#! /usr/bin/env fish
+
+if test -z "$DISPLAY" -a \( "$XDG_VTNR" = 1 -o "$(tty)" = "/dev/tty1" \)
     exec startx
-fi
+end

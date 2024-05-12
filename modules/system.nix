@@ -62,7 +62,7 @@ in {
     # };
 
     services.xserver = {
-        enable = true; 
+        enable = true;
 
         windowManager.bspwm = {
             enable = true;
@@ -135,20 +135,20 @@ in {
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
-        # for bspwm
-    vim
-    vscode
-    fish
-    kitty
-    curl
-    git
-    sysstat
-    lm_sensors # for `sensors` command
-    fastfetch
-    ranger # terminal file manager
-    zathura # pdf viewer
+        vim
+        vscode
+        fish
+        kitty
+        curl
+        git
+        sysstat
+        lm_sensors # for `sensors` command
+        fastfetch
+        ranger # terminal file manager
+        zathura # pdf viewer
 
-    # for customization
+        # for customization
+        i3lock
         bspwm
         sxhkd
         rofi
