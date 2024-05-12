@@ -68,32 +68,32 @@ in {
             enable = true;
         };
 
-    displayManager = {
-        startx = {
-        enable = true;
+        displayManager = {
+            startx = {
+                enable = true;
+            };
         };
-    };
 
-    xkb = {
-        layout = "us";
-        variant = "";
-    };
+        xkb = {
+            layout = "us";
+            variant = "";
+        };
     };
 
     # wm
     services.displayManager = {
-    defaultSession = "none+bspwm";
+        defaultSession = "none+bspwm";
     };
 
     # touchpad config
     services.libinput = {
-    enable = true;
+        enable = true;
 
-    touchpad = {
-        tapping = true;
-        middleEmulation = true;
-        naturalScrolling = true;
-    };
+        touchpad = {
+            tapping = true;
+            middleEmulation = true;
+            naturalScrolling = true;
+        };
     };
 
     fonts = {
@@ -148,13 +148,13 @@ in {
         zathura # pdf viewer
 
         # for customization
-        i3lock
         bspwm
         sxhkd
         rofi
         dunst
         picom
         polybar
+        i3lock-color
     ];
 
     # Enable CUPS to print documents.

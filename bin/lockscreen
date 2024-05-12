@@ -1,0 +1,72 @@
+#! /usr/bin/env bash
+
+path=~/Downloads/wallpaper
+# img="$path/asuka.png"
+img="$path/anime_scan_landscape_sky_cloud_beautiful_light_color_8000x3406.png"
+lockscreen_img="$path/lockscreen_img.png"
+
+X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+Y=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+
+convert $img -scale "$X"x"$Y"^ -gravity center -extent "$X"x"$Y" "$path/lockscreen_img.png"
+
+fg=ff19a3
+wrong=db4b89ff
+date=8819ffff
+verify=8819ffff
+
+i3lock -n --force-clock \
+    -i "$path/lockscreen_img.png" \
+    -e \
+    --indicator \
+    --radius=15 \
+    --ring-width=10 \
+    --line-uses-inside \
+    \
+    --inside-color=00000000 \
+    --insidever-color=00000000 \
+    --insidewrong-color=00000000 \
+    --ring-color="$fg""70" \
+    --ringver-color=$verify \
+    --ringwrong-color=$wrong \
+    --keyhl-color=$verify \
+    --separator-color=00000000 \
+    --bshl-color=$verify \
+    \
+    --date-color=$date \
+    --time-color=$date \
+    --greeter-color=$fg \
+    --wrong-color=$wrong \
+    --verif-color=$verify \
+    \
+    --time-str="%H:%M" \
+    --date-str="%a, %d/%m/%Y" \
+    --time-size=140 \
+    --date-size=50 \
+    \
+    --verif-text="" \
+    --wrong-text="" \
+    --noinput-text="" \
+    --greeter-text="Locked" \
+    \
+    --time-pos="w / 2 : 150" \
+    --date-pos="w / 2 : 225" \
+    --greeter-pos="x + 100 : h - 45" \
+    --verif-pos="w / 2 : h / 2 + 105" \
+    --wrong-pos="w / 2 : h / 2 + 135" \
+    --ind-pos="x + 50 : h - 50" \
+    \
+    --time-font="Fira Code:style=Bold" \
+    --date-font="Fira Code:style=Bold" \
+    --verif-font="Fira Code" \
+    --greeter-font="Fira Code:style=Bold" \
+    --wrong-font="Fira Code" \
+    --verif-size=15 \
+    --greeter-size=13 \
+    --wrong-size=15 \
+    \
+    --pointer=default \
+    --refresh-rate=0 \
+    --pass-media-keys \
+    --pass-volume-keys \
+    --no-modkey-text

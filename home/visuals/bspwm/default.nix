@@ -5,10 +5,7 @@
             bspwm = {
                 enable = true;
 
-                startupPrograms = [
-                    "picom"
-                    "polybar -q bar"
-                ];
+                extraConfigEarly = builtins.readFile ./bspwmrc;
             };
         };
     };

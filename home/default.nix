@@ -5,12 +5,7 @@
         ./programs
         ./shell
 
-        ./x11
-        ./bspwm
-        ./sxhkd
-        # ./rofi
-        ./polybar
-        ./picom
+        ./visuals
     ];
 
     # link the configuration file in current directory to the specified location in home directory
@@ -44,6 +39,14 @@
 
         file.".profile" = {
             source = ./.profile;
+        };
+
+        file."bin" = {
+            source = ../bin;
+
+            recursive = true;
+
+            executable = true;
         };
     };
 

@@ -11,7 +11,7 @@
 
         settings = {
             "bar/main" = {
-                
+
             };
 
             "module/volume" = {
