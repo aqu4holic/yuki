@@ -5,8 +5,10 @@
 
         extraConfig = ''
         Host github.com
+            User git
+            Hostname ssh.github.com
+            PreferredAuthentications publickey
             ForwardAgent yes
-            User aqu4holic
             IdentityFile ~/.ssh/blackwhite_git
             AddKeysToAgent yes
         '';
