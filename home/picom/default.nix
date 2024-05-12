@@ -1,33 +1,33 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
     services.picom = {
         enable = true;
 
-        backend = "glx";
+        # backend = "xr_glx_hybrid";
 
-        fade = true;
-        fadeDelta = 4;
-        fadeSteps = [
-            0.03
-            0.03
-        ];
-
-        shadow = true;
-        # shadowOffsets = [
-        #     "-25"
-        #     "-25"
+        # fade = true;
+        # fadeDelta = 4;
+        # fadeSteps = [
+        #     0.03
+        #     0.03
         # ];
-        shadowOpacity = 0.5;
 
-        wintypes = {
-            popup_menu = {
-                opacity = 1.0;
-            };
+        # shadow = true;
+        # # shadowOffsets = [
+        # #     "-25"
+        # #     "-25"
+        # # ];
+        # shadowOpacity = 0.5;
 
-            dropdown_menu = {
-                opacity = 1.0;
-            };
-        };
+        # wintypes = {
+        #     popup_menu = {
+        #         opacity = 1.0;
+        #     };
+
+        #     dropdown_menu = {
+        #         opacity = 1.0;
+        #     };
+        # };
 
 #        settings = {
 #            animations = {
@@ -45,6 +45,10 @@
 #        };
 
         # settings = builtins.readFile ./picom.conf;
+
+        package = pkgs.writeScript "picom-wrapper" ''
+            exec ${lib.getExe pkgs.picom} --config ${./picom.conf} $@;
+        '';
     };
 
     # home.file.".config/picom/picom.conf" = {
