@@ -41,6 +41,10 @@
         # the home Manager release notes for a list of state version
         # changes in each release.
         stateVersion = "23.11";
+
+        file.".profile" = {
+            source = ./.profile;
+        };
     };
 
     # Let home Manager install and manage itself.

@@ -8,8 +8,10 @@ in
 {
     programs.fish = {
         enable = true;
-        
+
         shellInit = ''
+            source "~/.profile"
+
             eval (ssh-agent -c) &>/dev/null
 
             function fish_greeting
