@@ -13,11 +13,19 @@
 
     # Bootloader.
     boot.loader = {
+        efi = {
+            canTouchEfiVariables = true;
+            # efiSysMountPoint = "/boot/efi";
+        };
+
         grub = {
             enable = true;
-            device = "/dev/sda";
-            useOSProber = true;
+            # device = "/dev/sda";
+            devices = [ "nodev" ];
             # efiSupport = true;
+            useOSProber = true;
+
+            configurationLimit = 10;
         };
     };
 
