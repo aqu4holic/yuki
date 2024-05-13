@@ -194,5 +194,6 @@ sudo nixos-rebuild switch --flake .#nix
 
 ## Things to do
 update more configs
+update bspwmrc to the current monitor, rn using -d, not good enough
 
 thx for ur reading :)
