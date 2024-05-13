@@ -30,7 +30,6 @@
         ipcalc  # it is a calculator for the IPv4/v6 addresses
 
         # misc
-        imagemagick
         cowsay
         file
         which
@@ -40,7 +39,15 @@
         gawk
         zstd
         gnupg
+
         copyq
+        imagemagick
+        xclip
+        maim
+        ibus
+        ibus-engines.bamboo
+        redshift
+        syncthing
 
         # nix related
         #
@@ -73,6 +80,7 @@
     programs = {
         eza.enable = true; # A modern replacement for ‘ls’
         jq.enable = true; # A lightweight and flexible command-line JSON processor
+        feh.enable = true; # image viewer
     };
 
     services = {

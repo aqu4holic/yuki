@@ -149,8 +149,10 @@ in {
 
         # for customization
         bspwm
+        feh
         sxhkd
         rofi
+        eww
         dunst
         picom
         polybar

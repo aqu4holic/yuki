@@ -4,8 +4,8 @@ pgrep -x sxhkd >/dev/null || sxhkd &
 xsetroot -cursor_name left_ptr &
 xset r rate 200 20 &
 picom &
-# feh --bg-fill ~/Pictures/hollow-knight.png &
-# ibus-daemon -drxR &
+feh --bg-fill ~/photos/wallpaper/GDVmXlsbUAEdcyg.png &
+ibus-daemon -drxR &
 # nm-applet &
 # setxkbmap -option caps:swapescape &
 pgrep -x battery-alert >/dev/null || ~/bin/battery-alert &

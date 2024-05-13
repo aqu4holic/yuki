@@ -1,4 +1,4 @@
-#! usr/bin/env bash
+#! /usr/bin/env bash
 switch_desktop () {
     if [ "$2" = "move" ]; then
         bspc node -d "$1"

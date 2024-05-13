@@ -1,8 +1,9 @@
 #! /usr/bin/env bash
 
-path=~/Downloads/wallpaper
-# img="$path/asuka.png"
-img="$path/anime_scan_landscape_sky_cloud_beautiful_light_color_8000x3406.png"
+path=~/photos/wallpaper
+# img="$path/evangelion.png"
+# img="$path/anime_scan_landscape_sky_cloud_beautiful_light_color_8000x3406.png"
+img="$path/evangelion.png"
 lockscreen_img="$path/lockscreen_img.png"
 
 X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)

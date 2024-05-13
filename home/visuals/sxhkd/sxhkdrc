@@ -98,10 +98,94 @@ super + alt + {1-9}
     ~/bin/switch-desktop-workaround '^{1-9}' follow
 
 #
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+    bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# toggle polybar
+super + x
+    ~/bin/toggle-polybar
+
+#
+# brightness and volume
+#
+
+# change the brightness
+
+super + shift + n
+    brightnessctl s 0
+
+super + {F10, F11}
+    brightnessctl s 40{-,+}
+
+# change the volume
+
+## toggle mute/unmute volume
+super + shift + m
+    pactl set-sink-mute 0 toggle
+
+## toggle mute/unmute mic
+super + alt + m
+    pactl set-source-mute 1 toggle
+
+super + shift + {F10, F11}
+    pactl set-sink-mute 0 false && pactl set-sink-volume 0 {-,+}5%
+
+#
+# take screenshot
+#
+
+# fullscreen screenshot save
+super + Print
+    ~/bin/screenshot -f
+
+# cropped save
+super + shift + Print
+    ~/bin/screenshot -s
+
+# clipboard fullscreen
+super + s
+    ~/bin/screenshot -fc
+
+# clipboard cropped
+super + shift + s
+    ~/bin/screenshot -sc
+
+#
 # utils
 #
 
 # lock screen
 super + l
     ~/bin/lockscreen
-

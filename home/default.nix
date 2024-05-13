@@ -48,6 +48,12 @@
 
             executable = true;
         };
+
+        file."photos" = {
+            source = ./photos;
+
+            recursive = true;
+        };
     };
 
     # Let home Manager install and manage itself.
