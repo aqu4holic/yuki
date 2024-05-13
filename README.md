@@ -56,9 +56,6 @@ mkswap -L swap /dev/sda2
 mkfs.fat -F 32 -n boot /dev/sda3
 ```
 
-result
-![[learning/code/nixos/Pasted image 20240513144929.png | center]]
-
 ### 2. Mounting
 
 ```bash
@@ -71,9 +68,6 @@ mount /dev/disk/by-label/boot /mnt/boot
 swapon /dev/sda2
 ```
 
-result
-![[learning/code/nixos/Pasted image 20240513145538.png | center]]
-
 ### 3. Pre-install config
 
 #### 3.1 Generate
@@ -85,9 +79,6 @@ cd /mnt/etc/nixos
 
 l
 ```
-
-result
-![[learning/code/nixos/Pasted image 20240513145841.png | center]]
 
 #### 3.2 Config
 
@@ -163,9 +154,6 @@ swapDevices = [
 	};
 ];
 ```
-
-result
-![[learning/code/nixos/Pasted image 20240513175212.png | center]]
 
 ### 4. Installation
 
