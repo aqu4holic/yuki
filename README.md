@@ -83,6 +83,11 @@ l
 #### 3.2 Config
 
 ##### 3.2.1 `configuration.nix`
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+**DONT FORGET NIX experimental-features**
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ```nix
 boot.loader = {
 	efi = {
@@ -109,14 +114,6 @@ nix.settings = {
 
 networking.hostName = "nix";
 networking.networkmanager.enable = true;
-
-time.timeZone = "Asia/Ho_Chi_Minh";
-
-i18n all, add lib.mkForce to "us";
-
-services.xserver.enable = true;
-
-services.xserver.xkb.layout = "us";
 
 users.users.blackwhite = {
 	isNormalUser = true;
@@ -167,30 +164,47 @@ reboot
 # login as root, set password for user
 sudo su
 passwd blackwhite
+
+# should exit sudo su after this
+exit
+
+# login back
 ```
 
 ### 5. Post-install config
 
-1. CLone this repo (I'm using `testing` branch) (you can use ssh link)
+1. Make download directory
+```bash
+mkdir download
+cd download
+```
+
+2. CLone this repo (I'm using `testing` branch) (you can use ssh link)
 ```bash
 git clone -b testing https://github.com/aqu4holic/nixos_rice.git
 ```
 
-2. Copy the `hardware-configration.nix` file
+3. Copy the `hardware-configration.nix` file and remove old config
 ```bash
+# copy hardware-configuration.nix
 cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix nixos_rice/hosts/blackwhite/hardware-configuration.nix
+
+# remove old config
+sudo rm -rf /etc/nixos/*
 ```
 
-3. Create a symlink from the downloaded folder to `/etc/nixos`
+4. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
 sudo ln -s nixos_rice/* /etc/nixos/
 ```
 
-4. Rebuild the system
+5. Rebuild the system
 ```
 cd nixos_rice
 sudo nixos-rebuild switch --flake .#nix
 ```
+
+6. Reboot and enjoy!
 
 ## Things to do
 update more configs
