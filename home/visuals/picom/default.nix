@@ -2,6 +2,12 @@
 {
     services.picom = {
         enable = true;
+
+        # package = {
+        #     src = pkgs.fetchFromGithub {
+
+        #     }
+        # }
     };
 
     # home.file.".config/picom/picom.conf" = {

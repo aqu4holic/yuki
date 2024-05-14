@@ -1,4 +1,4 @@
-# NixOS configs
+# Yuki - NixOS dotfiles
 
 ## Running system
 ### Prerequisite
@@ -7,24 +7,24 @@
 ### Steps
 1. Clone this repo (I'm using `testing` branch) (you can use ssh link)
 ```bash
-git clone -b testing https://github.com/aqu4holic/nixos_rice.git
-# git clone git@github.com:Aqu4holic/nixos_rice.git
+git clone -b testing https://github.com/aqu4holic/yuki.git
+# git clone git@github.com:Aqu4holic/yuki.git
 ```
 
 2. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
-sudo ln -s nixos_rice/* /etc/nixos/
+sudo ln -s yuki/* /etc/nixos/
 ```
 
 3. Copy the `hardware-configration.nix` file
 ```bash
-cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix nixos_rice/hosts/blackwhite/hardware-configuration.nix
+cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix yuki/hosts/blackwhite/hardware-configuration.nix
 ```
 
 4. Rebuild the system
 ```bash
-cd nixos_rice
-sudo nixos-rebuild switch --flake .#nix
+cd yuki
+sudo nixos-rebuild switch --flake .#yuki
 ```
 
 ## Dual booting and install from miminal iso
@@ -49,7 +49,7 @@ parted /dev/sda -- mkpart primary linux-swap -8GiB 100%
 parted /dev/sda -- mkpart ESP fat32 1Mib XGiB
 parted /dev/sda -- set 3 esp on
 
-mkfs.ext4 -L nixos /dev/sda1
+mkfs.ext4 -L yuki /dev/sda1
 mkswap -L swap /dev/sda2
 
 # for uefi
@@ -59,7 +59,7 @@ mkfs.fat -F 32 -n boot /dev/sda3
 ### 2. Mounting
 
 ```bash
-mount /dev/disk/by-label/nixos /mnt
+mount /dev/disk/by-label/yuki /mnt
 
 # for uefi
 mkdir -p /mnt/boot
@@ -83,24 +83,19 @@ l
 #### 3.2 Config
 
 ##### 3.2.1 `configuration.nix`
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-**DONT FORGET NIX experimental-features**
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 ```nix
 boot.loader = {
-	efi = {
-		canTouchEfiVariables = true;
-		# efiSysMountPoint = "/boot/efi"; (gotta test this)
-	};
+    efi = {
+        canTouchEfiVariables = true;
+        # efiSysMountPoint = "/boot/efi"; (gotta test this)
+    };
 
-	grub = {
-		enable = true;
-		devices = [ "nodev" ];
-		efiSupport = true;
-		useOSProber = true;
-	};
+    grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+    };
 };
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -108,47 +103,55 @@ boot.loader = {
 nixpkgs.config.allowUnfree = true;
 
 nix.settings = {
-	experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [ "nix-command" "flakes" ];
 };
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-networking.hostName = "nix";
+networking.hostName = "yuki";
 networking.networkmanager.enable = true;
 
+time.timeZone = "Asia/Ho_Chi_Minh";
+
+i18n all, add lib.mkForce to "us";
+
+services.xserver.enable = true;
+
+services.xserver.xkb.layout = "us";
+
 users.users.blackwhite = {
-	isNormalUser = true;
-	extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
+    isNormalUser = true;
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
 };
 
 environment.systemPackages = with pkgs; [
-	vim
-	wget
-	git
+    vim
+    wget
+    git
 ];
 ```
 
 ##### 3.2.2 `hardware-configuration.nix`
 ```nix
 file.sysTems = {
-	"/" = {
-		device = "/dev/disk/by-label/nixos";
-		fsType = "ext4";
-	};
+    "/" = {
+        device = "/dev/disk/by-label/yuki";
+        fsType = "ext4";
+    };
 
-	"/boot" = {
-		device = "/dev/disk/by-label/boot";
-		fsType = "vfat";
-		options = [
-			"fmask=0022";
-			"dmask=0022";
-		];
-	};
+    "/boot" = {
+        device = "/dev/disk/by-label/boot";
+        fsType = "vfat";
+        options = [
+            "fmask=0022";
+            "dmask=0022";
+        ];
+    };
 };
 
 swapDevices = [
-	{
-		device = "/dev/disk/by-label/swap";
-	};
+    {
+        device = "/dev/disk/by-label/swap";
+    };
 ];
 ```
 
@@ -164,50 +167,36 @@ reboot
 # login as root, set password for user
 sudo su
 passwd blackwhite
-
-# should exit sudo su after this
-exit
-
-# login back
 ```
 
 ### 5. Post-install config
 
-1. Make download directory
+1. CLone this repo (I'm using `testing` branch) (you can use ssh link)
 ```bash
-mkdir download
-cd download
+git clone -b testing https://github.com/aqu4holic/yuki.git
 ```
 
-2. CLone this repo (I'm using `testing` branch) (you can use ssh link)
+2. Copy the `hardware-configration.nix` file
 ```bash
-git clone -b testing https://github.com/aqu4holic/nixos_rice.git
+cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix yuki/hosts/blackwhite/hardware-configuration.nix
 ```
 
-3. Copy the `hardware-configration.nix` file and remove old config
-```bash
-# copy hardware-configuration.nix
-cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix nixos_rice/hosts/blackwhite/hardware-configuration.nix
-
-# remove old config
-sudo rm -rf /etc/nixos/*
-```
+3. Uncomment `efiSupport = true;` in `hosts/blackwhite/default.nix`
 
 4. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
-sudo ln -s nixos_rice/* /etc/nixos/
+sudo ln -s yuki/* /etc/nixos/
 ```
 
 5. Rebuild the system
 ```
-cd nixos_rice
-sudo nixos-rebuild switch --flake .#nix
+cd yuki
+sudo nixos-rebuild switch --flake .#yuki
 ```
-
-6. Reboot and enjoy!
 
 ## Things to do
 update more configs
 update bspwmrc to the current monitor, rn using -d, not good enough
+rememeber to change picom render engine
 
 thx for ur reading :)
