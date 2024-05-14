@@ -7,7 +7,7 @@
             owner = "pijulius";
             repo = "picom";
             rev = "e7b14886ae644aaa657383f7c4f44be7797fd5f6";
-            hash = "sha256-YQVp5HicO+jbvCYSY+hjDTnXCU6aS3aCvbux6NFcJ/Y=";
+            sha256 = "YQVp5HicO+jbvCYSY+hjDTnXCU6aS3aCvbux6NFcJ/Y=";
         };
     };
 

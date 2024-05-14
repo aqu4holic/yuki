@@ -13,7 +13,6 @@ git clone -b testing https://github.com/aqu4holic/yuki.git
 
 2. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
-sudo rm -rf /etc/nixos/*
 # use absolute path
 sudo ln -s path/to/yuki/flake.nix /etc/nixos/
 ```
@@ -134,6 +133,11 @@ environment.systemPackages = with pkgs; [
 ```
 
 ##### 3.2.2 `hardware-configuration.nix`
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+update settings according to your graphics device
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ```nix
 file.sysTems = {
     "/" = {
@@ -190,9 +194,8 @@ cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix yuki/hosts/blac
 
 4. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
-sudo rm -rf /etc/nixos/*
 # use absolute path, for my case its the below
-sudo ln -s home/blackwhite/download/yuki/flake.nix /etc/nixos/
+sudo ln -s home/blackwhite/download/github/yuki/flake.nix /etc/nixos/
 ```
 
 5. Rebuild the system
@@ -204,6 +207,8 @@ sudo nixos-rebuild switch --flake .#yuki
 
 ## Things to do
 - update more configs
+
+- update hardware settings to nvidia ([wiki](https://nixos.wiki/wiki/Nvidia))
 
 - update bspwmrc to the current monitor, rn using -d, not good enough
 
