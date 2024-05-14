@@ -165,8 +165,10 @@ reboot
 
 # ctrl + alt + f1: tty
 # login as root, set password for user
-sudo su
-passwd blackwhite
+sudo passwd blackwhite
+
+# remember to exit sudo
+exit
 ```
 
 ### 5. Post-install config
@@ -190,6 +192,7 @@ sudo ln -s yuki/* /etc/nixos/
 
 5. Rebuild the system
 ```
+# this will also rename your hostname, so next time you can just nixos-rebuild switch
 cd yuki
 sudo nixos-rebuild switch --flake .#yuki
 ```
