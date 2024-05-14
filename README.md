@@ -198,8 +198,10 @@ sudo nixos-rebuild switch --flake .#yuki
 ```
 
 ## Things to do
-update more configs
-update bspwmrc to the current monitor, rn using -d, not good enough
-rememeber to change picom render engine
+- update more configs
+
+- update bspwmrc to the current monitor, rn using -d, not good enough
+
+- rememeber to change picom render engine
 
 thx for ur reading :)
