@@ -3,7 +3,7 @@
     services.picom = {
         enable = true;
 
-        package =   pkgs.fetchFromGitHub {
+        package = pkgs.fetchFromGitHub {
             owner = "FT-Labs";
             repo = "picom";
             rev = "df4c6a3d9b11e14ed7f3142540babea4c775ddb1";

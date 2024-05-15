@@ -85,6 +85,7 @@
     };
 
     services = {
+        network-manager-applet.enable = true;
         copyq.enable = true;
     };
 }

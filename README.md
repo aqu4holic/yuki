@@ -14,7 +14,7 @@ git clone -b testing https://github.com/aqu4holic/yuki.git
 2. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
 # use absolute path
-sudo ln -s path/to/yuki/flake.nix /etc/nixos/
+sudo ln -s /path/to/yuki/flake.nix /etc/nixos/
 ```
 
 3. Copy the `hardware-configration.nix` file
@@ -22,7 +22,25 @@ sudo ln -s path/to/yuki/flake.nix /etc/nixos/
 cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix yuki/hosts/blackwhite/hardware-configuration.nix
 ```
 
-4. Rebuild the system
+4. Change the username in `flake.nix` and `modules/system.nix` to your username
+
+`flake.nix`
+```nix
+home-manager.nixosModules.home-manager {
+    ...
+    home-manager.users.<your_username_here> = import ./home;
+
+    ...
+}
+```
+
+`system.nix`
+```nix
+# at the beginning of the file
+let username = "your_username_here";
+```
+
+5. Rebuild the system
 ```bash
 # this will also rename your hostname, so next time you can just nixos-rebuild switch
 cd yuki
@@ -31,7 +49,37 @@ sudo nixos-rebuild switch --flake .#yuki
 
 ## Dual booting and install from miminal iso
 
+### 0. Networking
+
+#### Pre-install
+
+If you're using wifi, first check the wifi interface name using this
+```bash
+ifconfig -a
+```
+After that, use `wpa_passphrase` to create a wifi config
+```bash
+# enter password after this
+wpa_passphrase "SSID" > wifi.conf
+
+wpa_supplicant -i wifi_interface -c wifi.conf -B
+
+dhcpcd
+```
+#### Post-install
+
+We can use nmcli now
+```bash
+nmcli dev wifi connect <SSID> password <password>
+```
+You can use any other ways that suits, the one I listed above works in my case
+
 ### 1. Partitioning
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+I SUGGESTED YOU TO USE A GRAPHICAL INSTALLATION AND USE GPARTED BECAUSE THIS IS ERROR-PRONE!!!!
+IF YOU WANT TO DO IT MANUALLY, PROCEED
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ```bash
 sudo su
@@ -43,19 +91,21 @@ These are **CASE SENSITIVE!!!**
 
 ```bash
 # begin
-parted /dev/sda -- mklabel gpt (for uefi)
-parted /dev/sda -- mkpart primary XGiB -8GiB (first one for boot, X = 1 on VM, 8 on main)
-parted /dev/sda -- mkpart primary linux-swap -8GiB 100%
+parted /dev/<your_device><your_number> -- mklabel gpt (for uefi)
+parted /dev/<your_device><your_number> -- mkpart primary XGiB -8GiB (first one for boot, X = 1 on VM, 8 on main)
+parted /dev/<your_device> -- mkpart primary linux-swap -8GiB 100%
+
+# i found out the above wont work, you have to use cfdisk to manually split them into 3 parts and then
 
 # for uefi
-parted /dev/sda -- mkpart ESP fat32 1Mib XGiB
-parted /dev/sda -- set 3 esp on
+parted /dev/<your_device> -- mkpart ESP fat32 1Mib XGiB
+parted /dev/<your_device> -- set <your number> esp on
 
-mkfs.ext4 -L yuki /dev/sda1
-mkswap -L swap /dev/sda2
+mkfs.ext4 -L yuki /dev/<your_device><your_home_number>
+mkswap -L swap /dev/<your_device><your_boot_number>
 
 # for uefi
-mkfs.fat -F 32 -n boot /dev/sda3
+mkfs.fat -F 32 -n boot /dev/<your_device><your_number>
 ```
 
 ### 2. Mounting
@@ -67,7 +117,7 @@ mount /dev/disk/by-label/yuki /mnt
 mkdir -p /mnt/boot
 mount /dev/disk/by-label/boot /mnt/boot
 
-swapon /dev/sda2
+swapon /dev/<your_device><your_number>
 ```
 
 ### 3. Pre-install config
@@ -112,15 +162,7 @@ nix.settings = {
 networking.hostName = "yuki";
 networking.networkmanager.enable = true;
 
-time.timeZone = "Asia/Ho_Chi_Minh";
-
-i18n all, add lib.mkForce to "us";
-
-services.xserver.enable = true;
-
-services.xserver.xkb.layout = "us";
-
-users.users.blackwhite = {
+users.users.<your_username> = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
 };
@@ -172,7 +214,7 @@ reboot
 
 # ctrl + alt + f1: tty
 # login as root, set password for user
-sudo passwd blackwhite
+sudo passwd <your_username>
 
 # remember to exit sudo
 exit
@@ -192,13 +234,31 @@ cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix yuki/hosts/blac
 
 3. Uncomment `efiSupport = true;` in `hosts/blackwhite/default.nix`
 
-4. Create a symlink from the downloaded folder to `/etc/nixos`
-```bash
-# use absolute path, for my case its the below
-sudo ln -s home/blackwhite/download/github/yuki/flake.nix /etc/nixos/
+4. Change the username in `flake.nix` and `modules/system.nix` to your username
+
+`flake.nix`
+```nix
+home-manager.nixosModules.home-manager {
+    ...
+    home-manager.users.<your_username_here> = import ./home;
+
+    ...
+}
 ```
 
-5. Rebuild the system
+`system.nix`
+```nix
+# at the beginning of the file
+let username = "your_username_here";
+```
+
+5. Create a symlink from the downloaded folder to `/etc/nixos`
+```bash
+# use absolute path, for my case its the below
+sudo ln -s /home/blackwhite/download/github/yuki/flake.nix /etc/nixos/
+```
+
+6. Rebuild the system
 ```
 # this will also rename your hostname, so next time you can just nixos-rebuild switch
 cd yuki

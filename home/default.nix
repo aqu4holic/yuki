@@ -1,10 +1,8 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
 {
     imports = [
         ./programs
         ./shell
-
         ./visuals
     ];
 
@@ -24,9 +22,6 @@
     # '';
 
     home = {
-        username = "blackwhite";
-        homeDirectory = "/home/blackwhite";
-
         # This value determines the home Manager release that your
         # configuration is compatible with. This helps avoid breakage
         # when a new home Manager release introduces backwards
