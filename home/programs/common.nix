@@ -49,6 +49,10 @@
         redshift
         syncthing
 
+        # app
+        obsidian
+        discord
+
         # nix related
         #
         # it provides the command `nom` works just like `nix`
@@ -74,8 +78,6 @@
         ethtool
         pciutils # lspci
         usbutils # lsusb
-
-        obsidian
     ];
 
     programs = {

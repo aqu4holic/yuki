@@ -19,8 +19,8 @@ in
 
             add_newline = true;
 
-            format = ''❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration
-$character'';
+            format = ''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration
+[╰─](#d10475) $character'';
 
             # right_format = "$time";
 

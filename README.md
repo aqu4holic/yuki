@@ -40,7 +40,12 @@ home-manager.nixosModules.home-manager {
 let username = "your_username_here";
 ```
 
-5. Rebuild the system
+5. Make bin/ folder executable
+```bash
+chmod +x yuki/bin/*
+```
+
+6. Rebuild the system
 ```bash
 # this will also rename your hostname, so next time you can just nixos-rebuild switch
 cd yuki
@@ -252,13 +257,18 @@ home-manager.nixosModules.home-manager {
 let username = "your_username_here";
 ```
 
-5. Create a symlink from the downloaded folder to `/etc/nixos`
+5. Make bin/ folder executable
+```bash
+chmod +x yuki/bin/*
+```
+
+6. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
 # use absolute path, for my case its the below
 sudo ln -s /home/blackwhite/download/github/yuki/flake.nix /etc/nixos/
 ```
 
-6. Rebuild the system
+7. Rebuild the system
 ```
 # this will also rename your hostname, so next time you can just nixos-rebuild switch
 cd yuki
