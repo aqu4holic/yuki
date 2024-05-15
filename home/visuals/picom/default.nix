@@ -3,11 +3,11 @@
     services.picom = {
         enable = true;
 
-        package = pkgs.fetchFromGitHub {
-            owner = "pijulius";
+        package =   pkgs.fetchFromGitHub {
+            owner = "FT-Labs";
             repo = "picom";
-            rev = "e7b14886ae644aaa657383f7c4f44be7797fd5f6";
-            sha256 = "YQVp5HicO+jbvCYSY+hjDTnXCU6aS3aCvbux6NFcJ/Y=";
+            rev = "df4c6a3d9b11e14ed7f3142540babea4c775ddb1";
+            hash = "sha256-FmORxY7SLFnAmtQyC82sK36RoUBa94rJ7BsDXjXUCXk=";
         };
     };
 

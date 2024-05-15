@@ -10,7 +10,7 @@ in
 
     programs.starship = {
         enable = true;
-        
+
         settings = {
             character = {
                 success_symbol = "[➾](bold green)";
@@ -19,9 +19,10 @@ in
 
             add_newline = true;
 
-            format = " $nix_shell$username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration$character";
+            format = ''❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration
+$character'';
 
-            right_format = "$time";
+            # right_format = "$time";
 
             shell = {
                 disabled = false;
@@ -63,6 +64,7 @@ in
             directory = {
                 disabled = false;
                 format = "📁[$path]($style)[$read_only]($read_only_style) ";
+                use_os_path_sep = true;
                 read_only = " 🔒";
                 truncation_length = 0;
                 truncate_to_repo = false;
