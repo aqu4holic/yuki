@@ -47,6 +47,13 @@ in {
         LC_TIME = "en_GB.UTF-8";
     };
 
+    i18n.inputMethod = {
+        enabled = "ibus";
+        ibus.engines = with pkgs; [
+            ibus-engines.bamboo
+        ];
+    };
+
     # Enable the X11 windowing system.
     # services.xserver.enable = true;
 
@@ -72,11 +79,6 @@ in {
             startx = {
                 enable = true;
             };
-        };
-
-        xkb = {
-            layout = "us";
-            variant = "";
         };
     };
 
@@ -146,6 +148,9 @@ in {
         fastfetch
         ranger # terminal file manager
         zathura # pdf viewer
+
+        ibus
+        ibus-engines.bamboo
 
         # for customization
         bspwm

@@ -1,7 +1,6 @@
 #! usr/bin/env bash
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-# pkill -USR1 -x sxhkd &
 xsetroot -cursor_name left_ptr &
 xset r rate 200 25 &
 picom &
@@ -19,7 +18,7 @@ copyq &
 # bspc wm -O eDP-1-0 HDMI-A-1-0
 # bspc monitor eDP-1-0 -d 1 2 3 4 5 6 7
 # bspc monitor HDMI-A-1-0 -d 8
-bspc monitor -d I II III IV V VI VII VII IX X
+bspc monitor Virtual-1 -d 1 2 3 4 5 6 7 8 9 10
 
 bspc config border_width 2
 bspc config window_gap 15

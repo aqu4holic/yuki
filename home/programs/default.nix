@@ -5,6 +5,9 @@
         ./git_ssh
 
         ./btop
+        ./bat
+        ./eza
+        ./fdzf
         # ./media.nix
         # ./browsers.nix
     ];

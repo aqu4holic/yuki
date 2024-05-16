@@ -19,5 +19,9 @@ in
             end
             # fastfetch
         '';
+
+        interactiveShellInit = ''
+            alias cat bat
+        '';
     };
 }

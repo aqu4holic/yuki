@@ -18,9 +18,4 @@
     xdg.configFile."picom/picom.conf" = {
         source = lib.mkForce ./picom.conf;
     };
-
-    xresources.properties = {
-        "Xcursor.size" = 16;
-        "Xft.dpi" = 192;
-    };
 }

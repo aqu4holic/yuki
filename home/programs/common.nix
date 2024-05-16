@@ -18,6 +18,8 @@
         yq-go # yaml processor https://github.com/mikefarah/yq
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
+        fd
+        bat
 
         # networking tools
         mtr # A network diagnostic tool
@@ -44,8 +46,6 @@
         imagemagick
         xclip
         maim
-        ibus
-        ibus-engines.bamboo
         redshift
         syncthing
 
@@ -59,6 +59,8 @@
         # with more details log output
         nix-output-monitor
         nix-prefetch-github
+
+        trash-cli
 
         # productivity
         hugo # static site generator
@@ -81,7 +83,6 @@
     ];
 
     programs = {
-        eza.enable = true; # A modern replacement for ‘ls’
         jq.enable = true; # A lightweight and flexible command-line JSON processor
         feh.enable = true; # image viewer
     };
