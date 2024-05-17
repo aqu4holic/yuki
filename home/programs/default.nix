@@ -4,6 +4,8 @@
         ./xdg
         ./git_ssh
 
+        ./neovim
+
         ./btop
         ./bat
         ./eza

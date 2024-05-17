@@ -7,7 +7,7 @@ picom &
 feh --bg-fill ~/photos/wallpaper/GJXis6KbEAA2DVF.png &
 ibus-daemon -drxR &
 # nm-applet &
-# setxkbmap -option caps:swapescape &
+setxkbmap -option caps:swapescape &
 pgrep -x battery-alert >/dev/null || ~/bin/battery-alert &
 pidof redshift || redshift -l "12:125" -t "6500:3200" &
 pidof syncthing || syncthing -no-browser &
