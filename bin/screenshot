@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 case $1 in
     "-f") maim --hidecursor "$HOME/photos/screenshot/$(date).png";;

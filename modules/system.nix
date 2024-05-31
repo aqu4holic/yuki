@@ -79,8 +79,17 @@ in {
             startx = {
                 enable = true;
             };
+
+            # autoLogin = {
+            #     enable = true;
+            #     user = username;
+            # };
         };
     };
+
+    # services.getty = {
+    #     autologinUser = username;
+    # };
 
     # wm
     services.displayManager = {
@@ -155,6 +164,7 @@ in {
 
         # for customization
         bspwm
+        bsp-layout
         feh
         sxhkd
         rofi
@@ -163,6 +173,12 @@ in {
         picom
         polybar
         i3lock-color
+
+        # utils
+        bc
+        libgcc
+        python312
+        python312Packages.pip
     ];
 
     # Enable CUPS to print documents.

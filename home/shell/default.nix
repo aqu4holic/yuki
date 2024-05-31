@@ -3,7 +3,7 @@
     imports = [
         ./terminals.nix
         ./fish.nix
-        ./starship.nix
+        ./starship
     ];
 
     home.sessionVariables = {

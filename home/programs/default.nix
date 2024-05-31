@@ -10,6 +10,7 @@
         ./bat
         ./eza
         ./fdzf
+        ./ranger
         # ./media.nix
         # ./browsers.nix
     ];

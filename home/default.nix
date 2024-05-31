@@ -4,6 +4,7 @@
         ./programs
         ./shell
         ./visuals
+        ./fonts
     ];
 
     # link the configuration file in current directory to the specified location in home directory

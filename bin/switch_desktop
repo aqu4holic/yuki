@@ -1,7 +1,5 @@
-#! /run/current-system/sw/bin/bash
+#!/bin/sh
 switch_desktop () {
-    echo "1231231"
-
     if [ "$2" = "move" ]; then
         bspc node -d "$1"
     elif [ "$2" = "follow" ]; then

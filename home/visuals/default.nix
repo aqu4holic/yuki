@@ -1,9 +1,7 @@
 {
     imports = [
         ./x11
-        ./bspwm
-        ./ranger
-        ./sxhkd
+        ./bspwm_sxhkd
         # ./rofi
         ./polybar
         ./picom

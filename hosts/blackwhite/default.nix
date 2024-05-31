@@ -26,6 +26,8 @@
             useOSProber = true;
 
             configurationLimit = 10;
+
+            splashImage = /home/blackwhite/photos/wallpaper/3icy1h7kj4m51.png;
         };
     };
 
