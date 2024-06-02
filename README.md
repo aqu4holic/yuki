@@ -97,8 +97,8 @@ These are **CASE SENSITIVE!!!**
 ```bash
 # begin
 parted /dev/<your_device><your_number> -- mklabel gpt (for uefi)
-parted /dev/<your_device><your_number> -- mkpart primary XGiB -8GiB (first one for boot, X = 1 on VM, 8 on main)
 parted /dev/<your_device> -- mkpart primary linux-swap -8GiB 100%
+parted /dev/<your_device><your_number> -- mkpart primary XGiB -8GiB (first one for boot, X = 1 on VM, 8 on main)
 
 # i found out the above wont work, you have to use cfdisk to manually split them into 3 parts and then
 
@@ -106,11 +106,11 @@ parted /dev/<your_device> -- mkpart primary linux-swap -8GiB 100%
 parted /dev/<your_device> -- mkpart ESP fat32 1Mib XGiB
 parted /dev/<your_device> -- set <your number> esp on
 
+mkswap -L swap /dev/<your_device><your_swap_number>
 mkfs.ext4 -L yuki /dev/<your_device><your_home_number>
-mkswap -L swap /dev/<your_device><your_boot_number>
 
 # for uefi
-mkfs.fat -F 32 -n boot /dev/<your_device><your_number>
+mkfs.fat -F 32 -n boot /dev/<your_device><your_boot_number>
 ```
 
 ### 2. Mounting
@@ -186,6 +186,9 @@ update settings according to your graphics device
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ```nix
+# for my laptop
+boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
+
 file.sysTems = {
     "/" = {
         device = "/dev/disk/by-label/yuki";
