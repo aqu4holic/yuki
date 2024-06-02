@@ -41,6 +41,7 @@
         gawk
         zstd
         gnupg
+        lshw
 
         copyq
         imagemagick

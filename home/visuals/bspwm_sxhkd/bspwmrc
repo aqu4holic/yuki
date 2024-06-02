@@ -4,7 +4,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 xsetroot -cursor_name left_ptr &
 xset r rate 200 25 &
 picom &
-feh --bg-fill ~/photos/wallpaper/GJXis6KbEAA2DVF.png &
+feh --bg-fill ~/download/photos/wallpaper/GJXis6KbEAA2DVF.png &
 ibus-daemon -drxR &
 # nm-applet &
 # setxkbmap -option caps:swapescape &
@@ -15,10 +15,10 @@ trash-empty -f 30 &
 # wmname LG3D & # This is for IntellJ and IntellJ-based (Android Studio)
 copyq &
 
-# bspc wm -O eDP-1-0 HDMI-A-1-0
-# bspc monitor eDP-1-0 -d 1 2 3 4 5 6 7
-# bspc monitor HDMI-A-1-0 -d 8
-bspc monitor Virtual-1 -d 1 2 3 4 5 6 7 8 9 10
+bspc wm -O eDP-1 HDMI-A-1-0
+bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9
+bspc monitor HDMI-A-1-0 -d 10
+# bspc monitor Virtual-1 -d 1 2 3 4 5 6 7 8 9 10
 
 bspc config border_width 2
 bspc config window_gap 15

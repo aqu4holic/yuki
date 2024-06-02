@@ -45,7 +45,7 @@
             executable = true;
         };
 
-        file."photos" = {
+        file."/download/photos" = {
             source = ./photos;
 
             recursive = true;

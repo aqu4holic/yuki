@@ -84,9 +84,9 @@ super + {o,i}
     bspc wm -h on
 
 # focus to given desktop
-super + {1-9,0}
+super + {1-9}
     # ~/bin/switch_desktop '^{1-9,10}'
-    bspc desktop -f '^{1-9,10}'
+    bspc desktop -f '^{1-9}'
 
 # send to given desktop
 super + shift + {1-9,0}
@@ -202,5 +202,5 @@ super + shift + s
 #
 
 # lock screen
-super + l
+super + g
     ~/bin/lockscreen

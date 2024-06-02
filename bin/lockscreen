@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-path=~/photos/wallpaper
+path=~/download/photos/wallpaper
 # img="$path/evangelion.png"
 # img="$path/anime_scan_landscape_sky_cloud_beautiful_light_color_8000x3406.png"
-img="$path/evangelion.png"
+# img="$path/3icy1h7kj4m51.png"
 lockscreen_img="$path/lockscreen_img.png"
 
-X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
-Y=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+# X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+# Y=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
 
-convert $img -scale "$X"x"$Y"^ -gravity center -extent "$X"x"$Y" "$path/lockscreen_img.png"
+# convert $img -scale "$X"x"$Y"^ -gravity center -extent "$X"x"$Y" "$path/lockscreen_img.png"
 
 fg=ff19a3
 wrong=db4b89ff
