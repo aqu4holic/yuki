@@ -189,6 +189,8 @@ update settings according to your graphics device
 # for my laptop
 boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
 
+boot.kernelPackages = pkgs.linuxPackages_latest;
+
 file.sysTems = {
     "/" = {
         device = "/dev/disk/by-label/yuki";
