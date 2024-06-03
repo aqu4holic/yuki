@@ -20,8 +20,8 @@ i3lock -n --force-clock \
     -i "$path/lockscreen_img.png" \
     -e \
     --indicator \
-    --radius=15 \
-    --ring-width=10 \
+    --radius=30 \
+    --ring-width=20 \
     --line-uses-inside \
     \
     --inside-color=00000000 \
@@ -52,10 +52,10 @@ i3lock -n --force-clock \
     \
     --time-pos="w / 2 : 150" \
     --date-pos="w / 2 : 225" \
-    --greeter-pos="x + 100 : h - 45" \
+    --greeter-pos="x + 200 : h - 65" \
     --verif-pos="w / 2 : h / 2 + 105" \
     --wrong-pos="w / 2 : h / 2 + 135" \
-    --ind-pos="x + 50 : h - 50" \
+    --ind-pos="x + 100 : h - 70" \
     \
     --time-font="Fira Code:style=Bold" \
     --date-font="Fira Code:style=Bold" \
@@ -63,7 +63,7 @@ i3lock -n --force-clock \
     --greeter-font="Fira Code:style=Bold" \
     --wrong-font="Fira Code" \
     --verif-size=15 \
-    --greeter-size=13 \
+    --greeter-size=25 \
     --wrong-size=15 \
     \
     --pointer=default \

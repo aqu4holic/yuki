@@ -84,24 +84,24 @@ super + {o,i}
     bspc wm -h on
 
 # focus to given desktop
-super + {1-9}
-    # ~/bin/switch_desktop '^{1-9,10}'
-    bspc desktop -f '^{1-9}'
+super + {1-9,0}
+    ~/bin/switch_desktop '^{1-9,10}'
+    # bspc desktop -f '^{1-9,0}'
 
 # send to given desktop
 super + shift + {1-9,0}
-    # ~/bin/switch_desktop '^{1-9,10}' move
-    bspc node -d '^{1-9,10}'
+    ~/bin/switch_desktop '^{1-9,10}' move
+    # bspc node -d '^{1-9,10}'
 
 # focus the last desktop
 super + Tab
-    # ~/bin/switch_desktop -1 last
-    bspc desktop -f last
+    ~/bin/switch_desktop -1 last
+    # bspc desktop -f last
 
 # send and follow to given desktop
 super + alt + {1-9,0}
-    # ~/bin/switch_desktop '^{1-9,10}' follow
-    bspc node -d '^{1-9,10}' -f
+    ~/bin/switch_desktop '^{1-9,10}' follow
+    # bspc node -d '^{1-9,10}' -f
 
 #
 # preselect
@@ -115,7 +115,7 @@ super + ctrl + {Left,Down,Up,Right}
     bspc node -p {west,south,north,east}
 
 # preselect the ratio
-super + ctrl + {1-9}
+super + ctrl + {1-9}}
     bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
@@ -150,7 +150,7 @@ super + {Left,Down,Up,Right}
 
 # toggle polybar
 super + x
-    ~/bin/toggle-polybar
+    ~/bin/toggle_polybar
 
 #
 # brightness and volume
@@ -162,7 +162,7 @@ super + shift + n
     brightnessctl s 0
 
 super + {F10, F11}
-    brightnessctl s 40{-,+}
+    brightnessctl s 4800{-,+}
 
 # change the volume
 
@@ -172,7 +172,7 @@ super + shift + m
 
 ## toggle mute/unmute mic
 super + alt + m
-    pactl set-source-mute 1 toggle
+    pactl set-source-mute 0 toggle
 
 super + shift + {F10, F11}
     pactl set-sink-mute 0 false && pactl set-sink-volume 0 {-,+}5%
@@ -195,6 +195,10 @@ super + s
 
 # clipboard cropped
 super + shift + s
+    ~/bin/screenshot -sc
+
+# clipboard cropped
+ctrl + Print
     ~/bin/screenshot -sc
 
 #

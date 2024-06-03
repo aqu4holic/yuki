@@ -87,6 +87,27 @@ in {
         };
     };
 
+    systemd = {
+        targets = {
+            sleep = {
+                enable = false;
+                unitConfig.DefaultDependencies = "no";
+            };
+            suspend = {
+                enable = false;
+                unitConfig.DefaultDependencies = "no";
+            };
+            hibernate = {
+                enable = false;
+                unitConfig.DefaultDependencies = "no";
+            };
+            "hybrid-sleep" = {
+                enable = false;
+                unitConfig.DefaultDependencies = "no";
+            };
+        };
+    };
+
     # services.getty = {
     #     autologinUser = username;
     # };
@@ -111,6 +132,7 @@ in {
         packages = with pkgs; [
         # icon fonts
         material-design-icons
+        material-icons
 
         # normal fonts
         noto-fonts
@@ -118,7 +140,15 @@ in {
         noto-fonts-emoji
 
         # nerdfonts
-        (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+        (
+            nerdfonts.override {
+                fonts = [
+                    "FiraCode"
+                    "JetBrainsMono"
+                ];
+            }
+        )
+
         ];
 
         # use fonts specified by user rather than default ones
@@ -159,6 +189,14 @@ in {
         ranger # terminal file manager
         zathura # pdf viewer
 
+        # audio
+        # pipewire
+        pulseaudio
+        noisetorch
+
+        # display
+        brightnessctl
+
         ibus
         ibus-engines.bamboo
 
@@ -175,6 +213,7 @@ in {
         i3lock-color
 
         # utils
+        killall
         bc
         libgcc
         python312
@@ -199,5 +238,9 @@ in {
         # use the example session manager (no others are packaged yet so this is enabled by default,
         # no need to redefine it in your config for now)
         #media-session.enable = true;
+    };
+
+    programs.noisetorch = {
+        enable = true;
     };
 }

@@ -32,7 +32,6 @@
         ipcalc  # it is a calculator for the IPv4/v6 addresses
 
         # misc
-        cowsay
         file
         which
         tree
@@ -42,6 +41,14 @@
         zstd
         gnupg
         lshw
+
+        # misc
+        cowsay
+        lolcat
+        fortune-kind
+
+        # misc ui
+        kdePackages.spectacle
 
         copyq
         imagemagick
@@ -53,6 +60,8 @@
         # app
         obsidian
         discord
+        zotero
+        spotify
 
         # nix related
         #

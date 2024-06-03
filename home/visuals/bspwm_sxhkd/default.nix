@@ -2,6 +2,8 @@
 {
     # bspwm
     xsession = {
+        numlock.enable = true;
+
         windowManager = {
             bspwm = {
                 enable = true;

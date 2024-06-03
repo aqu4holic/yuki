@@ -2,16 +2,11 @@
     imports = [
         ./common.nix
         ./xdg
-        ./git_ssh
+
+        ./shells
 
         ./neovim
 
-        ./btop
-        ./bat
-        ./eza
-        ./fdzf
-        ./ranger
-        # ./media.nix
-        # ./browsers.nix
+        ./spectacle
     ];
 }

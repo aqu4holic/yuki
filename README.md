@@ -122,7 +122,7 @@ mount /dev/disk/by-label/yuki /mnt
 mkdir -p /mnt/boot
 mount /dev/disk/by-label/boot /mnt/boot
 
-swapon /dev/<your_device><your_number>
+swapon /dev/disk/by-label/swap
 ```
 
 ### 3. Pre-install config
@@ -232,7 +232,7 @@ exit
 
 ### 5. Post-install config
 
-1. CLone this repo (I'm using `testing` branch) (you can use ssh link)
+1. Clone this repo (I'm using `testing` branch) (you can use ssh link)
 ```bash
 git clone -b testing https://github.com/aqu4holic/yuki.git
 ```

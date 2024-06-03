@@ -1,14 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, xdg, lib, ... }:
 {
     services.polybar = {
         enable = true;
 
-        config = {
+        script = builtins.readFile ../../../bin/launch.sh;
+    };
 
-        };
+    xdg.configFile."polybar" = {
+        source = ./.;
 
-        script = builtins.readFile ./launch.sh;
-
-        # config =
+        recursive = true;
     };
 }
