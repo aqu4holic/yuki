@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 {
-    programs.ranger = {
+    programs.joshuto = {
         enable = true;
-
-
     };
 }

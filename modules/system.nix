@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let username = "blackwhite";
 in {
     # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -186,8 +186,11 @@ in {
         sysstat
         lm_sensors # for `sensors` command
         fastfetch
-        ranger # terminal file manager
+        joshuto # terminal file manager
         zathura # pdf viewer
+
+        # network
+        networkmanagerapplet
 
         # audio
         # pipewire
@@ -197,8 +200,8 @@ in {
         # display
         brightnessctl
 
-        ibus
-        ibus-engines.bamboo
+        # ibus
+        # ibus-engines.bamboo
 
         # for customization
         bspwm
@@ -214,14 +217,26 @@ in {
 
         # utils
         killall
+        xdotool
+
+        # libs
         bc
         libgcc
         python312
         python312Packages.pip
+        go
     ];
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
+
+    environment.etc."current_system_packages".text =
+    let
+        packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+        sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
+        formatted = builtins.concatStringsSep "\n" sortedUnique;
+    in
+        formatted;
 
     # Enable sound with pipewire.
     sound.enable = true;

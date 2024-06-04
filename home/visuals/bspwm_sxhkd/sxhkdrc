@@ -161,20 +161,20 @@ super + x
 super + shift + n
     brightnessctl s 0
 
-super + {F10, F11}
+super + {F5, F6}
     brightnessctl s 4800{-,+}
 
 # change the volume
 
 ## toggle mute/unmute volume
-super + shift + m
+super + F1
     pactl set-sink-mute 0 toggle
 
 ## toggle mute/unmute mic
-super + alt + m
+super + F4
     pactl set-source-mute 0 toggle
 
-super + shift + {F10, F11}
+super + {F2, F3}
     pactl set-sink-mute 0 false && pactl set-sink-volume 0 {-,+}5%
 
 #
@@ -208,3 +208,6 @@ ctrl + Print
 # lock screen
 super + g
     ~/bin/lockscreen
+
+super + shift +  v
+    copyq menu

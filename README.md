@@ -256,7 +256,7 @@ home-manager.nixosModules.home-manager {
 }
 ```
 
-`system.nix`
+`modules/system.nix`
 ```nix
 # at the beginning of the file
 let username = "your_username_here";

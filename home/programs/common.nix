@@ -20,6 +20,7 @@
         fzf # A command-line fuzzy finder
         fd
         bat
+        zoxide
 
         # networking tools
         mtr # A network diagnostic tool
@@ -49,6 +50,8 @@
 
         # misc ui
         kdePackages.spectacle
+        catppuccin-gtk
+        pavucontrol
 
         copyq
         imagemagick
@@ -97,6 +100,7 @@
     programs = {
         jq.enable = true; # A lightweight and flexible command-line JSON processor
         feh.enable = true; # image viewer
+        zoxide.enable = true;
     };
 
     services = {

@@ -5,6 +5,6 @@
         ./eza
         ./fdzf
         ./git_ssh
-        ./ranger
+        ./joshuto
     ];
 }

@@ -17,7 +17,7 @@ setxkbmap -option caps:swapescape &
 picom &
 feh --bg-fill ~/download/photos/wallpaper/GJXis6KbEAA2DVF.png &
 ibus-daemon -drxR &
-# nm-applet &
+nm-applet &
 pgrep -x battery-alert >/dev/null || ~/bin/battery-alert &
 pidof redshift || redshift -l "12:125" -t "6500:3200" &
 pidof syncthing || syncthing -no-browser &
@@ -44,6 +44,6 @@ bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action2 resize_corner
 
-bspc rule -a firefox desktop=^2
-bspc rule -a discord desktop=^3
+bspc rule -a firefox desktop=^2 state=monocle
+bspc rule -a discord desktop=^3 state=monocle
 bspc config external_rules_command "$HOME/bin/spotify-rule"

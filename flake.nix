@@ -22,7 +22,11 @@
                 home-manager.nixosModules.home-manager {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users.blackwhite = import ./home;
+                    home-manager.users.blackwhite = {
+                        imports = [
+                            ./home
+                        ];
+                    };
 
                     # Optionally, use home-manager.extraSpecialArgs to pass
                     # arguments to home.nix

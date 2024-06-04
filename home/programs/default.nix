@@ -6,6 +6,7 @@
         ./shells
 
         ./neovim
+        ./zathura
 
         ./spectacle
     ];
