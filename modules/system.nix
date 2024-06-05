@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, ... }:
-let username = "blackwhite";
+let
+    username = "blackwhite";
+    bamboo = pkgs.callPackage ./pkgs/ibus-bamboo.nix {};
 in {
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.${username} = {
@@ -18,7 +20,12 @@ in {
     };
 
     # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+        allowUnfree = true;
+        allowInsecure = true;
+        allowBroken = true;
+        allowUnfreePredicate = _: true;
+    };
 
     # do garbage collection weekly to keep disk usage low
     nix.gc = {
@@ -49,8 +56,8 @@ in {
 
     i18n.inputMethod = {
         enabled = "ibus";
-        ibus.engines = with pkgs; [
-            ibus-engines.bamboo
+        ibus.engines = [
+            bamboo
         ];
     };
 

@@ -7,6 +7,7 @@
 
     gtk = {
         enable = true;
+        theme.name = "catppuccin";
         catppuccin = {
             enable = true;
             flavor = "mocha";

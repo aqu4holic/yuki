@@ -9,9 +9,10 @@
     ];
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "vmd" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-    boot.initrd.kernelModules = [ ];
+    boot.initrd.kernelModules = [ "nvidia" ];
     boot.kernelModules = [ "kvm-intel" ];
-    boot.extraModulePackages = [ ];
+    # boot.extraModulePackages = [ ];
+    boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
 

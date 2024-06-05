@@ -2,3 +2,6 @@
 search nerd font using this
 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts
 get the one u want, get the name after the url
+
+# Things to do
+center text title polybar

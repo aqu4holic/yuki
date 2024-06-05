@@ -242,9 +242,7 @@ git clone -b testing https://github.com/aqu4holic/yuki.git
 cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix yuki/hosts/blackwhite/hardware-configuration.nix
 ```
 
-3. Uncomment `efiSupport = true;` in `hosts/blackwhite/default.nix`
-
-4. Change the username in `flake.nix` and `modules/system.nix` to your username
+3. Change the username in `flake.nix` and `modules/system.nix` to your username
 `flake.nix`
 ```nix
 home-manager.nixosModules.home-manager {
@@ -260,7 +258,7 @@ home-manager.nixosModules.home-manager {
 # at the beginning of the file
 let username = "your_username_here";
 ```
-5. Change the hostname in `flake.nix` and `hosts/blackwhite/default.nix` (optional)
+4. Change the hostname in `flake.nix` and `hosts/blackwhite/default.nix` (optional)
 `flake.nix`
 ```nix
 home-manager.nixosModules.home-manager {
@@ -275,12 +273,12 @@ home-manager.nixosModules.home-manager {
     networking.hostName = "<your_hostname>"; # Define your hostname.
 ```
 
-6. Make bin/ folder executable
+5. Make bin/ folder executable
 ```bash
 chmod +x yuki/bin/*
 ```
 
-7. Create a symlink from the downloaded folder to `/etc/nixos`
+6. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
 # use absolute path, for my case its the below
 sudo ln -s /home/blackwhite/download/github/yuki/flake.nix /etc/nixos/
