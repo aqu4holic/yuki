@@ -275,18 +275,18 @@ home-manager.nixosModules.home-manager {
     networking.hostName = "<your_hostname>"; # Define your hostname.
 ```
 
-5. Make bin/ folder executable
+6. Make bin/ folder executable
 ```bash
 chmod +x yuki/bin/*
 ```
 
-6. Create a symlink from the downloaded folder to `/etc/nixos`
+7. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
 # use absolute path, for my case its the below
 sudo ln -s /home/blackwhite/download/github/yuki/flake.nix /etc/nixos/
 ```
 
-7. Rebuild the system
+8. Rebuild the system
 ```
 # this will also rename your hostname, so next time you can just nixos-rebuild switch
 cd yuki
