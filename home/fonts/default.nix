@@ -1,19 +1,17 @@
 { config, pkgs, libs, ... }:
 {
     home.packages = with pkgs; [
-        # "feather"
-
         (
             pkgs.nerdfonts.override {
                 fonts = [
                     "FiraCode"
                     "JetBrainsMono"
                     "Iosevka"
+                    "MPlus"
                 ];
             }
         )
     ];
-
 
     fonts.fontconfig.enable = true;
 }

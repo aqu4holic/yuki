@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
     imports = [ # Include the results of the hardware scan.
@@ -26,7 +26,12 @@
 
             configurationLimit = 10;
 
-            splashImage = /home/blackwhite/download/photos/wallpaper/3icy1h7kj4m51.png;
+            catppuccin = {
+                enable = true;
+                flavor = "mocha";
+            };
+
+            splashImage = lib.mkForce /home/blackwhite/download/photos/wallpaper/3icy1h7kj4m51.png;
         };
     };
 

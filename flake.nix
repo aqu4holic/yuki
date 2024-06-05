@@ -5,13 +5,21 @@
         # NixOS official package source, using the nixos-23.11 branch here
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+        catppuccin.url = "github:catppuccin/nix";
+
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+    outputs = {
+        self,
+        nixpkgs,
+        catppuccin,
+        home-manager,
+        ...
+    }@inputs: {
         nixosConfigurations.yuki = nixpkgs.lib.nixosSystem {
             specialArgs = {inherit inputs;};
             modules = [
@@ -19,12 +27,15 @@
                 # so the old configuration file still takes effect
                 ./hosts/blackwhite
 
+                catppuccin.nixosModules.catppuccin
+
                 home-manager.nixosModules.home-manager {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users.blackwhite = {
                         imports = [
                             ./home
+                            catppuccin.homeManagerModules.catppuccin
                         ];
                     };
 
