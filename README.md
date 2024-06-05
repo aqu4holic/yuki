@@ -245,7 +245,6 @@ cp --no-preserve=ownership /etc/nixos/hardware-configuration.nix yuki/hosts/blac
 3. Uncomment `efiSupport = true;` in `hosts/blackwhite/default.nix`
 
 4. Change the username in `flake.nix` and `modules/system.nix` to your username
-
 `flake.nix`
 ```nix
 home-manager.nixosModules.home-manager {
@@ -260,6 +259,20 @@ home-manager.nixosModules.home-manager {
 ```nix
 # at the beginning of the file
 let username = "your_username_here";
+```
+5. Change the hostname in `flake.nix` and `hosts/blackwhite/default.nix` (optional)
+`flake.nix`
+```nix
+home-manager.nixosModules.home-manager {
+    ...
+    nixosConfigurations.<your_hostname> = nixpkgs.lib.nixosSystem
+    ...
+}
+```
+
+`hosts/blackwhite/default.nix`
+```nix
+    networking.hostName = "<your_hostname>"; # Define your hostname.
 ```
 
 5. Make bin/ folder executable
