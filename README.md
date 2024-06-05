@@ -288,10 +288,10 @@ sudo ln -s /home/blackwhite/download/github/yuki/flake.nix /etc/nixos/
 
 8. Rebuild the system
 ```
-# this will also rename your hostname, so next time you can just nixos-rebuild switch
 cd yuki
-sudo nixos-rebuild switch --flake .#yuki
+sudo nixos-rebuild switch --flake .#<your_hostname>
 ```
+If you've done step 5, change `<your_hostname>` with the one you've edited, else the default is `yuki`
 
 ## Things to do
 - update more configs
