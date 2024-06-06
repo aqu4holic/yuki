@@ -1,4 +1,4 @@
-# Yuki - NixOS dotfiles
+# 雪 - ❄️ Yuki | My NixOS dotfiles
 
 ## Running system
 ### Prerequisite

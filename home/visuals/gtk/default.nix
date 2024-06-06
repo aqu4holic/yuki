@@ -9,5 +9,10 @@
             size = "standard";
             tweaks = [ "rimless" ];
         };
+
+        font = {
+            name = "JetBrainsMono Nerd Font";
+            size = 13;
+        };
     };
 }

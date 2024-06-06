@@ -4,7 +4,8 @@
         ./gtk
         ./bspwm_sxhkd
         ./cursor
-        # ./rofi
+        ./rofi
+        ./dunst
         ./polybar
         ./picom
     ];

@@ -3,21 +3,24 @@
 path=~/download/photos/wallpaper
 # img="$path/evangelion.png"
 # img="$path/anime_scan_landscape_sky_cloud_beautiful_light_color_8000x3406.png"
-# img="$path/3icy1h7kj4m51.png"
+img="$path/GFlJeLqbkAIqxt2.png"
 lockscreen_img="$path/lockscreen_img.png"
 
-# X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
-# Y=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+Y=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
 
-# convert $img -scale "$X"x"$Y"^ -gravity center -extent "$X"x"$Y" "$path/lockscreen_img.png"
+convert $img -scale "$X"x"$Y"^ -gravity center -extent "$X"x"$Y" "$path/lockscreen_img.png"
 
-fg=ff19a3
+fg=ff33e7
 wrong=db4b89ff
-date=8819ffff
-verify=8819ffff
+date=4d76ffff
+verify=4d76ffff
+
+time_pos=400
+ind_pos=100
 
 i3lock -n --force-clock \
-    -i "$path/lockscreen_img.png" \
+    -i "$lockscreen_img" \
     -e \
     --indicator \
     --radius=30 \
@@ -27,7 +30,7 @@ i3lock -n --force-clock \
     --inside-color=00000000 \
     --insidever-color=00000000 \
     --insidewrong-color=00000000 \
-    --ring-color="$fg""70" \
+    --ring-color="$fg""90" \
     --ringver-color=$verify \
     --ringwrong-color=$wrong \
     --keyhl-color=$verify \
@@ -36,35 +39,35 @@ i3lock -n --force-clock \
     \
     --date-color=$date \
     --time-color=$date \
-    --greeter-color=$fg \
+    --greeter-color="$fg""ff" \
     --wrong-color=$wrong \
     --verif-color=$verify \
     \
-    --time-str="%H:%M" \
+    --time-str="%I:%M" \
     --date-str="%a, %d/%m/%Y" \
-    --time-size=140 \
-    --date-size=50 \
+    --time-size=160 \
+    --date-size=90 \
     \
     --verif-text="" \
     --wrong-text="" \
     --noinput-text="" \
-    --greeter-text="Locked" \
+    --greeter-text="" \
     \
-    --time-pos="w / 2 : 150" \
-    --date-pos="w / 2 : 225" \
-    --greeter-pos="x + 200 : h - 65" \
+    --time-pos="w / 2 : ${time_pos}" \
+    --date-pos="w / 2 : ${time_pos} + 125" \
+    --greeter-pos="x + ${ind_pos} + 75 : h - 60" \
     --verif-pos="w / 2 : h / 2 + 105" \
-    --wrong-pos="w / 2 : h / 2 + 135" \
-    --ind-pos="x + 100 : h - 70" \
+    --wrong-pos="w / 2 : h - 60" \
+    --ind-pos="x + ${ind_pos} : h - 70" \
     \
-    --time-font="Fira Code:style=Bold" \
-    --date-font="Fira Code:style=Bold" \
-    --verif-font="Fira Code" \
-    --greeter-font="Fira Code:style=Bold" \
-    --wrong-font="Fira Code" \
-    --verif-size=15 \
-    --greeter-size=25 \
-    --wrong-size=15 \
+    --time-font="JetBrainsMono Nerd Font:style=Bold" \
+    --date-font="JetBrainsMono Nerd Font:style=Bold" \
+    --verif-font="JetBrainsMono Nerd Font:style=Bold" \
+    --greeter-font="JetBrainsMono Nerd Font:style=Bold" \
+    --wrong-font="JetBrainsMono Nerd Font:style=Bold" \
+    --verif-size=35 \
+    --greeter-size=35 \
+    --wrong-size=35 \
     \
     --pointer=default \
     --refresh-rate=0 \

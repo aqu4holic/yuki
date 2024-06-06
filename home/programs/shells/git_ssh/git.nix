@@ -3,7 +3,7 @@
     programs.git = {
         enable = true;
 
-        userName = "openai";
-        userEmail = "chauhuynhnoc@gmail.com";
+        userName = "aqu4holic";
+        userEmail = "gautruc.anh1234@gmail.com";
     };
 }

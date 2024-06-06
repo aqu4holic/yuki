@@ -1,16 +1,14 @@
-{ pkgs, config, ... }:
-
-# fish
-
-let
-    font = "JetBrainsMono Nerd Font";
-in
+{ config, pkgs, ... }:
 {
     programs.fish = {
         enable = true;
 
         shellInit = ''
             bash ~/.profile
+
+            # set CLUTTER_IM_MODULE ibus
+            # set GLFW_IM_MODULE ibus
+            # set QT4_IM_MODULE ibus
 
             eval (ssh-agent -c) &>/dev/null
 
@@ -20,8 +18,13 @@ in
             # fastfetch
         '';
 
-        interactiveShellInit = ''
-            alias cat bat
-        '';
+        shellAliases = {
+            update = "sudo nixos-rebuild switch";
+            r = "joshuto";
+            v = "nvim";
+            g = "git";
+            c = "code";
+            clean_cache = "~/bin/clean_cache";
+        };
     };
 }

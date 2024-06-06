@@ -1,0 +1,5 @@
+#/bin/sh
+
+bspc rule -a firefox desktop=^2 state=single_monocle
+bspc rule -a discord desktop=^5 state=single_monocle
+bspc config external_rules_command "$HOME/bin/spotify_rule"

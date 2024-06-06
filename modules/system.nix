@@ -97,11 +97,11 @@ in {
     systemd = {
         targets = {
             sleep = {
-                enable = false;
+                enable = true;
                 unitConfig.DefaultDependencies = "no";
             };
             suspend = {
-                enable = false;
+                enable = true;
                 unitConfig.DefaultDependencies = "no";
             };
             hibernate = {
@@ -137,10 +137,6 @@ in {
 
     fonts = {
         packages = with pkgs; [
-        # icon fonts
-        material-design-icons
-        material-icons
-
         # normal fonts
         noto-fonts
         noto-fonts-cjk
@@ -229,6 +225,7 @@ in {
         # libs
         bc
         libgcc
+        gcc
         python312
         python312Packages.pip
         go

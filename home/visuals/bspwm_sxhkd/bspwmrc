@@ -1,24 +1,26 @@
 #!usr/bin/env bash
 
-# export SXHKD_SHELL=/bin/sh
 pgrep -x sxhkd > /dev/null || sxhkd &
+
+xset s off &
+xset -dpms &
 
 xsetroot -cursor_name left_ptr &
 xset r rate 250 25 &
 
-xinput list-props 'HP, Inc HyperX Pulsefire Haste Wireless'
-xinput set-prop 'HP, Inc HyperX Pulsefire Haste Wireless' 'libinput Accel Speed' -0.5
+xinput set-prop 'HP, Inc HyperX Pulsefire Haste Wireless' 'libinput Accel Speed' -0.5 &
 
-xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Natural Scrolling Enabled' 0
-xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Accel Speed' 0.5
+xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Natural Scrolling Enabled' 0 &
+xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Accel Speed' 0.5 &
+
 setxkbmap -option caps:swapescape &
-
 "$HOME/bin/launch.sh" &
+dunst -conf "$HOME/.config/dunst/dunstrc" &
 picom &
 feh --bg-fill ~/download/photos/wallpaper/GJXis6KbEAA2DVF.png &
 ibus-daemon -drxR &
 nm-applet &
-pgrep -x battery-alert >/dev/null || ~/bin/battery-alert &
+pgrep -x battery_alert >/dev/null || ~/bin/battery_alert &
 pidof redshift || redshift -l "12:125" -t "6500:3200" &
 pidof syncthing || syncthing -no-browser &
 trash-empty -f 30 &
@@ -26,8 +28,8 @@ trash-empty -f 30 &
 copyq &
 
 bspc wm -O eDP-1 HDMI-A-1-0
-bspc monitor eDP-1 -d 1 2 3 4 5 6 7
-bspc monitor HDMI-A-1-0 -d 8
+bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8
+bspc monitor HDMI-A-1-0 -d 9
 
 bspc config border_width 2
 bspc config window_gap 10
@@ -44,6 +46,4 @@ bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action2 resize_corner
 
-bspc rule -a firefox desktop=^2 state=monocle
-bspc rule -a discord desktop=^3 state=monocle
-bspc config external_rules_command "$HOME/bin/spotify-rule"
+"$HOME/bin/set_bspwm_rule" &
