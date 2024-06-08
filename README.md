@@ -293,5 +293,7 @@ If you've done step 5, change `<your_hostname>` with the one you've edited, else
 
 # Credits
 special thanks to my bro [HynDuf](https://github.com/HynDuf) with [his Arch Linux config](https://github.com/HynDuf/dotfiles)
+
 the modularization is inspired from [ryan4yin's configs](https://github.com/ryan4yin/nix-config)
+
 thx for ur reading :)
