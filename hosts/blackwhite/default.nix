@@ -31,7 +31,7 @@
                 flavor = "mocha";
             };
 
-            # splashImage = lib.mkForce /home/blackwhite/download/photos/wallpaper/3icy1h7kj4m51.png;
+            splashImage = lib.mkForce /home/blackwhite/download/photos/wallpaper/3icy1h7kj4m51.png;
         };
     };
 
@@ -98,7 +98,7 @@
         # Optionally, you may need to select the appropriate driver version for your specific GPU.
         package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-        nvidiaPersistenced = true;
+        nvidiaPersistenced = false;
 
         prime = {
             intelBusId = "PCI:0:2:0";

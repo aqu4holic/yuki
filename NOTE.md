@@ -11,6 +11,7 @@ joshuto
 install monaspace
 fix font title.ini (cant)
 firefox
+eww
 
 # purging
 ```nix

@@ -41,7 +41,7 @@
 
         shellAliases = {
             update = "sudo nixos-rebuild switch";
-            r = "joshuto";
+            j = "joshuto";
             v = "nvim";
             c = "code";
             clean_cache = "~/bin/clean_cache";

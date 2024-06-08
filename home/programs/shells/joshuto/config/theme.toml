@@ -6,6 +6,7 @@ lscolors_enabled = false
 ##########################################
 ## Tabs
 ##########################################
+[tabs]
 
 [tabs.chars]
 divider = " "
@@ -43,11 +44,11 @@ bg = "reset"
 
 [tabs.styles.scroll_front]
 fg = "black"
-bg = "rgb(250, 95, 150)"
+bg = rgb(250, 95, 150)
 bold = true
 
 [tabs.styles.scroll_front_prefix]
-fg = "rgb(250, 95, 150)"
+fg = rgb(250, 95, 150)
 bg = "reset"
 
 [tabs.styles.scroll_front_postfix]
@@ -55,11 +56,11 @@ invert = true
 
 [tabs.styles.scroll_back]
 fg = "black"
-bg = "rgb(250, 95, 150)"
+bg = rgb(250, 95, 150)
 bold = true
 
 [tabs.styles.scroll_back_prefix]
-fg = "rgb(250, 95, 150)"
+fg = rgb(250, 95, 150)
 bg = "reset"
 invert = true
 

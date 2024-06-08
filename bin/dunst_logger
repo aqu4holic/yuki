@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 # Because certain programs like to insert their own newlines and fuck up my format (im looking at you thunderbird)
 # we need to crunch each input to ensure that each component is its own line in the log file

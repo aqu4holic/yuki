@@ -291,15 +291,7 @@ sudo nixos-rebuild switch --flake .#<your_hostname>
 ```
 If you've done step 5, change `<your_hostname>` with the one you've edited, else the default is `yuki`
 
-## Things to do
-- update more configs
-
-- update hardware settings to nvidia ([wiki](https://nixos.wiki/wiki/Nvidia))
-
-- update bspwmrc to the current monitor, rn using -d, not good enough
-
-- rememeber to change picom render engine
-
-- add `efiSupport = true;` to the main config
-
+# Credits
+special thanks to my bro [HynDuf](https://github.com/HynDuf) with [his Arch Linux config](https://github.com/HynDuf/dotfiles)
+the modularization is inspired from [ryan4yin's configs](https://github.com/ryan4yin/nix-config)
 thx for ur reading :)

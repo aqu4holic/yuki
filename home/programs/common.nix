@@ -48,12 +48,14 @@
         cowsay
         lolcat
         fortune-kind
+        playerctl
 
         # misc ui
         kdePackages.spectacle
         catppuccin-gtk
         pavucontrol
         gimp
+        qimgv
 
         copyq
         imagemagick

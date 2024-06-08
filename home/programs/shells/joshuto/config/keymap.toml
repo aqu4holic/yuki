@@ -61,6 +61,7 @@ keymap = [
     { keys = ["g", "g"], commands = ["cursor_move_home"] },
     { keys = ["G"], commands = ["cursor_move_end"] },
     { keys = ["r"], commands = ["open_with"] },
+    { keys = ["o"], commands = ["open_with"] },
 
     { keys = ["H"], commands = ["cursor_move_page_home"] },
     { keys = ["L"], commands = ["cursor_move_page_middle"] },

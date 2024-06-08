@@ -13,12 +13,12 @@
             global = {
                 monitor = 0;
                 follow = "none";
-                width = 370;
+                width = 450;
                 offset = "35x35";
                 origin = "bottom-right";
                 progress_bar = true;
                 progress_bar_height = 10;
-                progress_bar_frame_width = 1;
+                progress_bar_frame_width = 2;
                 progress_bar_min_width = 150;
                 progress_bar_max_width = 400;
                 indicate_hidden = false;
@@ -29,10 +29,11 @@
                 horizontal_padding = 10;
                 text_icon_padding = 0;
                 frame_width = 0;
-                frame_color = "#4A5057";
+                frame_color = "#7c8ac5";
+                # corner_radius = 12;
                 separator_color = "frame";
                 sort = "yes";
-                font = "JetBrains Mono Nerd Font Medium 12";
+                font = "MonoLisa Medium 12";
                 line_height = 1;
                 markup = "full";
                 format = "<b>%a</b>\\n%s\\n%b";
@@ -46,7 +47,7 @@
                 hide_duplicate_count = false;
                 show_indicators = "yes";
                 icon_position = "left";
-                min_icon_size = 0;
+                min_icon_size = 50;
                 max_icon_size = 50;
                 enable_recursive_icon_lookup = true;
                 sticky_history = "yes";

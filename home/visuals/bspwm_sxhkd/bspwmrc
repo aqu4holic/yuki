@@ -18,8 +18,11 @@ setxkbmap -option caps:swapescape &
 "$HOME/bin/launch.sh" &
 dunst &
 picom &
+
 # feh --bg-fill ~/download/photos/wallpaper/meteorshower.png &
 feh --bg-fill ~/download/photos/wallpaper/meteorshower4.png &
+feh --bg-fill ~/download/photos/wallpaper/GFgNbSyaUAA4Mts.png &
+
 ibus-daemon -drxR &
 nm-applet &
 pgrep -x battery_alert >/dev/null || ~/bin/battery_alert &
