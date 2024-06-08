@@ -24,7 +24,7 @@
 
         # networking tools
         mtr # A network diagnostic tool
-        iperf3
+        iperf
         dnsutils  # `dig` + `nslookup`
         ldns # replacement of `dig`, it provide the command `drill`
         aria2 # A lightweight multi-protocol & multi-source command-line download utility
@@ -42,6 +42,7 @@
         zstd
         gnupg
         lshw
+        trash-cli
 
         # misc
         cowsay
@@ -52,6 +53,7 @@
         kdePackages.spectacle
         catppuccin-gtk
         pavucontrol
+        gimp
 
         copyq
         imagemagick
@@ -60,11 +62,22 @@
         redshift
         syncthing
 
+        # joshuto
+        atool
+        xlsx2csv
+        unrar
+        # mupdf
+        mupdf-headless
+        pandoc
+        exiftool
+
         # app
         obsidian
         discord
         zotero
         spotify
+        telegram-desktop
+        mpv
 
         # nix related
         #
@@ -72,8 +85,6 @@
         # with more details log output
         nix-output-monitor
         nix-prefetch-github
-
-        trash-cli
 
         # productivity
         hugo # static site generator

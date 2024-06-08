@@ -31,7 +31,7 @@
                 flavor = "mocha";
             };
 
-            splashImage = lib.mkForce /home/blackwhite/download/photos/wallpaper/3icy1h7kj4m51.png;
+            # splashImage = lib.mkForce /home/blackwhite/download/photos/wallpaper/3icy1h7kj4m51.png;
         };
     };
 

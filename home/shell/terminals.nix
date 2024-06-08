@@ -1,10 +1,4 @@
 { pkgs, lib, ... }:
-
-# terminals
-
-let
-    font = "JetBrainsMono Nerd Font";
-in
 {
     programs.kitty = {
         enable = true;
@@ -12,7 +6,7 @@ in
             scrollback_lines = 10000;
 
             # font
-            font_family = font;
+            font_family = "MonoLisa";
             bold_font = "auto";
             italic_font = "auto";
             bold_italic_font = "auto";

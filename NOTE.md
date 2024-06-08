@@ -5,8 +5,12 @@ get the one u want, get the name after the url
 
 # Things to do
 fastfetch
-rofi
-dunst
+switch to zsh
+rofi (tmr)
+joshuto
+install monaspace
+fix font title.ini (cant)
+firefox
 
 # purging
 ```nix

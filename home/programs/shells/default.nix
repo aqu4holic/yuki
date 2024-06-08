@@ -1,10 +1,10 @@
 {
     imports = [
+        ./git_ssh
         ./bat
         ./btop
         ./eza
         ./fdzf
-        ./git_ssh
         ./joshuto
     ];
 }

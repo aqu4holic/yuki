@@ -1,11 +1,13 @@
 { config, pkgs, libs, ... }:
 {
+    fonts.fontconfig.enable = true;
+
     home.packages = with pkgs; [
         # icon fonts
         material-design-icons
         material-icons
 
-        papirus-icon-theme
+        # normal fonts
 
         (
             pkgs.nerdfonts.override {
@@ -13,11 +15,15 @@
                     "FiraCode"
                     "JetBrainsMono"
                     "Iosevka"
-                    "MPlus"
+                    # "MPlus"
                 ];
             }
         )
     ];
 
-    fonts.fontconfig.enable = true;
+    # run `fc-cache -frv`
+    home.file.".local/share/fonts" = {
+        source = ./custom_fonts;
+        recursive = true;
+    };
 }

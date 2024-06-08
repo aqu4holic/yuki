@@ -189,15 +189,19 @@ super + Print
 super + shift + Print
     ~/bin/screenshot -s
 
+# cropped save
+ctrl + shift + Print
+    ~/bin/screenshot -s
+
 # clipboard fullscreen
 super + s
     ~/bin/screenshot -fc
 
 # clipboard cropped
 super + shift + s
-    ~/bin/screenshot -sc
+    ~/bin/screenshot -scm
 
-# clipboard cropped
+# clipboard cropped + edit
 ctrl + Print
     ~/bin/screenshot -sc
 

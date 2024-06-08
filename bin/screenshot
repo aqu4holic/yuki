@@ -13,8 +13,9 @@ case $1 in
     # "-fcd") maim -d "$2" --hidecursor | xclip -selection clipboard -t image/png;;
     # "-scd") maim -d "$2" --hidecursor --select | xclip -selection clipboard -t image/png;;
 
-    "-f") spectacle -f -o "$path/screenshot_$time.png" -b;;
+    "-scm") maim --hidecursor --select | xclip -selection clipboard -t image/png;;
+    "-fc") maim --hidecursor | xclip -selection clipboard -t image/png;;
+    "-f") maim --hidecursor --select "$path/screenshot_$time.png" -b;;
     "-s") spectacle -r -o "$path/screenshot_$time.png" -b;;
-    "-fc") spectacle -f -c -b;;
     "-sc") spectacle -r -c -b;;
 esac

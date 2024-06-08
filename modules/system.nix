@@ -16,7 +16,6 @@ in {
 
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
-
     };
 
     # Allow unfree packages
@@ -67,7 +66,6 @@ in {
     # Enable the GNOME Desktop Environment.
     # services.xserver.displayManager.gdm.enable = true;
     # services.xserver.desktopManager.gnome.enable = false;
-
 
     # Configure keymap in X11
     # services.xserver = {
@@ -135,23 +133,24 @@ in {
         };
     };
 
+    services.fwupd.enable = true;
+
     fonts = {
         packages = with pkgs; [
-        # normal fonts
-        noto-fonts
-        noto-fonts-cjk
-        noto-fonts-emoji
+            # normal fonts
+            noto-fonts
+            noto-fonts-cjk
+            noto-fonts-emoji
 
-        # nerdfonts
-        (
-            nerdfonts.override {
-                fonts = [
-                    "FiraCode"
-                    "JetBrainsMono"
-                ];
-            }
-        )
-
+            # nerdfonts
+            (
+                nerdfonts.override {
+                    fonts = [
+                        "FiraCode"
+                        "JetBrainsMono"
+                    ];
+                }
+            )
         ];
 
         # use fonts specified by user rather than default ones
@@ -224,6 +223,7 @@ in {
 
         # libs
         bc
+        libnotify
         libgcc
         gcc
         python312

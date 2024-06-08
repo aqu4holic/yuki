@@ -3,10 +3,12 @@
     programs.btop = {
         enable = true; # replacement of htop/nmon
 
-        extraConfig = builtins.readFile ./btop.conf;
+        settings = {
+            color_theme = "adapta";
+            theme_background = true;
+            truecolor = true;
+            vim_keys = true;
+            update_ms = 1000;
+        };
     };
-
-    # home.file.".config/btop/btop.conf" = {
-    #     source = ./btop.conf;
-    # };
 }

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+external_monitor=$(xrandr --query | rg 'HDMI-1-0')
+if [[ $external_monitor = *connected* ]]; then
+    xrandr --output eDP-1 --primary --mode 2560x1440 --rotate normal --output HDMI-1-0 --mode 2560x1440 --rotate normal --right-of eDP-1
+fi
