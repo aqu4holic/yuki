@@ -23,7 +23,7 @@ no=''
 rofi_cmd() {
     rofi -dmenu \
         -p " $USER@$host 󱄅" \
-        -mesg "󰉊  Last Login: $lastlogin   |     Uptime: $uptime" \
+        -mesg "󰉊  Last Login: $lastlogin  |    Uptime: $uptime" \
         -theme ${dir}/${theme}.rasi
 }
 
@@ -53,6 +53,7 @@ run_rofi() {
 # Execute Command
 run_cmd() {
     selected="$(confirm_exit)"
+    echo $selected
     if [[ "$selected" == "$yes" ]]; then
         if [[ $1 == '--shutdown' ]]; then
             systemctl poweroff
@@ -61,9 +62,10 @@ run_cmd() {
         elif [[ $1 == '--hibernate' ]]; then
             systemctl hibernate
         elif [[ $1 == '--suspend' ]]; then
+            # ~/bin/lockscreen \
             systemctl suspend
         elif [[ $1 == '--logout' ]]; then
-            ~/bin/close-bspwm
+            ~/bin/close_bspwm
         fi
     else
         exit 0
