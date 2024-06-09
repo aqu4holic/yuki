@@ -1,5 +1,6 @@
+{ config, pkgs, ... }:
 {
-    imports = [
-        ./x11.nix
-    ];
+    home.file.".xinitrc" = {
+        source = ../../../bin/.xinitrc ;
+    };
 }

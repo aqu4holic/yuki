@@ -42,20 +42,24 @@
         zstd
         gnupg
         lshw
-        trash-cli
+        trash-cli # trash folder manipulator
 
         # misc
         cowsay
         lolcat
         fortune-kind
-        playerctl
+        # playerctl
 
         # misc ui
-        kdePackages.spectacle
-        catppuccin-gtk
-        pavucontrol
-        gimp
-        qimgv
+        kdePackages.spectacle # screenshot tool
+        catppuccin-gtk # gtk theme
+        pavucontrol # volume control
+        pinta # img manipulator
+        qimgv # img viewer
+        inkscape # svg manipulator
+        qalculate-gtk # calculator
+        simplescreenrecorder # screen recorder
+        screenkey # display keys pressed on screen
 
         copyq
         imagemagick
@@ -72,10 +76,11 @@
         mupdf-headless
         pandoc
         exiftool
+        ueberzugpp
 
         # app
         obsidian
-        discord
+        vesktop
         zotero
         spotify
         telegram-desktop
@@ -108,6 +113,11 @@
         ethtool
         pciutils # lspci
         usbutils # lsusb
+
+        # libs
+        conda
+        xorg.xhost
+
     ];
 
     programs = {

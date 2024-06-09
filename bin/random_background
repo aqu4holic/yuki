@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+wallpaper_path=~/download/photos/wallpapers
+img="$(ls ${wallpaper_path} | shuf -n 1)"
+
+feh --bg-fill "${wallpaper_path}/$img" &

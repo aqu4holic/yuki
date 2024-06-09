@@ -11,7 +11,7 @@ in {
     users.users.${username} = {
         isNormalUser = true;
         description = username;
-        extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
+        extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" ];
     };
 
     nix.settings = {
@@ -169,6 +169,8 @@ in {
 
     programs.dconf.enable = true;
 
+    # programs.zsh.enable = true;
+    # users.defaultUserShell = pkgs.zsh;
     programs.fish.enable = true;
     users.defaultUserShell = pkgs.fish;
 
@@ -182,6 +184,7 @@ in {
         neovim
         vscode
         fish
+        # zsh
         kitty
         curl
         git
@@ -262,4 +265,17 @@ in {
     programs.noisetorch = {
         enable = true;
     };
+
+    # enable docker
+    virtualisation.docker.enable = true;
+
+    # use docker without root access (rootless docker)
+    virtualisation.docker.rootless = {
+        enable = true;
+        setSocketVariable = true;
+    };
+
+    hardware.bluetooth.enable = true; # enables support for Bluetooth
+    hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    services.blueman.enable = true;
 }

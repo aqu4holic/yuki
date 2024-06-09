@@ -26,7 +26,7 @@ scroll_back_poststring = ""
 [tabs.styles]
 
 [tabs.styles.active]
-fg = "black"
+fg = "rgb(50, 10, 40)"
 bg = "light_blue"
 bold = true
 
@@ -35,20 +35,20 @@ fg = "light_blue"
 bg = "reset"
 
 [tabs.styles.inactive]
-fg = "black"
-bg = "gray"
+fg = "rgb(120, 130, 150)"
+bg = "rgb(45, 55, 65)"
 
 [tabs.styles.inactive_prefix]
-fg = "gray"
+fg = "rgb(45, 55, 65)"
 bg = "reset"
 
 [tabs.styles.scroll_front]
 fg = "black"
-bg = rgb(250, 95, 150)
+bg = "rgb(250, 95, 150)"
 bold = true
 
 [tabs.styles.scroll_front_prefix]
-fg = rgb(250, 95, 150)
+fg = "rgb(250, 95, 150)"
 bg = "reset"
 
 [tabs.styles.scroll_front_postfix]
@@ -56,11 +56,11 @@ invert = true
 
 [tabs.styles.scroll_back]
 fg = "black"
-bg = rgb(250, 95, 150)
+bg = "rgb(250, 95, 150)"
 bold = true
 
 [tabs.styles.scroll_back_prefix]
-fg = rgb(250, 95, 150)
+fg = "rgb(250, 95, 150)"
 bg = "reset"
 invert = true
 

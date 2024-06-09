@@ -1,6 +1,6 @@
 add_newline = true
 
-format = '''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration$python
+format = '''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration$python$conda$nodejs
 [╰─](#d10475) $character'''
 
 # right_format = '$time'
@@ -73,5 +73,18 @@ style = 'bright-green bold'
 
 [python]
 disabled = false
-format = '[\(${virtualenv}\)]($style)'
+symbol = '󰌠 '
+format = '[\[${symbol}\(${virtualenv}\)\]]($style)'
+style = 'yellow bold'
+
+[conda]
+disabled = false
+symbol = '󰯲 '
+format = '[\[${symbol}\(${environment}\)\]]($style)'
+style = 'yellow bold'
+
+[nodejs]
+disabled = false
+symbol = ' '
+format = '[\[${symbol}\(${environment}\)\]]($style)'
 style = 'yellow bold'

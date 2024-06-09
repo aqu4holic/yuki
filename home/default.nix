@@ -4,6 +4,7 @@
         ./programs
         ./shell
         ./visuals
+
         ./fonts
     ];
 
@@ -34,7 +35,7 @@
         stateVersion = "23.11";
 
         file.".profile" = {
-            source = ./.profile;
+            source = ../bin/.profile;
         };
 
         file."bin" = {

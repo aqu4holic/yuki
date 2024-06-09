@@ -91,8 +91,6 @@ keymap = [
     { keys = ["a"], commands = ["rename_append"] },
     { keys = ["A"], commands = ["rename_prepend"] },
 
-    { keys = ["f", "t"], commands = [":touch "] },
-
     { keys = [" "], commands = ["select --toggle=true"] },
     { keys = ["t"], commands = ["select --all=true --toggle=true"] },
     { keys = ["V"], commands = ["toggle_visual"] },
@@ -106,6 +104,8 @@ keymap = [
 
     { keys = ["'"], commands = [":shell "] },
     { keys = ["m", "k"], commands = [":mkdir "] },
+    { keys = ["m", "t"], commands = [":touch "] },
+    { keys = ["f", "t"], commands = [":touch "] },
     { keys = ["c", "w"], commands = [":rename "] },
 
     { keys = ["/"], commands = [":search "] },
@@ -113,6 +113,7 @@ keymap = [
     { keys = ["\\"], commands = [":search_glob "] },
     { keys = ["S"], commands = ["search_fzf"] },
     { keys = ["C"], commands = ["subdir_fzf"] },
+    { keys = ["alt+c"], commands = ["subdir_fzf"] },
 
     { keys = ["n"], commands = ["search_next"] },
     { keys = ["N"], commands = ["search_prev"] },

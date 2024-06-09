@@ -15,13 +15,15 @@ xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Accel Speed' 0.5 &
 
 setxkbmap -option caps:swapescape &
 
+# polybar
 "$HOME/bin/launch.sh" &
 dunst &
 picom &
 
-# feh --bg-fill ~/download/photos/wallpaper/meteorshower.png &
-feh --bg-fill ~/download/photos/wallpaper/meteorshower4.png &
-feh --bg-fill ~/download/photos/wallpaper/GFgNbSyaUAA4Mts.png &
+wallpaper_path=~/download/photos/wallpapers
+img="$(ls ${wallpaper_path} | shuf -n 1)"
+# feh --bg-fill "${wallpaper_path}/$img" &
+feh --bg-fill "${wallpaper_path}/akiakane01.png" &
 
 ibus-daemon -drxR &
 nm-applet &

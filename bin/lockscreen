@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
 
-path=~/download/photos/wallpaper
+path=~/download/photos/wallpapers
 # img="$path/evangelion.png"
 # img="$path/anime_scan_landscape_sky_cloud_beautiful_light_color_8000x3406.png"
-img="$path/GFlJeLqbkAIqxt2.png"
+img="$path/akiakane01.png"
 lockscreen_img="$path/lockscreen_img.png"
 
-X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
-Y=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+# X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+# Y=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
 
-convert $img -scale "$X"x"$Y"^ -gravity center -extent "$X"x"$Y" "$path/lockscreen_img.png"
+# convert $img -scale "$X"x"$Y"^ -gravity center -extent "$X"x"$Y" "$path/lockscreen_img.png"
 
 fg=ff33e7
 wrong=db4b89ff
-date=4d76ffff
+time=4d76ffff
+date=4d76ff00
 verify=4d76ffff
 
-time_pos=400
+time_pos_x=300
+time_pos_y=150
 ind_pos=100
 
 i3lock -n --force-clock \
@@ -30,7 +32,7 @@ i3lock -n --force-clock \
     --inside-color=00000000 \
     --insidever-color=00000000 \
     --insidewrong-color=00000000 \
-    --ring-color="$fg""90" \
+    --ring-color="${fg}90" \
     --ringver-color=$verify \
     --ringwrong-color=$wrong \
     --keyhl-color=$verify \
@@ -38,8 +40,8 @@ i3lock -n --force-clock \
     --bshl-color=$verify \
     \
     --date-color=$date \
-    --time-color=$date \
-    --greeter-color="$fg""ff" \
+    --time-color=$time \
+    --greeter-color="${fg}ff" \
     --wrong-color=$wrong \
     --verif-color=$verify \
     \
@@ -53,8 +55,10 @@ i3lock -n --force-clock \
     --noinput-text="" \
     --greeter-text="" \
     \
-    --time-pos="w / 2 : ${time_pos}" \
-    --date-pos="w / 2 : ${time_pos} + 125" \
+    --time-pos="w / 2 : ${time_pos_y}" \
+    --date-pos="w / 2 : ${time_pos_y} + 125" \
+    --time-pos="x + ${time_pos_x} : ${time_pos_y}" \
+    --date-pos="x + ${time_pos_x} : ${time_pos_y} + 125" \
     --greeter-pos="x + ${ind_pos} + 75 : h - 60" \
     --verif-pos="w / 2 : h / 2 + 105" \
     --wrong-pos="w / 2 : h - 60" \

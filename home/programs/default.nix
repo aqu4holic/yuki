@@ -5,8 +5,11 @@
 
         ./shells
 
+        ./vscode
         ./neovim
         ./zathura
+        ./vencord
+        ./qimgv
 
         ./spectacle
         ./redshift

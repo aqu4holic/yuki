@@ -2,7 +2,10 @@
 {
     imports = [
         ./terminals.nix
-        ./fish.nix
+
+        ./fish
+        ./zsh
+
         ./starship
     ];
 

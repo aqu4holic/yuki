@@ -5,6 +5,10 @@
 
         shellInit = ''
             bash ~/.profile
+            source ~/.conda/etc/fish/conf.d/conda.fish
+
+            # for bluetooth, it will crash without this
+            dbus-update-activation-environment DISPLAY
 
             eval (ssh-agent -c) &>/dev/null
 
@@ -12,10 +16,6 @@
                 echo hiiiii (set_color 00C8FF)$USER (set_color white)@ (set_color FF006A)$hostname(set_color white)!
             end
             # fastfetch
-
-            # function joshuto
-            #     bash -c "source ~/bin/joshuto.sh; joshuto $argv"
-            # end
 
             function joshuto
                 set ID (random)
@@ -44,7 +44,17 @@
             j = "joshuto";
             v = "nvim";
             c = "code";
+            g = "git";
+            gaa = "git add .";
+            gcm = "git commit -m";
+            gp = "git push";
+            ca = "conda activate";
+            cs = "conda-shell -c fish";
             clean_cache = "~/bin/clean_cache";
         };
+    };
+
+    xdg.configFile."fish/fish_variables" = {
+        source = ./fish_variables;
     };
 }
