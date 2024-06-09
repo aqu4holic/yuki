@@ -4,11 +4,7 @@ https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts
 get the one u want, get the name after the url
 
 # Things to do
-fastfetch
-switch to zsh (+ joshuto)
-rofi (tmr)
-eww
-qimgw
+rofi (tmr), fix wifi menu or sth
 firefox
 install monaspace (maybe)
 fix font title.ini (cant)

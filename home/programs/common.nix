@@ -109,10 +109,10 @@
         lsof # list open files
 
         # system tools
-        sysstat
         ethtool
         pciutils # lspci
         usbutils # lsusb
+        # toybox
 
         # libs
         conda

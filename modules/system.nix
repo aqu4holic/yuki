@@ -198,15 +198,11 @@ in {
         networkmanagerapplet
 
         # audio
-        # pipewire
         pulseaudio
         noisetorch
 
         # display
         brightnessctl
-
-        # ibus
-        # ibus-engines.bamboo
 
         # for customization
         bspwm

@@ -3,6 +3,8 @@
     imports = [
         ./terminals.nix
 
+        ./direnv
+
         ./fish
         ./zsh
 

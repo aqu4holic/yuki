@@ -9,32 +9,48 @@
             highlight = "fg=#6e5870,underline";
         };
 
-        syntaxHighlighting.enable = true;
+        syntaxHighlighting = {
+            enable = true;
+
+            highlighters = [
+                "brackets"
+                "main"
+            ];
+
+            styles = {
+                default = "fg=#00d7d7";
+                unknown-token = "fg=#e87c7c";
+                path = "fg=#cba6f7,underline";
+                alias = "fg=#89b4fa,bold";
+                assign = "fg=#f5c2e7,bold";
+                # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline";
+            };
+        };
+
         autocd = true;
         defaultKeymap = "emacs";
 
+        # antidote = {
+        #     enable = true;
+        #     plugins = [
+        #         "zsh-users/zsh-autosuggestions"
+        #     ];
+        # };
+
         initExtra = ''
-            export GTK_IM_MODULE=ibus
-            export QT_IM_MODULE=ibus
-            export XMODIFIERS=@im=ibus
-
-            export QT4_IM_MODULE=ibus
-
-            export CLUTTER_IM_MODULE=ibus
-            export GLFW_IM_MODULE=ibus
-
             bindkey "^[[1;5C" forward-word
             bindkey "^[[1;5D" backward-word
-
-            zstyle ':completion:*' matcher-list ''' \
-            'm:{a-z\-}={A-Z\_}' \
-            'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
-            'r:|?=** m:{a-z\-}={A-Z\_}'
-            # eval "$(direnv hook zsh)"
 
             source ~/.profile
             # for conda
             source ~/.conda/etc/profile.d/conda.sh
+
+            zstyle ':completion:*' menu select
+            zstyle ':completion:*' matcher-list ''' \
+            'm:{a-z\-}={A-Z\_}' \
+            'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+            'r:|?=** m:{a-z\-}={A-Z\_}'
+            eval "$(direnv hook zsh)"
 
             # for bluetooth, it will crash without this
             dbus-update-activation-environment DISPLAY

@@ -10,6 +10,8 @@
             # for bluetooth, it will crash without this
             dbus-update-activation-environment DISPLAY
 
+            eval (direnv hook fish)
+
             eval (ssh-agent -c) &>/dev/null
 
             function fish_greeting

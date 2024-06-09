@@ -8,7 +8,26 @@ super + Return
 
 # program launcher
 super + c
-    rofi -show drun
+    rofi -show drun -theme "$HOME/.config/rofi/themes/app_launcher.rasi"
+
+# emoji selector launcher
+super + shift + e
+    rofi -modi emoji -show emoji -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
+
+super + semicolon
+    rofi -modi emoji -show emoji -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
+
+# Open Power menu
+super + alt + z
+    ~/bin/powermenu
+
+# calculator
+super + shift + c
+    bspc rule -a \* -o state=floating && qalculate-gtk
+
+# calendar
+super + shift + f
+    ~/bin/calendar-launcher
 
 # make sxhkd reload its config
 super + shift + r

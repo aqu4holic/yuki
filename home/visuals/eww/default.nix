@@ -1,13 +1,11 @@
 { config, pkgs, ... }:
 {
-    programs.rofi = {
+    programs.eww = {
         enable = true;
-        plugins = [
-            pkgs.rofi-emoji
-        ];
+        configDir = ./config;
     };
 
-    xdg.configFile."rofi" = {
+    xdg.configFile."eww" = {
         source = ./config;
         recursive = true;
     };
