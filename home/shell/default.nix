@@ -1,7 +1,7 @@
 {config, ...}:
 {
     imports = [
-        ./terminals.nix
+        ./kitty
 
         ./direnv
 

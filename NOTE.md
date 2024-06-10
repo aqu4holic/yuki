@@ -4,11 +4,11 @@ https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts
 get the one u want, get the name after the url
 
 # Things to do
+nvidia !!!!!!!!!!!!!!!!!!!!!!
 spicetify
 firefox
 espanso
 install monaspace (maybe)
-fix font title.ini (cant)
 
 # purging
 ```nix
