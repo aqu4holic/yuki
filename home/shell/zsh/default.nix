@@ -90,6 +90,7 @@
             v = "nvim";
             c = "code";
             g = "git";
+            e = "erd";
             gaa = "git add .";
             gcm = "git commit -m";
             gp = "git push";

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-path=~/download/photos/wallpapers
+path=~/Pictures/wallpapers
 # img="$path/evangelion.png"
 # img="$path/anime_scan_landscape_sky_cloud_beautiful_light_color_8000x3406.png"
 img="$path/akiakane01.png"
@@ -17,8 +17,8 @@ time=4d76ffff
 date=4d76ff00
 verify=4d76ffff
 
-time_pos_x=300
-time_pos_y=150
+time_pos_x=350
+time_pos_y=200
 ind_pos=100
 
 i3lock -n --force-clock \

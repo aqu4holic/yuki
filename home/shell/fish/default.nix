@@ -39,6 +39,13 @@
                         echo "Exit code: $exit_code"
                 end
             end
+
+            function erdtree_level
+                set level $argv[1]
+                set -e argv[1]
+
+                erd -H -I -i -. --no-git -L $level $argv
+            end
         '';
 
         shellAliases = {
@@ -47,6 +54,7 @@
             v = "nvim";
             c = "code";
             g = "git";
+            e = "erdtree_level";
             gaa = "git add .";
             gcm = "git commit -m";
             gp = "git push";

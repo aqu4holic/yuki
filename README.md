@@ -281,7 +281,7 @@ chmod +x yuki/bin/*
 6. Create a symlink from the downloaded folder to `/etc/nixos`
 ```bash
 # use absolute path, for my case its the below
-sudo ln -s /home/blackwhite/download/github/yuki/flake.nix /etc/nixos/
+sudo ln -s /home/blackwhite/Downloads/github/yuki/flake.nix /etc/nixos/
 ```
 
 8. Rebuild the system

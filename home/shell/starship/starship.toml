@@ -81,7 +81,7 @@ style = 'yellow bold'
 disabled = false
 symbol = '󰯲 '
 format = '[\[${symbol}\(${environment}\)\]]($style)'
-style = 'yellow bold'
+style = 'bold fg:#81bff2'
 
 [nodejs]
 disabled = false

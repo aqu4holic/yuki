@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
-wallpaper_path=~/download/photos/wallpapers
+wallpaper_path=~/Pictures/wallpapers
 img="$(ls ${wallpaper_path} | shuf -n 1)"
 
 feh --bg-fill "${wallpaper_path}/$img" &
+
+# change background every 5 mins
+# while true; do
+#     img="$(ls ${wallpaper_path} | shuf -n 1)"
+
+#     feh --bg-fill "${wallpaper_path}/$img" &
+
+#     sleep 300
+# done

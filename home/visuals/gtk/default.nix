@@ -15,9 +15,9 @@
             size = 13;
         };
 
-        # iconTheme = {
-        #     name = "Papirus";
-        #     package = pkgs.papirus-icon-theme;
-        # };
+        iconTheme = {
+            name = "Papirus";
+            package = pkgs.papirus-icon-theme;
+        };
     };
 }

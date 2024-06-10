@@ -43,6 +43,9 @@
         gnupg
         lshw
         trash-cli # trash folder manipulator
+        dust # du but saner
+        erdtree
+        duf
 
         # misc
         cowsay
@@ -85,6 +88,7 @@
         spotify
         telegram-desktop
         mpv
+        # wpsoffice
 
         # nix related
         #
@@ -117,7 +121,6 @@
         # libs
         conda
         xorg.xhost
-
     ];
 
     programs = {

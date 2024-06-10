@@ -227,6 +227,7 @@ in {
         gcc
         python312
         python312Packages.pip
+        nodejs
         go
     ];
 

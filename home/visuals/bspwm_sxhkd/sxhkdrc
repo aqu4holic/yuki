@@ -19,7 +19,7 @@ super + semicolon
 
 # Open Power menu
 super + alt + z
-    ~/bin/powermenu
+    ~/bin/power_menu
 
 # calculator
 super + shift + c
@@ -27,7 +27,11 @@ super + shift + c
 
 # calendar
 super + shift + f
-    ~/bin/calendar-launcher
+    ~/bin/calendar_launcher
+
+# wifi
+super + shift + y
+    ~/bin/wifi_menu
 
 # make sxhkd reload its config
 super + shift + r

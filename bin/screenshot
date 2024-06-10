@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-path=$HOME/download/photos/screenshot
+path=$HOME/Pictures/screenshot
 time=$(date "+%d.%m.%y_%I.%M.%S %p")
 
 case $1 in
