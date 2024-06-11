@@ -6,8 +6,8 @@ format = '''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git
 # right_format = '$time'
 
 [character]
-success_symbol = '[➾](bold green)'
-error_symbol = '[➾](bold red)'
+success_symbol = '[ ](bold green)'
+error_symbol = '[ ](bold red)'
 # success_symbol = '😸'
 # error_symbol = '😿'
 

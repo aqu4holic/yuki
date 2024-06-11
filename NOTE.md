@@ -3,6 +3,8 @@ search nerd font using this
 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts
 get the one u want, get the name after the url
 
+if u put fonts in `custom_fonts`, remember to `fc-cache -frv`
+
 # Things to do
 nvidia !!!!!!!!!!!!!!!!!!!!!!
 spicetify

@@ -12,10 +12,10 @@ super + c
 
 # emoji selector launcher
 super + shift + e
-    rofi -modi emoji -show emoji -emoji-mode stdout -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
+    rofi -modi emoji -show emoji -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
 
 super + semicolon
-    rofi -modi emoji -show emoji -emoji-mode stdout -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
+    rofi -modi emoji -show emoji stdout -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
 
 # Open Power menu
 super + alt + z
