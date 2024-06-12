@@ -57,6 +57,7 @@
             e = "erdtree_level";
             gaa = "git add .";
             gcm = "git commit -m";
+            gcma = "git commit -ma";
             gp = "git push";
             ca = "conda activate";
             cs = "conda-shell -c fish";

@@ -43,9 +43,9 @@
         gnupg
         lshw
         trash-cli # trash folder manipulator
-        dust # du but saner
-        erdtree
-        duf
+        duf # disk viewer
+        dua
+        navi
 
         # misc
         cowsay
@@ -55,6 +55,7 @@
 
         # misc ui
         kdePackages.spectacle # screenshot tool
+        kdePackages.okular # pdf viewer
         catppuccin-gtk # gtk theme
         pavucontrol # volume control
         pinta # img manipulator

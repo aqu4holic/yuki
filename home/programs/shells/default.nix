@@ -1,10 +1,14 @@
 {
     imports = [
         ./git_ssh
+
         ./bat
-        ./btop
         ./eza
         ./fdzf
+
+        ./btop
+        # ./fastfetch
+
         ./joshuto
     ];
 }

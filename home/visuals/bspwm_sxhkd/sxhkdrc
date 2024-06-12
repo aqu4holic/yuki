@@ -206,19 +206,15 @@ super + {F2, F3}
 
 # fullscreen screenshot save
 super + Print
-    ~/bin/screenshot -f
+    ~/bin/screenshot -fm
 
 # cropped save
 super + shift + Print
     ~/bin/screenshot -s
 
-# cropped save
-ctrl + shift + Print
-    ~/bin/screenshot -s
-
 # clipboard fullscreen
 super + s
-    ~/bin/screenshot -fc
+    ~/bin/screenshot -fcm
 
 # clipboard cropped
 super + shift + s

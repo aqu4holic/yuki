@@ -5,7 +5,7 @@
         ./picom
 
         ./cursor
-        ./gtk
+        ./gtk_qt
 
         ./rofi
         ./eww
