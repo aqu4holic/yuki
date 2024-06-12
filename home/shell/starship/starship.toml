@@ -1,6 +1,6 @@
 add_newline = true
 
-format = '''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration$python$conda$nodejs
+format = '''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration$python$conda$nodejs$direnv$docker
 [╰─](#d10475) $character'''
 
 # right_format = '$time'
@@ -26,7 +26,7 @@ style_user = 'bold #00c8ff'
 style_root = 'bold #ff006a'
 
 [hostname]
-format = '@[$hostname]($style) '
+format = '[@](bold white)[${hostname}]($style) '
 disabled = false
 style = 'bold #ff006a'
 ssh_only = false
@@ -51,6 +51,7 @@ style = 'bold bright-green bold'
 [directory]
 disabled = false
 format = '📁[$path]($style)[$read_only]($read_only_style) '
+style = 'bold fg:#75aeff'
 use_os_path_sep = true
 read_only = ' 🔒'
 truncation_length = 0
@@ -87,4 +88,16 @@ style = 'bold fg:#81bff2'
 disabled = false
 symbol = ' '
 format = '[\[${symbol}\(${environment}\)\]]($style)'
-style = 'yellow bold'
+style = 'bold fg:#34eb98'
+
+[direnv]
+disabled = false
+symbol = ' '
+format = '[\[${symbol}\(${loaded}/${allowed}\)\]]($style)'
+style = 'bold fg:#34eb98'
+
+[docker_context]
+disabled = false
+symbol = '🐳 '
+format = '[\[${symbol}\(${context}\)\]]($style)'
+style = 'bold fg:#346beb'

@@ -24,7 +24,7 @@
     qt = {
         enable = true;
 
-        platformTheme.name = "adwaita";
+        platformTheme.name = "gtk3";
 
         style.catppuccin = {
             enable = true;
