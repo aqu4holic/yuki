@@ -26,7 +26,7 @@ style_user = 'bold #00c8ff'
 style_root = 'bold #ff006a'
 
 [hostname]
-format = '[@](bold white)[${hostname}]($style) '
+format = '[@](bold fg:#f9e2af)[${hostname}]($style) '
 disabled = false
 style = 'bold #ff006a'
 ssh_only = false
@@ -80,7 +80,7 @@ style = 'yellow bold'
 
 [conda]
 disabled = false
-symbol = '󰯲 '
+symbol = '🐍 '
 format = '[\[${symbol}\(${environment}\)\]]($style)'
 style = 'bold fg:#81bff2'
 

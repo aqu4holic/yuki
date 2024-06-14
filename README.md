@@ -275,7 +275,7 @@ home-manager.nixosModules.home-manager {
 
 5. Make bin/ folder executable
 ```bash
-chmod +x yuki/bin/*
+chmod +x yuki/bin\/*
 ```
 
 6. Create a symlink from the downloaded folder to `/etc/nixos`

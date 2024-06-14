@@ -26,7 +26,10 @@ keymap = [
     { keys = ["alt+7"], commands = ["tab_switch_index 7"] },
     { keys = ["alt+8"], commands = ["tab_switch_index 8"] },
     { keys = ["alt+9"], commands = ["tab_switch_index 9"] },
-    { keys = ["alt+0syste"], commands = ["tab_switch_index 10"] },
+    { keys = ["alt+0"], commands = ["tab_switch_index 10"] },
+
+    { keys = ["b", "a"], commands = ["add_bookmark"] },
+    { keys = ["b", "o"], commands = ["cd_bookmark"] },
 
     { keys = ["1"], commands = ["numbered_command 1"] },
     { keys = ["2"], commands = ["numbered_command 2"] },
@@ -70,7 +73,8 @@ keymap = [
     { keys = ["["], commands = ["parent_cursor_move_up"] },
     { keys = ["]"], commands = ["parent_cursor_move_down"] },
 
-    { keys = ["c", "d"], commands = [":cd "] },
+    { keys = ["c", "d"], commands = [":z "] },
+    { keys = ["c", "i"], commands = ["zi"] },
     { keys = ["d", "d"], commands = ["cut_files"] },
     { keys = ["y", "y"], commands = ["copy_files"] },
     { keys = ["y", "n"], commands = ["copy_filename"] },
@@ -134,7 +138,7 @@ keymap = [
 
     { keys = ["g", "r"], commands = ["cd /"] },
     { keys = ["g", "c"], commands = ["cd ~/.config"] },
-    { keys = ["g", "d"], commands = ["cd ~/download"] },
+    { keys = ["g", "d"], commands = ["cd ~/Downloads"] },
     { keys = ["g", "e"], commands = ["cd /etc"] },
     { keys = ["g", "h"], commands = ["cd ~/"] },
     { keys = ["?"], commands = ["help"] },

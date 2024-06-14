@@ -5,9 +5,9 @@ time=$(date "+%d.%m.%y_%I.%M.%S %p")
 
 case $1 in
     "-scm") maim --hidecursor --select | xclip -selection clipboard -t image/png \
-            && dunstify -i "stock_bell" -a "(A) maim" "Fullscreen Screenshot" "A screenshot was saved to your clipboard";;
-    "-fcm") maim --hidecursor | xclip -selection clipboard -t image/png \
             && dunstify -i "stock_bell" -a "(A) maim" "Region Screenshot" "A screenshot was saved to your clipboard";;
+    "-fcm") maim --hidecursor | xclip -selection clipboard -t image/png \
+            && dunstify -i "stock_bell" -a "(A) maim" "Fullscreen Screenshot" "A screenshot was saved to your clipboard";;
     "-fm") maim --hidecursor "$path/screenshot_$time.png" \
             && dunstify -i "stock_bell" -a "(A) maim" "Fullscreen Screenshot" "A screenshot was saved to $path/screenshot_$time.png";;
     "-sm") maim --hidecursor --select "$path/screenshot_$time.png" \

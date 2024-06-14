@@ -15,7 +15,7 @@
             eval (ssh-agent -c) &>/dev/null
 
             function fish_greeting
-                echo hiiiii (set_color 00C8FF)$USER (set_color white)@ (set_color FF006A)$hostname(set_color white)!
+                echo hiiiii (set_color 00C8FF -o)$USER (set_color F9E2AF)@ (set_color FF006A)$hostname(set_color normal)(set_color white)!
             end
             # fastfetch
 
@@ -38,13 +38,6 @@
                     case '*'
                         echo "Exit code: $exit_code"
                 end
-            end
-
-            function erdtree_level
-                set level $argv[1]
-                set -e argv[1]
-
-                erd -H -I -i -. --no-git -L $level $argv
             end
         '';
 

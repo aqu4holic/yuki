@@ -229,6 +229,8 @@ in {
         python312Packages.pip
         nodejs
         go
+        jre8
+        jdk22
     ];
 
     # Enable CUPS to print documents.

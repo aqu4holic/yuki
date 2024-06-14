@@ -23,7 +23,7 @@ picom &
 wallpaper_path=~/Pictures/wallpapers
 img="$(ls ${wallpaper_path} | shuf -n 1)"
 # feh --bg-fill "${wallpaper_path}/$img" &
-feh --bg-fill "${wallpaper_path}/kimono-purple.png" &
+feh --bg-fill "${wallpaper_path}/akiakane01.png" &
 
 ibus-daemon -drxR &
 nm-applet &

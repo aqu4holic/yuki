@@ -11,16 +11,18 @@
         xz
         unzip
         p7zip
+        rar
 
         # utils
         ripgrep # recursively searches directories for a regex pattern
         jq # A lightweight and flexible command-line JSON processor
-        yq-go # yaml processor https://github.com/mikefarah/yq
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
         fd
         bat
         zoxide
+
+        ffmpeg
 
         # networking tools
         mtr # A network diagnostic tool
@@ -32,15 +34,10 @@
         nmap # A utility for network discovery and security auditing
         ipcalc  # it is a calculator for the IPv4/v6 addresses
 
-        # misc
+        # misc file manipulator
         file
         which
         tree
-        gnused
-        gnutar
-        gawk
-        zstd
-        gnupg
         lshw
         trash-cli # trash folder manipulator
         duf # disk viewer
@@ -75,7 +72,6 @@
         # joshuto
         atool
         xlsx2csv
-        unrar
         # mupdf
         mupdf-headless
         pandoc
@@ -98,10 +94,7 @@
         nix-output-monitor
         nix-prefetch-github
 
-        # productivity
-        hugo # static site generator
-        glow # markdown previewer in terminal
-
+        # monitoring
         btop  # replacement of htop/nmon
         htop
         iotop # io monitoring
@@ -122,6 +115,7 @@
         # libs
         conda
         xorg.xhost
+        clang-tools
     ];
 
     programs = {

@@ -12,6 +12,8 @@ firefox
 espanso
 install monaspace (maybe)
 
+rm tab shortcut kitty
+
 # purging
 ```nix
 nix-collect-garbage  --delete-old
