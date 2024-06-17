@@ -2,6 +2,8 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+~/bin/dual_monitor
+
 xset s off &
 xset -dpms &
 
@@ -10,8 +12,8 @@ xset r rate 250 25 &
 
 xinput set-prop 'HP, Inc HyperX Pulsefire Haste Wireless' 'libinput Accel Speed' -0.5 &
 
-xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Natural Scrolling Enabled' 0 &
 xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Accel Speed' 0.5 &
+xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Natural Scrolling Enabled' 0 &
 
 setxkbmap -option caps:swapescape &
 
@@ -34,8 +36,8 @@ trash-empty -f 40 &
 copyq &
 
 bspc wm -O eDP-1 HDMI-1-0
-bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8
-bspc monitor HDMI-1-0 -d 9
+bspc monitor eDP-1 -d 1 2 3 4 5 6 7
+bspc monitor HDMI-1-0 -d 8 9
 
 bspc config border_width 2
 bspc config window_gap 10

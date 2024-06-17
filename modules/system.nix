@@ -14,6 +14,10 @@ in {
         extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" ];
     };
 
+    security.sudo.extraConfig = ''
+        Defaults timestamp_timeout=-1
+    '';
+
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
     };
@@ -225,6 +229,7 @@ in {
         libnotify
         libgcc
         gcc
+        cmake
         python312
         python312Packages.pip
         nodejs

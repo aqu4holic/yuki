@@ -6,11 +6,6 @@ vim.g.have_nerd_font = true
 vim.opt.cursorline = true
 vim.opt.inccommand = "split"
 
--- relative numbering
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.signcolumn = "number"
-
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

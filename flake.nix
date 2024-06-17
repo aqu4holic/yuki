@@ -7,6 +7,8 @@
 
         catppuccin.url = "github:catppuccin/nix";
 
+        spicetify-nix.url = "github:the-argus/spicetify-nix";
+
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -16,31 +18,37 @@
     outputs = {
         self,
         nixpkgs,
-        catppuccin,
-        home-manager,
         ...
-    }@inputs: {
+    } @inputs: {
         nixosConfigurations.yuki = nixpkgs.lib.nixosSystem {
-            specialArgs = {inherit inputs;};
+            specialArgs = {
+                inherit inputs;
+            };
+
             modules = [
                 # Import the previous configuration.nix we used,
                 # so the old configuration file still takes effect
                 ./hosts/blackwhite
 
-                catppuccin.nixosModules.catppuccin
+                inputs.catppuccin.nixosModules.catppuccin
 
-                home-manager.nixosModules.home-manager {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.users.blackwhite = {
-                        imports = [
-                            ./home
-                            catppuccin.homeManagerModules.catppuccin
-                        ];
+                inputs.home-manager.nixosModules.home-manager {
+                    home-manager = {
+                        useGlobalPkgs = true;
+                        useUserPackages = true;
+
+                        extraSpecialArgs = {
+                            inherit inputs;
+                        };
+
+                        users.blackwhite = {
+                            imports = [
+                                ./home
+
+                                inputs.catppuccin.homeManagerModules.catppuccin
+                            ];
+                        };
                     };
-
-                    # Optionally, use home-manager.extraSpecialArgs to pass
-                    # arguments to home.nix
                 }
             ];
         };

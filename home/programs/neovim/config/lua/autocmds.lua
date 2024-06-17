@@ -38,7 +38,7 @@ end
 
 set_spacing(0, 0)
 
-vim.api.nvim_create_autocmd("VimLeave", {
+autocmd("VimLeave", {
     once = true,
     callback = function()
         set_spacing(0, 20)
@@ -60,17 +60,34 @@ autocmd("FileChangedShellPost", {
     end,
 })
 
-autocmd("BufRead", {
-    pattern = { "*.inp", "*.out" },
-    callback = function()
-        vim.cmd(string.format("setlocal nornu"))
+-- trim trailing whitespace
+autocmd({ "BufWritePre", "InsertLeave", "BufWritePost" }, {
+    pattern = {"*"},
+    callback = function(ev)
+        save_cursor = vim.fn.getpos(".")
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos(".", save_cursor)
     end,
 })
 
-autocmd("FileType", {
-    pattern = "lua",
+-- autosave
+local function clear_cmdarea()
+    vim.defer_fn(function()
+        vim.api.nvim_echo({}, false, {})
+    end, 800)
+end
+
+autocmd({ "InsertLeave", "TextChanged" }, {
     callback = function()
-        vim.opt.tabstop = 2
-        vim.opt.shiftwidth = 2
+        if #vim.api.nvim_buf_get_name(0) ~= 0 and vim.bo.buflisted then
+            vim.cmd "silent w"
+
+            local time = os.date "%I:%M %p"
+
+            -- print nice colored msg
+            vim.api.nvim_echo({ { "󰄳", "LazyProgressDone" }, { " file autosaved at " .. time } }, false, {})
+
+            clear_cmdarea()
+        end
     end,
 })

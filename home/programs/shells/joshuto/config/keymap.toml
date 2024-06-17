@@ -91,6 +91,7 @@ keymap = [
 
     { keys = ["p", "p"], commands = ["paste_files"] },
     { keys = ["p", "o"], commands = ["paste_files --overwrite=true"] },
+    { keys = ["p", "w"], commands = ["paste_files --overwrite=true --skip_exist=true"] },
 
     { keys = ["a"], commands = ["rename_append"] },
     { keys = ["A"], commands = ["rename_prepend"] },

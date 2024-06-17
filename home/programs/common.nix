@@ -82,7 +82,6 @@
         obsidian
         vesktop
         zotero
-        spotify
         telegram-desktop
         mpv
         # wpsoffice

@@ -48,7 +48,7 @@
         shfmt
         lua-language-server
         stylua
-        # typescript-language-server
+        nodePackages_latest.typescript-language-server
         prettierd
         vscode-langservers-extracted
 
