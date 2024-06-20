@@ -1,6 +1,8 @@
 require("nvchad.options")
 vim.g.lua_snippets_path = vim.fn.stdpath("config") .. "/lua/luasnip"
 
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
@@ -12,7 +14,7 @@ end, { remap = false, expr = true })
 vim.opt.list = true;
 vim.opt.listchars = {
     space = '·',
-    tab = '>\\',
+    tab = '>·',
     extends = '›',
     precedes = '‹',
     nbsp = '·',

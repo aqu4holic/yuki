@@ -56,7 +56,7 @@ run_cmd() {
     echo $selected
     if [[ "$selected" == "$yes" ]]; then
         if [[ $1 == '--shutdown' ]]; then
-            systemctl poweroff
+            shutdown now
         elif [[ $1 == '--reboot' ]]; then
             systemctl reboot
         elif [[ $1 == '--hibernate' ]]; then

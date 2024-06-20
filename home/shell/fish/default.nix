@@ -47,7 +47,8 @@
             v = "nvim";
             c = "code";
             g = "git";
-            e = "erdtree_level";
+            venv_activate = "source venv/bin/activate.fish";
+            s = "kitten ssh";
             gaa = "git add .";
             gcm = "git commit -m";
             gcma = "git commit -ma";

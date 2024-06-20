@@ -16,6 +16,7 @@ in {
 
     security.sudo.extraConfig = ''
         Defaults timestamp_timeout=-1
+        Defaults env_keep += "TERM TERMINFO"
     '';
 
     nix.settings = {
