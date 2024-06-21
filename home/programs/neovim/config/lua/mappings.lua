@@ -2,10 +2,66 @@ require("nvchad.mappings")
 
 local map = vim.keymap.set
 local nomap = vim.keymap.del
+local create_user_command = vim.api.nvim_create_user_command
+local create_autocmd = vim.api.nvim_create_autocmd
 -- local keymap = vim.api.nvim_set_keymap
 -- local function remap(mode, from, to)
 --   keymap(mode, from, to, opts)
 -- end
+
+-- autosave
+local auto_save_toggled = true
+local auto_save_group = vim.api.nvim_create_augroup('auto_save_group', { clear = true })
+
+local function clear_cmdarea(duration)
+    vim.defer_fn(function()
+        vim.api.nvim_echo({}, false, {})
+    end, duration)
+end
+
+local function create_auto_save()
+    vim.api.nvim_clear_autocmds({group = auto_save_group})
+
+    if (auto_save_toggled) then
+        -- vim.api.nvim_create_augroup('auto_save_group', { clear = true })
+
+        create_autocmd({ "InsertLeave", "TextChanged" }, {
+            group = auto_save_group,
+            callback = function()
+                if #vim.api.nvim_buf_get_name(0) ~= 0 and vim.bo.buflisted then
+                    vim.cmd "silent w"
+
+                    -- local filename = string.gsub(vim.api.nvim_buf_get_name(0), vim.loop.cwd(), '')
+                    local filename = vim.fn.expand('%:t')
+                    local time = os.date "%I:%M %p"
+
+                    -- print nice colored msg
+                    vim.api.nvim_echo({ { "󰄳", "LazyProgressDone" }, { " " .. filename .. " autosaved at " .. time } }, false, {})
+
+                    clear_cmdarea(1000)
+                end
+            end,
+        })
+    end
+end
+
+create_auto_save()
+
+function toggle_auto_save()
+    auto_save_toggled = not auto_save_toggled
+
+    create_auto_save()
+
+    local state = auto_save_toggled and "enabled" or "disabled"
+
+    vim.api.nvim_echo({ { "󰄳", "LazyProgressDone" }, { " Autosave is now " .. state } }, false, {})
+
+    clear_cmdarea(1000)
+end
+
+-- toggle autosave
+create_user_command('ToggleAutoSave', toggle_auto_save, {})
+map('n', '<F6>', '<cmd>lua toggle_auto_save()<CR>', { noremap = true, silent = true })
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -51,6 +107,16 @@ map("n", "<leader>fp", "<cmd> Telescope neovim-project discover <CR>", { desc = 
 -- map('n', '<leader>tn', '<cmd> tabnext <CR>', { desc = 'Tab Switch next' })
 
 -- map('n', '<leader>ww', '<cmd> HopWord <CR>', { desc = 'Hop' })
+
+vim.api.nvim_set_keymap('n', '<C-1>', '1gt', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-2>', '2gt', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-3>', '3gt', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-4>', '4gt', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-5>', '5gt', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-6>', '6gt', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-7>', '7gt', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-8>', '8gt', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-9>', ':tablast<CR>', {noremap = true, silent = true})
 
 -- wip code runner function
 -- TODO: cleanup, safe execution of c and cpp

@@ -1,17 +1,17 @@
-local autocmd = vim.api.nvim_create_autocmd
+local create_autocmd = vim.api.nvim_create_autocmd
 
 -- Ibus typing
 local ibus_cur = "BambooUs"
 local ibus_en = "BambooUs"
 
-autocmd("InsertEnter", {
+create_autocmd("InsertEnter", {
     pattern = { "*" },
     callback = function()
         os.execute("ibus engine " .. ibus_cur)
     end,
 })
 
-autocmd("InsertLeave", {
+create_autocmd("InsertLeave", {
     pattern = { "*" },
     callback = function()
         local f = io.popen("ibus engine", "r")
@@ -38,7 +38,7 @@ end
 
 set_spacing(0, 0)
 
-autocmd("VimLeave", {
+create_autocmd("VimLeave", {
     once = true,
     callback = function()
         set_spacing(0, 20)
@@ -46,7 +46,7 @@ autocmd("VimLeave", {
 })
 
 -- auto reload buffer when changed
-autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
     callback = function()
         if vim.api.nvim_get_mode() ~= "c" then
             vim.cmd("checktime")
@@ -54,40 +54,18 @@ autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
     end,
 })
 
-autocmd("FileChangedShellPost", {
+create_autocmd("FileChangedShellPost", {
     callback = function()
         vim.cmd(([[echohl WarningMsg | echomsg "%s" | echohl None]]):format("File changed on disk. Buffer reloaded."))
     end,
 })
 
 -- trim trailing whitespace
-autocmd({ "BufWritePre", "InsertLeave", "BufWritePost" }, {
+create_autocmd({ "BufWritePre", "InsertLeave", "BufWritePost" }, {
     pattern = {"*"},
     callback = function(ev)
         save_cursor = vim.fn.getpos(".")
         vim.cmd([[%s/\s\+$//e]])
         vim.fn.setpos(".", save_cursor)
-    end,
-})
-
--- autosave
-local function clear_cmdarea()
-    vim.defer_fn(function()
-        vim.api.nvim_echo({}, false, {})
-    end, 800)
-end
-
-autocmd({ "InsertLeave", "TextChanged" }, {
-    callback = function()
-        if #vim.api.nvim_buf_get_name(0) ~= 0 and vim.bo.buflisted then
-            vim.cmd "silent w"
-
-            local time = os.date "%I:%M %p"
-
-            -- print nice colored msg
-            vim.api.nvim_echo({ { "󰄳", "LazyProgressDone" }, { " file autosaved at " .. time } }, false, {})
-
-            clear_cmdarea()
-        end
     end,
 })
