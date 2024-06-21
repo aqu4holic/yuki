@@ -35,7 +35,6 @@
         ipcalc  # it is a calculator for the IPv4/v6 addresses
 
         # misc file manipulator
-        lazygit
         file
         which
         tree

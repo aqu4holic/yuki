@@ -30,6 +30,7 @@
         unzip
         fd
         wget
+        lazygit
         ### treesitter ###
         tree-sitter
         gcc
@@ -41,7 +42,7 @@
         # rust-analyzer
 
         ### nix ###
-        nil
+        nixd
         alejandra
 
         ### mason migration ###
