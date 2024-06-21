@@ -46,13 +46,19 @@
             j = "joshuto";
             v = "nvim";
             c = "code";
+
             g = "git";
-            venv_activate = "source venv/bin/activate.fish";
-            s = "kitten ssh";
+            lg = "lazygit";
             gaa = "git add .";
             gcm = "git commit -m";
             gcma = "git commit -ma";
             gp = "git push";
+            gs = "git status";
+
+            venv_create = "python -m venv venv";
+            venv_activate = "source venv/bin/activate.fish";
+
+            s = "kitten ssh";
             ca = "conda activate";
             cs = "conda-shell -c fish";
             clean_cache = "~/bin/clean_cache";
