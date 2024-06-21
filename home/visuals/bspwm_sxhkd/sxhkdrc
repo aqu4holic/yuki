@@ -25,6 +25,9 @@ super + alt + z
 super + shift + c
     bspc rule -a \* -o state=floating && qalculate-gtk
 
+super + F12
+    bspc rule -a \* -o state=floating && qalculate-gtk
+
 # calendar
 super + shift + f
     ~/bin/calendar_launcher
