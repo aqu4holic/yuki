@@ -26,6 +26,7 @@
         '')
 
         nodejs
+        yarn
         ripgrep
         unzip
         fd
