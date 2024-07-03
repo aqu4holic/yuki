@@ -10,8 +10,6 @@
         ./rofi
         ./eww
 
-        ./dunst
-
         ./polybar
     ];
 }

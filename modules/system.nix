@@ -217,7 +217,6 @@ in {
         sxhkd
         rofi
         eww
-        dunst
         picom
         polybar
         i3lock-color

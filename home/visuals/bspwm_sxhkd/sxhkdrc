@@ -32,6 +32,10 @@ super + F12
 super + shift + f
     ~/bin/calendar_launcher
 
+# control center
+super + shift + x
+    ~/.config/eww/scripts/toggle_control_center.sh
+
 # wifi
 super + shift + y
     ~/bin/wifi_menu
