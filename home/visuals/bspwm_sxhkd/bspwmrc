@@ -9,18 +9,17 @@ xset -dpms &
 
 xsetroot -cursor_name left_ptr &
 xset r rate 250 25 &
+setxkbmap -option caps:swapescape &
 
 xinput set-prop 'HP, Inc HyperX Pulsefire Haste Wireless' 'libinput Accel Speed' -0.5 &
 
 xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Accel Speed' 0.5 &
 xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Natural Scrolling Enabled' 0 &
 
-setxkbmap -option caps:swapescape &
-
-# polybar
+# polybar, dunst and picom
+picom &
 "$HOME/bin/launch.sh" &
 dunst &
-picom &
 
 wallpaper_path=~/Pictures/wallpapers
 wallpaper_name="meteorshower.png"

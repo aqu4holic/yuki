@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 {
-    programs.joshuto = {
+    programs.yazi = {
         enable = true;
     };
 
-    xdg.configFile."joshuto" = {
+    xdg.configFile."yazi" = {
         source = ./config;
 
         recursive = true;

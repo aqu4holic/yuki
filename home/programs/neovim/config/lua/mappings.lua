@@ -86,9 +86,9 @@ map("n", "]]", ":call search('[([{<]')<CR>", { desc = "Move to next opening inst
 map("n", "<A-o>", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
 map("n", "mm", ":b#<CR>", { desc = "Open last visited buffer" })
 map("n", "<C-z>", function()
-	vim.cmd(string.format("silent :wa"))
-	vim.cmd(string.format("silent :qa"))
-end, { desc = "Close nvim" })
+    vim.cmd(string.format("silent :wa"))
+    vim.cmd(string.format("silent :qa"))
+end, { desc = "Save all and close nvim" })
 -- faster nav
 -- map({ 'n', 'v' }, 'H', '^', { noremap = true })
 -- map({ 'n', 'v' }, 'L', '$', { noremap = true })
@@ -99,7 +99,7 @@ end, { desc = "Close nvim" })
 -- map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>', { noremap = true })
 -- map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>', { noremap = true })
 
-map("n", "<leader>gg", "<cmd> LazyGit <CR>", { desc = "LazyGit Open" })
+map("n", "<leader>lg", "<cmd> LazyGit <CR>", { desc = "LazyGit Open" })
 map("n", "<leader>ls", "<cmd> Lazy sync <CR>", { desc = "Lazy Sync Config" })
 map("n", "<leader>fp", "<cmd> Telescope neovim-project discover <CR>", { desc = "Telescope Find projects" })
 
@@ -117,6 +117,9 @@ vim.api.nvim_set_keymap('n', '<C-6>', '6gt', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<C-7>', '7gt', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<C-8>', '8gt', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<C-9>', ':tablast<CR>', {noremap = true, silent = true})
+
+map("n", "<leader>o", "<cmd>Portal jumplist backward<CR>", { desc = "Portal Backward" })
+map("n", "<leader>i", "<cmd>Portal jumplist forward<CR>", { desc = "Portal Forward" })
 
 -- wip code runner function
 -- TODO: cleanup, safe execution of c and cpp

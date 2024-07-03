@@ -4,9 +4,16 @@
         enable = true;
 
         config = {
-            theme = "TwoDark";
+            theme = "Catppuccin Mocha";
             paging = "never";
             style = "plain";
         };
+    };
+
+    # bat cache --build
+    xdg.configFile."bat/themes" = {
+        source = ./themes;
+
+        recursive = true;
     };
 }

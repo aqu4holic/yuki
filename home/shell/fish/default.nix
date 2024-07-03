@@ -10,6 +10,8 @@
             # for bluetooth, it will crash without this
             dbus-update-activation-environment DISPLAY
 
+            # fish_add_path /home/blackwhite/bin
+
             eval (direnv hook fish)
 
             eval (ssh-agent -c) &>/dev/null
@@ -19,33 +21,23 @@
             end
             # fastfetch
 
-            function joshuto
-                set ID (random)
-                set OUTPUT_FILE /tmp/$USER/joshuto-cwd-$ID
-                mkdir -p /tmp/$USER
-
-                env joshuto --output-file "$OUTPUT_FILE" $argv
-                set exit_code $status
-
-                switch $exit_code
-                    case 0
-                        # Regular exit, do nothing
-                    case 101
-                        set JOSHUTO_CWD (cat "$OUTPUT_FILE")
-                        cd $JOSHUTO_CWD
-                    case 102
-                        # Output selected files, do nothing
-                    case '*'
-                        echo "Exit code: $exit_code"
+            function yy
+                set tmp (mktemp -t "yazi-cwd.XXXXXX")
+                yazi $argv --cwd-file="$tmp"
+                if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+                    cd -- "$cwd"
                 end
+                rm -f -- "$tmp"
             end
         '';
 
         shellAliases = {
             update = "sudo nixos-rebuild switch";
-            j = "joshuto";
+            y = "yy"; # yazi function
             v = "nvim";
             c = "code";
+            b = "bat";
+            d = "dua i";
 
             g = "git";
             lg = "lazygit";

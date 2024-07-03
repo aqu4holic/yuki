@@ -9,6 +9,6 @@
         ./btop
         # ./fastfetch
 
-        ./joshuto
+        ./yazi
     ];
 }

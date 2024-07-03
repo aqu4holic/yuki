@@ -12,6 +12,7 @@
         unzip
         p7zip
         rar
+        unar
 
         # utils
         ripgrep # recursively searches directories for a regex pattern
@@ -23,6 +24,8 @@
         zoxide
 
         ffmpeg
+        poppler
+        ffmpegthumbnailer
 
         # networking tools
         mtr # A network diagnostic tool
@@ -69,7 +72,7 @@
         redshift
         syncthing
 
-        # joshuto
+        # yazi
         atool
         xlsx2csv
         # mupdf
