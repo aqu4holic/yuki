@@ -26,7 +26,7 @@
 )
 
 (defwidget network []
-    (quick_settings_button  :condition {network.essid == "lo"}
+    (quick_settings_button  :condition {network.essid == "lo"} 
                             :action {network.essid == "lo" ? "XDG_CURRENT_DESKTOP='gnome' gnome-control-center wifi &" : "nmcli connection down id '${network.essid}'"}
                             :icon {network.essid == "lo" ? "󰤭" : network.signal == "" ? "󰤩" : network.signal < 25 ? "󰤟" : network.signal < 50 ? "󰤢" : network.signal < 75 ? "󰤥" : "󰤨"}
                             :label {network.essid == "lo" ? "Not connected" : network.essid}
@@ -35,7 +35,7 @@
 )
 
 (defwidget do-not-disturb_mode []
-    (quick_settings_button  :condition {do-not-disturb == false}
+    (quick_settings_button  :condition {do-not-disturb == false} 
                             :action "scripts/notifications.sh togglednd"
                             :icon "󰍷"
                             :label "Do not disturb"

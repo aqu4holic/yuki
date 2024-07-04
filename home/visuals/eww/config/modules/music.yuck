@@ -7,7 +7,7 @@
                     (label :halign "start" :class "music-title" :limit-width 20 :text {mpris.title})
                     (label :halign "start" :class "music-artist" :limit-width 20 :text {mpris.artist})
                 )
-                (box :orientation "v" :space-evenly false
+                (box :orientation "v" :space-evenly false 
                     (label :class "music-name" :halign "end" :text {mpris.name} :height 10)
                     (label :vexpand true :text "")
                 )
@@ -24,7 +24,7 @@
                 (button :class "music-action" :onclick "playerctl play-pause" {mpris.status == "Playing" ? "󰓛" : "󰐊"})
                 (button :class "music-action" :onclick "playerctl next" "󰒭")
             )
-
+                    
         )
     )
 )

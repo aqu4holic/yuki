@@ -11,7 +11,7 @@ playerctl metadata -F -f '{{playerName}} {{title}} {{artist}} {{mpris:artUrl}} {
         length=$(($length / 1000000))
         length=$(echo "($length + 0.5) / 1" | bc)
     fi
-
+    
     # Check if artUrl is a remote URL
     if [[ $artUrl =~ ^http ]]; then
         # Delete the image for the current song
@@ -20,7 +20,7 @@ playerctl metadata -F -f '{{playerName}} {{title}} {{artist}} {{mpris:artUrl}} {
         wget -q -O "${base_dir}image.jpg" "$artUrl"
         artUrl="${base_dir}image.jpg"
     fi
-
+    
     title=$(echo "$title" | awk '{first=substr($0, 1, 20); second=substr($0, 21); gsub(/^ */, "", second); print first "\n" second}')
     lengthStr=$(playerctl metadata -f "{{duration(mpris:length)}}")
 

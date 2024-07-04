@@ -51,7 +51,6 @@
         cowsay
         lolcat
         fortune-kind
-        # playerctl
 
         # misc ui
         kdePackages.spectacle # screenshot tool

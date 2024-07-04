@@ -18,7 +18,7 @@ super + semicolon
     rofi -modi emoji -show emoji stdout -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
 
 # Open Power menu
-super + alt + z
+super + shift + z
     ~/bin/power_menu
 
 # calculator
@@ -49,11 +49,11 @@ super + shift + r
 #
 
 # quit bspwm
-super + alt + q
+super + shift + q
     ~/bin/close_bspwm
 
 # restart bspwm
-super + alt + r
+super + shift + r
     bspc wm -r
 
 # close and kill

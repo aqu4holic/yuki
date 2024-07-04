@@ -197,7 +197,7 @@ in {
         sysstat
         lm_sensors # for `sensors` command
         fastfetch
-        joshuto # terminal file manager
+        yazi
         zathura # pdf viewer
 
         # network
@@ -206,6 +206,8 @@ in {
         # audio
         pulseaudio
         noisetorch
+        playerctl
+        pamixer
 
         # display
         brightnessctl

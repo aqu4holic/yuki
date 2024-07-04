@@ -6,7 +6,7 @@
 ; (defvar open_tray false)
 ; (defvar clipboard "[]")
 (defvar ANIM_DURATION "1000ms")
-;
+; 
 ; (defvar recorder_audio false)
 ; (defvar recorder_region false)
 
@@ -40,11 +40,11 @@
 
 ; (deflisten workspaces :initial "[{'window'}]"
 ; "scripts/workspaces.sh")
-;
+; 
 ; (deflisten weather :initial "null"
 ; "scripts/weather.py")
-;
-; (deflisten current_theme :initial "dark"
+; 
+; (deflisten current_theme :initial "dark" 
 ; "scripts/material.py --current")
 
 (deflisten notifications :initial '{"count": 0, "notifications": [], "popups": []}'
@@ -52,3 +52,4 @@
 
 ; (deflisten apps :initial "{}"
 ; "scripts/apps.py")
+
