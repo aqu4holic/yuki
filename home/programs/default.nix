@@ -1,9 +1,18 @@
 {
     imports = [
-        # ./browsers.nix
         ./common.nix
-        ./git.nix
-        # ./media.nix
-        # ./xdg.nix
+        ./xdg
+
+        ./shells
+
+        ./vscode
+        ./neovim
+        ./zathura
+        ./vencord
+        ./qimgv
+        ./spicetify
+
+        ./spectacle
+        ./redshift
     ];
 }

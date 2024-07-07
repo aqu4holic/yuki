@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
 {
     imports = [
         ./programs
         ./shell
+        ./visuals
+
+        ./fonts
     ];
 
     # link the configuration file in current directory to the specified location in home directory
@@ -22,9 +24,6 @@
     # '';
 
     home = {
-        username = "blackwhite";
-        homeDirectory = "/home/blackwhite";
-
         # This value determines the home Manager release that your
         # configuration is compatible with. This helps avoid breakage
         # when a new home Manager release introduces backwards
@@ -34,12 +33,24 @@
         # the home Manager release notes for a list of state version
         # changes in each release.
         stateVersion = "23.11";
-    };
 
-    # set cursor size and dpi for 4k monitor
-    xresources.properties = {
-        "Xcursor.size" = 16;
-        "Xft.dpi" = 172;
+        file.".profile" = {
+            source = ../bin/.profile;
+        };
+
+        file."bin" = {
+            source = ../bin;
+
+            recursive = true;
+
+            executable = true;
+        };
+
+        # file."/Pictures" = {
+        #     source = ./photos;
+
+        #     recursive = true;
+        # };
     };
 
     # Let home Manager install and manage itself.

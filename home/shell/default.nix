@@ -1,16 +1,19 @@
 {config, ...}:
 {
     imports = [
-        ./common.nix
-        ./terminals.nix
-        ./fish.nix
+        ./kitty
+
+        ./direnv
+
+        ./fish
+        ./zsh
+
+        ./starship
     ];
 
     home.sessionVariables = {
-        EDITOR = "vim";
+        EDITOR = "nvim";
         BROWSER = "firefox";
         TERMINAL = "kitty";
-
-
     };
 }

@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+path=~/Pictures/wallpapers
+# img="$path/evangelion.png"
+# img="$path/anime_scan_landscape_sky_cloud_beautiful_light_color_8000x3406.png"
+img="$path/akiakane01.png"
+lockscreen_img="$path/lockscreen_img.png"
+
+# X=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
+# Y=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
+
+# convert $img -scale "$X"x"$Y"^ -gravity center -extent "$X"x"$Y" "$path/lockscreen_img.png"
+
+fg=ff33e7
+wrong=db4b89ff
+time=4d76ffff
+date=4d76ff00
+verify=4d76ffff
+
+time_pos_x=350
+time_pos_y=200
+ind_pos=100
+
+i3lock -n --force-clock \
+    -i "$lockscreen_img" \
+    -e \
+    --indicator \
+    --radius=30 \
+    --ring-width=20 \
+    --line-uses-inside \
+    \
+    --inside-color=00000000 \
+    --insidever-color=00000000 \
+    --insidewrong-color=00000000 \
+    --ring-color="${fg}90" \
+    --ringver-color=$verify \
+    --ringwrong-color=$wrong \
+    --keyhl-color=$verify \
+    --separator-color=00000000 \
+    --bshl-color=$verify \
+    \
+    --date-color=$date \
+    --time-color=$time \
+    --greeter-color="${fg}ff" \
+    --wrong-color=$wrong \
+    --verif-color=$verify \
+    \
+    --time-str="%I:%M" \
+    --date-str="%a, %d/%m/%Y" \
+    --time-size=160 \
+    --date-size=90 \
+    \
+    --verif-text="" \
+    --wrong-text="" \
+    --noinput-text="" \
+    --greeter-text="" \
+    \
+    --time-pos="w / 2 : ${time_pos_y}" \
+    --date-pos="w / 2 : ${time_pos_y} + 125" \
+    --time-pos="x + ${time_pos_x} : ${time_pos_y}" \
+    --date-pos="x + ${time_pos_x} : ${time_pos_y} + 125" \
+    --greeter-pos="x + ${ind_pos} + 75 : h - 60" \
+    --verif-pos="w / 2 : h / 2 + 105" \
+    --wrong-pos="w / 2 : h - 60" \
+    --ind-pos="x + ${ind_pos} : h - 70" \
+    \
+    --time-font="JetBrainsMono Nerd Font:style=Bold" \
+    --date-font="JetBrainsMono Nerd Font:style=Bold" \
+    --verif-font="JetBrainsMono Nerd Font:style=Bold" \
+    --greeter-font="JetBrainsMono Nerd Font:style=Bold" \
+    --wrong-font="JetBrainsMono Nerd Font:style=Bold" \
+    --verif-size=35 \
+    --greeter-size=35 \
+    --wrong-size=35 \
+    \
+    --pointer=default \
+    --refresh-rate=0 \
+    --pass-media-keys \
+    --pass-volume-keys \
+    --no-modkey-text

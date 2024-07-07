@@ -2,25 +2,41 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
     imports = [ # Include the results of the hardware scan.
         ../../modules/system.nix
 
+        ./nvidia.nix
         ./hardware-configuration.nix
     ];
 
     # Bootloader.
     boot.loader = {
+        efi = {
+            canTouchEfiVariables = true;
+            # efiSysMountPoint = "/boot/efi";
+        };
+
         grub = {
             enable = true;
-            device = "/dev/sda";
+            devices = [ "nodev" ];
+            efiSupport = true;
             useOSProber = true;
+
+            configurationLimit = 10;
+
+            catppuccin = {
+                enable = true;
+                flavor = "mocha";
+            };
+
+            splashImage = lib.mkForce /home/blackwhite/Pictures/wallpapers/3icy1h7kj4m51.png;
         };
     };
 
-    networking.hostName = "blackwhite"; # Define your hostname.
+    networking.hostName = "yuki"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
@@ -43,5 +59,4 @@
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "23.11"; # Did you read the comment?
-
 }
