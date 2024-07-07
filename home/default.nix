@@ -45,13 +45,7 @@
 
             executable = true;
         };
-
-        # file."/Pictures" = {
-        #     source = ./photos;
-
-        #     recursive = true;
-        # };
-    };
+   };
 
     # Let home Manager install and manage itself.
     # programs.home-manager.enable = true;
