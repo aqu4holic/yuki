@@ -104,8 +104,8 @@ return {
         opts = {
             workspaces = {
                 {
-                    name = "Life",
-                    path = "~/Documents/Obsidian/Life",
+                    name = "blackwhite",
+                    path = "~/Documents/obsidian/BlackWhite",
                 },
             },
             disable_frontmatter = true,
