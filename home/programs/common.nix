@@ -86,7 +86,7 @@
         zotero
         telegram-desktop
         mpv
-        # wpsoffice
+        wpsoffice
 
         # nix related
         #
