@@ -9,7 +9,7 @@
                 User git
                 PreferredAuthentications publickey
                 ForwardAgent yes
-                IdentityFile ~/.ssh/blackwhite_git
+                IdentityFile ~/.ssh/blackwhite_yuki
                 AddKeysToAgent yes
 
             Host 112.137.129.158
