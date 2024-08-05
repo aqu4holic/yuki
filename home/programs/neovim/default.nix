@@ -58,6 +58,12 @@
         pyright
         ruff
         ruff-lsp
+
+        # typst
+        typst
+        tinymist
+        typstfmt
+        websocat
     ]
 
     ++ lib.optionals pkgs.stdenv.isLinux [

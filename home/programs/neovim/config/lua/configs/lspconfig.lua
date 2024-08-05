@@ -111,7 +111,7 @@ local on_attach = M.on_attach
 -- end
 
 local lspconfig = require('lspconfig')
-local servers = { 'ruff', 'html', 'cssls', 'tsserver', 'clangd', 'zls', 'astro' }
+local servers = { 'ruff', 'html', 'cssls', 'tsserver', 'clangd' }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
@@ -120,6 +120,16 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+
+lspconfig.tinymist.setup({
+    on_init = on_init,
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        formatterMode = 'typstfmt',
+        formatterPrintWidth = 90,
+    },
+})
 
 lspconfig.verible.setup {
     on_attach = on_attach,
