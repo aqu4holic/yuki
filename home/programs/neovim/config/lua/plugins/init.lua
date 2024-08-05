@@ -55,33 +55,10 @@ return {
     },
 
     {
-        "ggandor/flit.nvim",
+        "folke/flash.nvim",
         event = "VeryLazy",
-        config = function()
-            require("flit").setup({
-                keys = { f = "f", F = "F", t = "t", T = "T" },
-                labeled_modes = "v",
-                clever_repeat = false,
-                multiline = true,
-                opts = {
-                    equivalence_classes = {
-                        " \t\r\n",
-                        "aäàáâãāăạảãắằẳẵặấầẩẫậ",
-                        "dḍđ",
-                        "eëéèêēẹẻẽếềểễệ",
-                        "gǧğ",
-                        "hḥḫ",
-                        "iïīíìîıỉĩị",
-                        "nñ",
-                        "oọóòỏõōôốồộổỗơởỡớờợ",
-                        "sṣš",
-                        "tṭ",
-                        "uúûüűùủũụưựứừửữ",
-                        "zẓ",
-                    },
-                },
-            })
-        end,
+        opts = {},
+        keys = {},
     },
 
     {

@@ -74,6 +74,7 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 -- "jj" and "jk" are mapped to <ESC>
 -- map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 
+map("n", "<Esc>", "<Esc><cmd>noh<CR>", { desc = "general clear highlights" })
 map("n", "j", "gj", { desc = "Move down in wrapped line" })
 map("n", "k", "gk", { desc = "Move up in wrapped line" })
 map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })

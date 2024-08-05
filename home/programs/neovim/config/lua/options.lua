@@ -27,6 +27,19 @@ vim.opt.listchars = {
 
 -- leap: greying out the search area
 vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
+vim.api.nvim_set_hl(0, "LeapLabelPrimary", {
+    fg = "#a6e3a1",
+    bg = "black",
+    bold = true,
+    nocombine = true,
+})
+
+vim.api.nvim_set_hl(0, "FlashLabel", {
+    fg = "#a6e3a1",
+    bg = "black",
+    bold = true,
+    nocombine = true,
+})
 
 -- alpha-nvim: "neovim" header color
 vim.api.nvim_set_hl(0, "Type", { fg = "#89b4fa" })
