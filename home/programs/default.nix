@@ -10,7 +10,7 @@
         ./zathura
         ./vencord
         ./qimgv
-        ./spicetify
+        # ./spicetify
 
         ./spectacle
         ./redshift

@@ -24,7 +24,9 @@
     qt = {
         enable = true;
 
-        platformTheme.name = "gtk3";
+        platformTheme.name = "kvantum";
+
+        style.name = "kvantum";
 
         style.catppuccin = {
             enable = true;

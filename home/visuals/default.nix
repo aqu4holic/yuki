@@ -4,6 +4,8 @@
         ./bspwm_sxhkd
         ./picom
 
+        ./catppuccin
+
         ./cursor
         ./gtk_qt
 

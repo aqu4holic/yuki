@@ -3,11 +3,7 @@
     programs.bat = {
         enable = true;
 
-        config = {
-            theme = "Catppuccin Mocha";
-            paging = "never";
-            style = "plain";
-        };
+        catppuccin.enable = true;
     };
 
     # bat cache --build
