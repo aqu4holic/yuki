@@ -28,7 +28,8 @@ local function create_auto_save()
         create_autocmd({ "InsertLeave", "TextChanged" }, {
             group = auto_save_group,
             callback = function()
-                if #vim.api.nvim_buf_get_name(0) ~= 0 and vim.bo.buflisted then
+                local bufname = vim.api.nvim_buf_get_name(0)
+                if bufname ~= 0 and vim.bo.buflisted and vim.fn.filereadable(bufname) == 1 then
                     vim.cmd "silent w"
 
                     -- local filename = string.gsub(vim.api.nvim_buf_get_name(0), vim.loop.cwd(), '')

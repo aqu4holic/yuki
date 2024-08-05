@@ -87,6 +87,7 @@
         telegram-desktop
         mpv
         wpsoffice
+        # zed-editor
 
         # nix related
         #

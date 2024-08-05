@@ -11,7 +11,7 @@ in {
     users.users.${username} = {
         isNormalUser = true;
         description = username;
-        extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" ];
+        extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "adbusers" ];
     };
 
     security.sudo.extraConfig = ''
@@ -174,6 +174,7 @@ in {
     };
 
     programs.dconf.enable = true;
+    programs.adb.enable = true;
 
     # programs.zsh.enable = true;
     # users.defaultUserShell = pkgs.zsh;
@@ -269,9 +270,7 @@ in {
         #media-session.enable = true;
     };
 
-    programs.noisetorch = {
-        enable = true;
-    };
+    programs.noisetorch.enable = true;
 
     # enable docker
     virtualisation.docker.enable = true;

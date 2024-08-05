@@ -63,6 +63,19 @@
         };
     };
 
+    # specialisation = {
+    #     gpu_always.configuration = {
+    #         hardware.nvidia.prime = {
+    #             sync.enable = lib.mkForce true;
+
+    #             offload = {
+    #                 enable = lib.mkForce false;
+    #                 enableOffloadCmd = lib.mkForce false;
+    #             };
+    #         };
+    #     };
+    # };
+
     services.thermald.enable = lib.mkDefault true;
 
     services.tlp.settings = {
