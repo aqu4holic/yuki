@@ -88,6 +88,7 @@
         mpv
         wpsoffice
         # zed-editor
+        microsoft-edge
 
         # nix related
         #
@@ -101,7 +102,7 @@
         htop
         iotop # io monitoring
         iftop # network monitoring
-        nvtopPackages.panthor
+        nvtopPackages.nvidia
 
         # system call monitoring
         strace # system call monitoring

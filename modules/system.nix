@@ -62,6 +62,7 @@ in {
         enabled = "ibus";
         ibus.engines = [
             bamboo
+            pkgs.ibus-engines.anthy
         ];
     };
 
@@ -298,4 +299,17 @@ in {
         };
     };
     services.blueman.enable = true;
+
+    # set environment variables
+
+    # ibus
+    environment.variables.GTK_IM_MODULE = "ibus";
+    environment.variables.QT_IM_MODULE = "ibus";
+    environment.variables.QT4_IM_MODULE = "ibus";
+    environment.variables.CLUTTER_IM_MODULE = "ibus";
+    environment.variables.GLFW_IM_MODULE = "ibus";
+    environment.variables.XMODIFIERS = "@im=ibus";
+
+    # java
+    environment.variables._JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";
 }
