@@ -1,6 +1,6 @@
 add_newline = true
 
-format = '''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration$nix_shell$python$conda$nodejs$direnv$docker
+format = '''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$cmd_duration$nix_shell$python$conda$nodejs$direnv$docker${custom.subshell}
 [╰─](#d10475) $character'''
 
 # right_format = '$time'
@@ -110,3 +110,10 @@ unknown_msg = '[unknown shell](bold yellow)'
 style = 'bold fg:#6bfdff'
 symbol = '❄️'
 format = '[\[$symbol$state( \($name\))\]]($style) '
+
+[custom.subshell]
+command = 'math $SHLVL - 4'
+when = 'test $SHLVL -gt 4'
+style = 'bold fg:#6bff77'
+symbol = ' '
+format = '[\[${symbol} \(${output}\)\]]($style) '
