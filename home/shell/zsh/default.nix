@@ -96,7 +96,6 @@
             gp = "git push";
             ca = "conda activate";
             cs = "conda-shell -c zsh";
-            clean_cache = "~/bin/clean_cache";
         };
 
         history = {

@@ -53,7 +53,6 @@
             s = "kitten ssh";
             ca = "conda activate";
             cs = "conda-shell -c fish";
-            clean_cache = "~/bin/clean_cache";
         };
     };
 

@@ -9,8 +9,12 @@ in
 
     imports = [ inputs.spicetify-nix.homeManagerModule ];
 
+    home.packages = with pkgs; [
+        spotify
+    ];
+
     programs.spicetify = {
-        enable = true;
+        enable = false;
         # theme = spicePkgs.themes.catppuccin;
         # colorScheme = "mocha";
 
@@ -18,7 +22,7 @@ in
             fullAppDisplayMod
             shuffle # shuffle+ (special characters are sanitized out of ext names)
             hidePodcasts
-            # genre
+            genre
             powerBar
             playlistIcons
             goToSong

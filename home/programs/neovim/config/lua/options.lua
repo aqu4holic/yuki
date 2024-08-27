@@ -10,15 +10,15 @@ vim.keymap.set("x", "p", function()
 end, { remap = false, expr = true })
 
 -- render whitespace
-vim.opt.list = true;
-vim.opt.listchars = {
-    space = '·',
-    tab = '>·',
-    extends = '›',
-    precedes = '‹',
-    nbsp = '·',
-    trail = '·'
-}
+-- vim.opt.list = true;
+-- vim.opt.listchars = {
+--     space = '·',
+--     tab = '>·',
+--     extends = '›',
+--     precedes = '‹',
+--     nbsp = '·',
+--     trail = '·'
+-- }
 
 -- relative numbering
 -- vim.opt.number = true

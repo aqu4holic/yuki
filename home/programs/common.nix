@@ -6,6 +6,14 @@
         # here is some command line tools I use frequently
         # feel free to add your own or remove some of them
 
+        (
+            writeShellScriptBin "clean_cache" ''
+                nix-collect-garbage  --delete-old
+                sudo nix-collect-garbage -d
+                sudo /run/current-system/bin/switch-to-configuration boot
+            ''
+        )
+
         # archives
         zip
         xz
@@ -78,7 +86,7 @@
         mupdf-headless
         pandoc
         exiftool
-        ueberzugpp
+        # ueberzugpp
 
         # app
         obsidian

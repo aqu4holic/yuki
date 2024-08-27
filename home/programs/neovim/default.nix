@@ -12,18 +12,22 @@
 
     home.packages = with pkgs;
     [
-        (writeShellScriptBin "clean-nvim" ''
-            rm -rf ${config.xdg.dataHome}/nvim
-            rm -rf ${config.xdg.stateHome}/nvim
-            rm -rf ${config.xdg.cacheHome}/nvim
-        '')
+        (
+            writeShellScriptBin "clean_nvim" ''
+                rm -rf ${config.xdg.dataHome}/nvim
+                rm -rf ${config.xdg.stateHome}/nvim
+                rm -rf ${config.xdg.cacheHome}/nvim
+            ''
+        )
 
-        (writeShellScriptBin "clean-nvim-full" ''
-            rm -rf ${config.xdg.dataHome}/nvim
-            rm -rf ${config.xdg.stateHome}/nvim
-            rm -rf ${config.xdg.cacheHome}/nvim
-            rm -rf ${config.xdg.configHome}/nvim
-        '')
+        (
+            writeShellScriptBin "clean_nvim_full" ''
+                rm -rf ${config.xdg.dataHome}/nvim
+                rm -rf ${config.xdg.stateHome}/nvim
+                rm -rf ${config.xdg.cacheHome}/nvim
+                rm -rf ${config.xdg.configHome}/nvim
+            ''
+        )
 
         nodejs
         yarn
@@ -38,6 +42,7 @@
         gnumake
         # clang-tools_17
         clang-tools
+        gopls
 
         ### rust ###
         # rust-analyzer

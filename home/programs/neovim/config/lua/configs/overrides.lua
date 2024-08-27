@@ -37,6 +37,8 @@ M.treesitter = {
         "markdown_inline",
         "latex",
         "python",
+        "go",
+        "rust",
     },
     indent = {
         enable = true,
@@ -50,6 +52,10 @@ M.nvimtree = {
     git = {
         enable = true,
         ignore = false,
+    },
+
+    view = {
+        side = "right",
     },
 
     renderer = {
