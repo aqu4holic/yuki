@@ -3,6 +3,11 @@ local map = vim.keymap.set
 local M = {}
 local conf = { signature = true }
 
+-- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+
 -- export on_attach & capabilities
 M.on_attach = function(client, bufnr)
     local function opts(desc)
@@ -99,7 +104,7 @@ local on_attach = M.on_attach
 local capabilities = M.capabilities
 
 local lspconfig = require("lspconfig")
-local servers = { "ruff", "html", "cssls", "tsserver", "gopls" }
+local servers = { "ruff", "html", "cssls", "ts_ls", "gopls" }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup({

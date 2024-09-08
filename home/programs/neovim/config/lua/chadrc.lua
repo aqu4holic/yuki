@@ -1,15 +1,11 @@
 local M = {}
 
 M.ui = {
-    hl_override = {
-        Visual = { bg = "#2a2f5c" },
-        CursorLine = { bg = "#252636", fg = "#cba6f7" },
-        CursorLineNr = { fg = "#7aa2f7" },
-        -- Type = { fg = "#89b4fa" },
-        Search = { bg = "#cba6f7" },
-    },
+    hl_add = require("highlights").add,
+	hl_override = require("highlights").override,
 
-    theme = "catppuccin",
+    -- theme = "catppuccin",
+    theme = "tokyodark",
     transparency = true,
 
     tabufline = {

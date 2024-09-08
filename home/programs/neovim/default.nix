@@ -35,14 +35,13 @@
         unzip
         fd
         wget
-        lazygit
+
         ### treesitter ###
         tree-sitter
         gcc
+        gdb
         gnumake
-        # clang-tools_17
         clang-tools
-        gopls
 
         ### rust ###
         # rust-analyzer
@@ -63,6 +62,11 @@
         pyright
         ruff
         ruff-lsp
+
+        # java
+        maven
+        ant
+        sbt
 
         # typst
         typst

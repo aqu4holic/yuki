@@ -1,9 +1,9 @@
 require("nvchad.mappings")
 
 local map = vim.keymap.set
-local nomap = vim.keymap.del
 local create_user_command = vim.api.nvim_create_user_command
 local create_autocmd = vim.api.nvim_create_autocmd
+-- local nomap = vim.keymap.del
 -- local keymap = vim.api.nvim_set_keymap
 -- local function remap(mode, from, to)
 --   keymap(mode, from, to, opts)
@@ -84,7 +84,6 @@ map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 map("n", "<C-a>", "ggVG", { desc = "Select all" })
-map("n", "]]", ":call search('[([{<]')<CR>", { desc = "Move to next opening instance ([{<" })
 map("n", "<A-o>", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
 map("n", "<A-b>", "<cmd> Telescope buffers <CR>", { desc = "Find opened files" })
 map("n", "mm", ":b#<CR>", { desc = "Open last visited buffer" })
@@ -111,18 +110,24 @@ map("n", "<leader>fp", "<cmd> Telescope neovim-project discover <CR>", { desc = 
 
 -- map('n', '<leader>ww', '<cmd> HopWord <CR>', { desc = 'Hop' })
 
-vim.api.nvim_set_keymap('n', '<C-1>', '1gt', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-2>', '2gt', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-3>', '3gt', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-4>', '4gt', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-5>', '5gt', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-6>', '6gt', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-7>', '7gt', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-8>', '8gt', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-9>', ':tablast<CR>', {noremap = true, silent = true})
+-- map('n', '<C-1>', '1gt', {noremap = true, silent = true})
+-- map('n', '<C-2>', '2gt', {noremap = true, silent = true})
+-- map('n', '<C-3>', '3gt', {noremap = true, silent = true})
+-- map('n', '<C-4>', '4gt', {noremap = true, silent = true})
+-- map('n', '<C-5>', '5gt', {noremap = true, silent = true})
+-- map('n', '<C-6>', '6gt', {noremap = true, silent = true})
+-- map('n', '<C-7>', '7gt', {noremap = true, silent = true})
+-- map('n', '<C-8>', '8gt', {noremap = true, silent = true})
+-- map('n', '<C-9>', ':tablast<CR>', {noremap = true, silent = true})
+
+map('n', '<C-/>', 'gcc', {noremap = true, silent = true})
+map('i', '<C-/>', '<Esc>gcci', {noremap = true, silent = true})
+map('x', '<C-/>', 'gc', {noremap = true, silent = true})
+map('v', '<C-/>', 'gc', {noremap = true, silent = true})
 
 map("n", "<leader>o", "<cmd>Portal jumplist backward<CR>", { desc = "Portal Backward" })
 map("n", "<leader>i", "<cmd>Portal jumplist forward<CR>", { desc = "Portal Forward" })
+map("n", "<leader>co", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 
 -- wip code runner function
 -- TODO: cleanup, safe execution of c and cpp
