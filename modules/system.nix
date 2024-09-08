@@ -31,6 +31,11 @@ in {
         allowUnfreePredicate = _: true;
     };
 
+    nixpkgs.config.permittedInsecurePackages = [
+        "xpdf-4.05"
+        "openssl-1.1.1w"
+    ];
+
     # do garbage collection weekly to keep disk usage low
     nix.gc = {
         automatic = lib.mkDefault true;
@@ -239,7 +244,7 @@ in {
         python312Packages.pip
         nodejs
         go
-        jre8
+        # jre_minimal
         jdk22
     ];
 
@@ -300,6 +305,10 @@ in {
     };
     services.blueman.enable = true;
 
+    # flatpak
+    services.flatpak.enable = true;
+    xdg.portal.enable = true;
+
     # set environment variables
 
     # ibus
@@ -312,4 +321,7 @@ in {
 
     # java
     environment.variables._JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";
+
+    # direnv shell
+    environment.variables.DIRENV_WARN_TIMEOUT = 0;
 }
