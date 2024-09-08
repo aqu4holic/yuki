@@ -59,13 +59,13 @@
         cowsay
         lolcat
         fortune-kind
+        graphviz
 
         # misc ui
         kdePackages.spectacle # screenshot tool
         kdePackages.okular # pdf viewer
         catppuccin-gtk # gtk theme
         pavucontrol # volume control
-        pinta # img manipulator
         qimgv # img viewer
         inkscape # svg manipulator
         qalculate-gtk # calculator
@@ -97,6 +97,9 @@
         wpsoffice
         # zed-editor
         microsoft-edge
+        # rnote # note taker
+        qbittorrent-enhanced
+        pkg-config
 
         # nix related
         #
@@ -107,7 +110,7 @@
 
         # monitoring
         btop  # replacement of htop/nmon
-        htop
+        # htop
         iotop # io monitoring
         iftop # network monitoring
         nvtopPackages.nvidia

@@ -11,6 +11,7 @@
         ./vencord
         ./qimgv
         ./spicetify
+        ./lazygit
 
         ./spectacle
         ./redshift
