@@ -4,6 +4,11 @@
         enable = true;
 
         catppuccin.enable = true;
+
+        config = {
+            pager = "less -RF";
+            style = "plain";
+        };
     };
 
     # bat cache --build
