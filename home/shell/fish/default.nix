@@ -125,7 +125,7 @@
             joern-slice = "~/bin/joern/joern-cli/joern-slice";
             joern-vectors = "~/bin/joern/joern-cli/joern-vectors";
 
-            venv_create = "python -m venv venv";
+            venv_create = "python3 -m venv venv";
             venv_activate = "source venv/bin/activate.fish";
 
             s = "kitten ssh";

@@ -114,15 +114,17 @@ in {
                 unitConfig.DefaultDependencies = "no";
             };
             hibernate = {
-                enable = false;
+                enable = true;
                 unitConfig.DefaultDependencies = "no";
             };
             "hybrid-sleep" = {
-                enable = false;
+                enable = true;
                 unitConfig.DefaultDependencies = "no";
             };
         };
     };
+
+    security.protectKernelImage = false;
 
     # services.getty = {
     #     autologinUser = username;
@@ -177,6 +179,10 @@ in {
             monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
             emoji = ["Noto Color Emoji"];
         };
+    };
+
+    programs.nix-ld = {
+        enable = true;
     };
 
     programs.dconf.enable = true;
@@ -240,12 +246,10 @@ in {
         libgcc
         gcc
         cmake
-        python312
-        python312Packages.pip
         nodejs
         go
         # jre_minimal
-        jdk22
+        # jdk22
     ];
 
     # Enable CUPS to print documents.

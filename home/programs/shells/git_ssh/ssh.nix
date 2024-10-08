@@ -14,6 +14,7 @@
 
             Host 112.137.129.158
                 ForwardAgent yes
+                IdentityFile ~/.ssh/blackwhite_yuki
                 AddKeysToAgent yes
                 User phatnt
                 Compression no
@@ -27,6 +28,7 @@
 
             Host 112.137.129.161
                 ForwardAgent yes
+                IdentityFile ~/.ssh/blackwhite_yuki
                 AddKeysToAgent yes
                 User phatnt
                 Compression no

@@ -9,6 +9,7 @@
         ./btop
         # ./fastfetch
 
+        ./lsp
         ./yazi
     ];
 }
