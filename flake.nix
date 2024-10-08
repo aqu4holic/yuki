@@ -6,8 +6,12 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
         catppuccin.url = "github:catppuccin/nix";
-
-        spicetify-nix.url = "github:the-argus/spicetify-nix";
+        # zen-browser.url = "github:MarceColl/zen-browser-flake";
+        zen-browser.url = "github:ch4og/zen-browser-flake";
+        spicetify-nix = {
+              url = "github:Gerg-L/spicetify-nix";
+              inputs.nixpkgs.follows = "nixpkgs";
+        };
 
         home-manager = {
             url = "github:nix-community/home-manager";
@@ -18,6 +22,7 @@
     outputs = {
         self,
         nixpkgs,
+        zen-browser,
         ...
     } @inputs: {
         nixosConfigurations.yuki = nixpkgs.lib.nixosSystem {
@@ -31,6 +36,7 @@
                 ./hosts/blackwhite
 
                 inputs.catppuccin.nixosModules.catppuccin
+                # inputs.zen-browser.nixosModules.zen-browser
 
                 inputs.home-manager.nixosModules.home-manager {
                     home-manager = {
@@ -46,6 +52,8 @@
                                 ./home
 
                                 inputs.catppuccin.homeManagerModules.catppuccin
+                                inputs.spicetify-nix.homeManagerModules.default
+                                # inputs.zen-browser.homeManagerModules.zen-browser
                             ];
                         };
                     };

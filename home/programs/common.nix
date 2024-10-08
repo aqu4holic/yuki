@@ -1,6 +1,10 @@
-{ config, pkgs, libs, ... }:
+{ inputs, config, pkgs, libs, ... }:
 
 {
+    imports = [
+        ./python
+    ];
+
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
         # here is some command line tools I use frequently
@@ -88,18 +92,28 @@
         exiftool
         # ueberzugpp
 
-        # app
+        # # web
+        # nginx
+        # php
+        # mysql84
+
+        # apps
         obsidian
         vesktop
         zotero
         telegram-desktop
         mpv
-        wpsoffice
+        # wpsoffice
+        libreoffice-qt6-fresh
         # zed-editor
         microsoft-edge
         # rnote # note taker
         qbittorrent-enhanced
         pkg-config
+        teams-for-linux
+        rustdesk-flutter
+        # zen-browser
+        inputs.zen-browser.packages."${system}".default
 
         # nix related
         #
@@ -136,6 +150,12 @@
         jq.enable = true; # A lightweight and flexible command-line JSON processor
         feh.enable = true; # image viewer
         zoxide.enable = true;
+
+        # java
+        java = {
+            enable = true;
+            package = pkgs.jdk22;
+        };
     };
 
     services = {

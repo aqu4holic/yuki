@@ -1,5 +1,6 @@
 #/bin/sh
 
 bspc rule -a firefox desktop=^2 state=single_monocle
+bspc rule -a zen-alpha desktop=^2 state=single_monocle
 bspc rule -a vesktop desktop=^5 state=single_monocle
 bspc rule -a Spotify desktop=^4 state=single_monocle
