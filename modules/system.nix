@@ -5,9 +5,11 @@
 { config, pkgs, lib, ... }:
 let
     username = "blackwhite";
+
     bamboo = pkgs.callPackage ./pkgs/ibus-bamboo.nix {};
-in {
-# Define a user account. Don't forget to set a password with ‘passwd’.
+in
+{
+    # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.${username} = {
         isNormalUser = true;
         description = username;
@@ -64,7 +66,8 @@ in {
     };
 
     i18n.inputMethod = {
-        enabled = "ibus";
+        enable = true;
+        type = "ibus";
         ibus.engines = [
             bamboo
             pkgs.ibus-engines.anthy
@@ -183,6 +186,24 @@ in {
 
     programs.nix-ld = {
         enable = true;
+
+        libraries = with pkgs; [
+            zlib
+            zstd
+            stdenv.cc.cc
+            stdenv.cc
+            curl
+            openssl
+            attr
+            libssh
+            bzip2
+            libxml2
+            acl
+            libsodium
+            util-linux
+            xz
+            systemd
+        ];
     };
 
     programs.dconf.enable = true;
@@ -244,10 +265,19 @@ in {
         bc
         libnotify
         libgcc
+
         gcc
         cmake
+
         nodejs
+
         go
+
+        # rust
+        # rustup
+        # rustc
+        # cargo
+
         # jre_minimal
         # jdk22
     ];
