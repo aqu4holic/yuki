@@ -100,11 +100,13 @@
 
         shellAliases = {
             update = "sudo nixos-rebuild switch";
+
             y = "yy"; # yazi function
             v = "nvim";
             c = "code";
             b = "bat";
             d = "dua i";
+            cls = "clear";
 
             g = "git";
             lg = "lazygit";
@@ -125,8 +127,18 @@
             joern-slice = "~/bin/joern/joern-cli/joern-slice";
             joern-vectors = "~/bin/joern/joern-cli/joern-vectors";
 
-            venv_create = "python3 -m venv venv";
-            venv_activate = "source venv/bin/activate.fish";
+            vcreate = "python3 -m venv venv";
+            vactivate = "source venv/bin/activate.fish";
+            vca = "python3 -m venv venv && source venv/bin/activate.fish";
+            # venv_fix = ''
+            #     nix shell github:GuillaumeDesforges/fix-python
+            #     fix-python --venv venv
+            #     exit
+            # '';
+
+            ccreate = "conda create --name venv";
+            cactivate = "conda activate venv";
+            cca = "conda create --name venv && conda activate venv";
 
             s = "kitten ssh";
             ca = "conda activate";

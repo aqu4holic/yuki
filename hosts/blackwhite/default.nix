@@ -32,7 +32,7 @@
                 flavor = "mocha";
             };
 
-            splashImage = lib.mkForce /home/blackwhite/Pictures/wallpapers/3icy1h7kj4m51.png;
+            splashImage = lib.mkForce ../../home/photos/3icy1h7kj4m51.png;
         };
     };
 

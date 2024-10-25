@@ -7,16 +7,22 @@
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
-        # here is some command line tools I use frequently
+        # here is some command line tools i use frequently
         # feel free to add your own or remove some of them
 
         (
             writeShellScriptBin "clean_cache" ''
-                nix-collect-garbage  --delete-old
+                nix-collect-garbage --delete-old
                 sudo nix-collect-garbage -d
                 sudo /run/current-system/bin/switch-to-configuration boot
             ''
         )
+
+        # (
+        #     writeShellScriptBin "venv_fix" ''
+        #
+        #     ''
+        # )
 
         # archives
         zip
@@ -64,6 +70,7 @@
         lolcat
         fortune-kind
         graphviz
+        yt-dlp
 
         # misc ui
         kdePackages.spectacle # screenshot tool
@@ -112,8 +119,10 @@
         pkg-config
         teams-for-linux
         rustdesk-flutter
+        anydesk
         # zen-browser
         inputs.zen-browser.packages."${system}".default
+        anki-bin
 
         # nix related
         #
