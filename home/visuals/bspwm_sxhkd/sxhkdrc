@@ -179,7 +179,7 @@ super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # toggle polybar
-super + x
+super + alt + shift + x
     ~/bin/toggle_polybar
 
 #
