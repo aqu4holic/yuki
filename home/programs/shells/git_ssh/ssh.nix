@@ -2,43 +2,20 @@
 {
     programs.ssh = {
         enable = true;
+    };
 
-        extraConfig = ''
-            Host github.com
-                HostName ssh.github.com
-                User git
-                PreferredAuthentications publickey
-                ForwardAgent yes
-                IdentityFile ~/.ssh/blackwhite_yuki
-                AddKeysToAgent yes
+    home.file = {
+        # ".ssh/config_source" = {
+        #     source = ./config;
+        #
+        #     # onChange = ''cat ~/.ssh/config_source > ~/.ssh/config && chmod 600 ~/.ssh/config'';
+        # };
 
-            Host 112.137.129.158
-                ForwardAgent yes
-                IdentityFile ~/.ssh/blackwhite_yuki
-                AddKeysToAgent yes
-                User phatnt
-                Compression no
-                ServerAliveInterval 0
-                ServerAliveCountMax 3
-                HashKnownHosts no
-                UserKnownHostsFile ~/.ssh/known_hosts
-                ControlMaster no
-                ControlPath ~/.ssh/master-%r@%n:%p
-                ControlPersist no
+        ".ssh/config" = {
+            source = ./config;
+            target = ".ssh/config_source";
 
-            Host 112.137.129.161
-                ForwardAgent yes
-                IdentityFile ~/.ssh/blackwhite_yuki
-                AddKeysToAgent yes
-                User phatnt
-                Compression no
-                ServerAliveInterval 0
-                ServerAliveCountMax 3
-                HashKnownHosts no
-                UserKnownHostsFile ~/.ssh/known_hosts
-                ControlMaster no
-                ControlPath ~/.ssh/master-%r@%n:%p
-                ControlPersist no
-        '';
+            onChange = ''cat ~/.ssh/config_source > ~/.ssh/config && chmod 600 ~/.ssh/config'';
+        };
     };
 }
