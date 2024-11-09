@@ -73,7 +73,6 @@
         yt-dlp
 
         # misc ui
-        kdePackages.spectacle # screenshot tool
         kdePackages.okular # pdf viewer
         catppuccin-gtk # gtk theme
         pavucontrol # volume control

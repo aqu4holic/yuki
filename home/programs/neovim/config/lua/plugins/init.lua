@@ -382,4 +382,9 @@ return {
             require("cmp").setup(opts)
         end,
     },
+
+    {
+        'wakatime/vim-wakatime',
+        lazy = false,
+    },
 }

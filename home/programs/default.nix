@@ -13,7 +13,7 @@
         ./spicetify
         ./lazygit
 
-        ./spectacle
+        ./flameshot
         ./redshift
     ];
 }

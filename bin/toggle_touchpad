@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Touchpad device name
+TOUCHPAD_NAME="SYNA0001:00 06CB:CE78 Touchpad"
+
+# Get the current state of the touchpad (0: disabled, 1: enabled)
+current_state=$(xinput list-props "$TOUCHPAD_NAME" | grep "Device Enabled" | awk '{print $4}')
+
+# Toggle the state
+if [ "$current_state" -eq 1 ]; then
+    # Disable the touchpad
+    xinput set-prop "$TOUCHPAD_NAME" "Device Enabled" 0
+    # echo "Touchpad disabled."
+else
+    # Enable the touchpad
+    xinput set-prop "$TOUCHPAD_NAME" "Device Enabled" 1
+    # echo "Touchpad enabled."
+fi
+

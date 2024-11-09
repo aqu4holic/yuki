@@ -178,6 +178,12 @@ super + alt + shift + {Left,Down,Up,Right}
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
+super + F7
+    ~/bin/dual_monitor mirror
+
+super + shift + F7
+    ~/bin/dual_monitor extend
+
 # toggle polybar
 super + alt + shift + x
     ~/bin/toggle_polybar
@@ -241,3 +247,7 @@ super + g
 
 super + shift +  v
     copyq menu
+
+# touchpad
+super + F10
+    ~/bin/toggle_touchpad

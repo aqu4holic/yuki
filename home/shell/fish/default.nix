@@ -127,8 +127,8 @@
             joern-slice = "~/bin/joern/joern-cli/joern-slice";
             joern-vectors = "~/bin/joern/joern-cli/joern-vectors";
 
-            vcreate = "python3 -m venv venv";
-            vactivate = "source venv/bin/activate.fish";
+            vc = "python3 -m venv venv";
+            va = "source venv/bin/activate.fish";
             vca = "python3 -m venv venv && source venv/bin/activate.fish";
             # venv_fix = ''
             #     nix shell github:GuillaumeDesforges/fix-python

@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
 external_monitor=$(xrandr --query | rg 'HDMI-1-0')
+mode=${1:-mirror}
+
 if [[ $external_monitor = *disconnected* ]]; then
     xrandr --output eDP-1 --primary --mode 2560x1440 --rotate normal
 else
-    xrandr --output eDP-1 --primary --mode 2560x1440 --rotate normal --output HDMI-1-0 --mode 1920x1080 --rotate normal --right-of eDP-1
+    if [[ "$mode" == "mirror" ]]; then
+        xrandr --output eDP-1 --primary --mode 2560x1440 --rotate normal --output HDMI-1-0 --mode 1920x1080 --rotate normal --right-of eDP-1
+    elif [[ "$mode" == "extend" ]]; then
+        xrandr --output eDP-1 --primary --mode 2560x1440 --rotate normal --output HDMI-1-0 --mode 1920x1080 --scale-from 2560x1440 --same-as eDP-1
+    fi
 fi
