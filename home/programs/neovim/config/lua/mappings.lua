@@ -1,4 +1,5 @@
 require("nvchad.mappings")
+require('Comment').setup()
 
 local map = vim.keymap.set
 local create_user_command = vim.api.nvim_create_user_command
@@ -84,12 +85,17 @@ map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 map("n", "<C-a>", "ggVG", { desc = "Select all" })
-map("n", "<A-o>", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
-map("n", "<A-b>", "<cmd> Telescope buffers <CR>", { desc = "Find opened files" })
+
+map("n", "<A-w>", "<cmd>Telescope live_grep<CR>", { desc = "Telescope Live grep" })
+map("n", "<A-f>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope Find in current buffer" })
+map("n", "<A-r>", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope Find old files" })
+map("n", "<A-o>", "<cmd>Telescope find_files<CR>", { desc = "Telescope Find files" })
+map("n", "<A-b>", "<cmd>Telescope buffers<CR>", { desc = "Telescope Find opened files" })
+
 map("n", "mm", ":b#<CR>", { desc = "Open last visited buffer" })
 map("n", "<C-z>", function()
     vim.cmd(string.format("silent :wa"))
-    vim.cmd(string.format("silent :qa"))
+    vim.cmd(string.format("silent :qa!"))
 end, { desc = "Save all and close nvim" })
 -- faster nav
 -- map({ 'n', 'v' }, 'H', '^', { noremap = true })
@@ -104,30 +110,106 @@ end, { desc = "Save all and close nvim" })
 map("n", "<leader>lg", "<cmd> LazyGit <CR>", { desc = "LazyGit Open" })
 map("n", "<leader>ls", "<cmd> Lazy sync <CR>", { desc = "Lazy Sync Config" })
 map("n", "<leader>fp", "<cmd> Telescope neovim-project discover <CR>", { desc = "Telescope Find projects" })
+map("n", "<leader>fr", "<cmd> Telescope oldfiles <CR>", { desc = "Telescope Find old files" })
 
--- map('n', '<leader>tt', '<cmd> tabnew <CR>', { desc = 'Tab Create new' })
--- map('n', '<leader>tn', '<cmd> tabnext <CR>', { desc = 'Tab Switch next' })
+-- tabs
+map("n", "<Leader>t", ":tabnew<CR>", { noremap = true, silent = true, desc = "Open a new tab" })
+map("n", "<Leader>tq", ":tabclose<CR>", { noremap = true, silent = true, desc = "Close tab" })
+map("n", "<Leader>tb", ":tabprev<CR>", { noremap = true, silent = true, desc = "Switch to the previous tab" })
+map("n", "<Leader>tn", ":tabnext<CR>", { noremap = true, silent = true, desc = "Switch to the next tab" })
+map("n", "<Leader><Tab>", ":tabnext<CR>", { noremap = true, silent = true, desc = "Switch to the next tab" })
+map("n", "<Leader><S-Tab>", ":tabprev<CR>", { noremap = true, silent = true, desc = "Switch to the previous tab" })
 
--- map('n', '<leader>ww', '<cmd> HopWord <CR>', { desc = 'Hop' })
+function TabMoveWithWrap(dir)
+    local current_tab = vim.fn.tabpagenr()  -- Get current tab page number
+    local total_tabs = vim.fn.tabpagenr('$')  -- Get total number of tabs
 
--- map('n', '<C-1>', '1gt', {noremap = true, silent = true})
--- map('n', '<C-2>', '2gt', {noremap = true, silent = true})
--- map('n', '<C-3>', '3gt', {noremap = true, silent = true})
--- map('n', '<C-4>', '4gt', {noremap = true, silent = true})
--- map('n', '<C-5>', '5gt', {noremap = true, silent = true})
--- map('n', '<C-6>', '6gt', {noremap = true, silent = true})
--- map('n', '<C-7>', '7gt', {noremap = true, silent = true})
--- map('n', '<C-8>', '8gt', {noremap = true, silent = true})
--- map('n', '<C-9>', ':tablast<CR>', {noremap = true, silent = true})
+    -- Calculate the new tab index with wrap-around
+    local new_tab = current_tab + dir
+    if new_tab < 1 then
+        new_tab = total_tabs  -- Wrap to the last tab if moving left from the first tab
+    elseif new_tab > total_tabs then
+        new_tab = 0  -- Wrap to the first tab if moving right from the last tab
+    else
+        if (dir < 0) then
+            vim.cmd('tabmove ' .. dir)
+        else
+            vim.cmd('tabmove +' .. dir)
+        end
+        return
+    end
 
-map('n', '<C-/>', 'gcc', {noremap = true, silent = true})
-map('i', '<C-/>', '<Esc>gcci', {noremap = true, silent = true})
-map('x', '<C-/>', 'gc', {noremap = true, silent = true})
-map('v', '<C-/>', 'gc', {noremap = true, silent = true})
+    -- Move to the new tab
+    vim.cmd('tabmove ' .. new_tab)
+end
 
+map("n", "<Leader>th", function() TabMoveWithWrap(-1) end, { noremap = true, silent = true, desc = "Move tab left" })
+map("n", "<Leader>tl", function() TabMoveWithWrap(1) end, { noremap = true, silent = true, desc = "Move tab right" })
+map("n", "<Leader>tj", function() TabMoveWithWrap(-1) end, { noremap = true, silent = true, desc = "Move tab left" })
+map("n", "<Leader>tk", function() TabMoveWithWrap(1) end, { noremap = true, silent = true, desc = "Move tab right" })
+map("n", "<C-,>", function() TabMoveWithWrap(-1) end, { noremap = true, silent = true, desc = "Move tab left" })
+map("n", "<C-.>", function() TabMoveWithWrap(1) end, { noremap = true, silent = true, desc = "Move tab right" })
+
+map("n", "<C-1>", ":tabn 1<CR>", { noremap = true, silent = true, desc = "Switch to tab 1" })
+map("n", "<C-2>", ":tabn 2<CR>", { noremap = true, silent = true, desc = "Switch to tab 2" })
+map("n", "<C-3>", ":tabn 3<CR>", { noremap = true, silent = true, desc = "Switch to tab 3" })
+map("n", "<C-4>", ":tabn 4<CR>", { noremap = true, silent = true, desc = "Switch to tab 4" })
+map("n", "<C-5>", ":tabn 5<CR>", { noremap = true, silent = true, desc = "Switch to tab 5" })
+map("n", "<C-6>", ":tabn 6<CR>", { noremap = true, silent = true, desc = "Switch to tab 6" })
+map("n", "<C-7>", ":tabn 7<CR>", { noremap = true, silent = true, desc = "Switch to tab 7" })
+map("n", "<C-8>", ":tabn 8<CR>", { noremap = true, silent = true, desc = "Switch to tab 8" })
+map('n', '<C-9>', ':tablast<CR>', {noremap = true, silent = true})
+
+-- Line-wise comment toggle with Ctrl + /
+vim.keymap.set('n', '<C-/>', '<Plug>(comment_toggle_linewise_current)', { noremap = true, silent = true })
+vim.keymap.set('v', '<C-/>', '<Plug>(comment_toggle_linewise_visual)', { noremap = true, silent = true })
+
+-- Block-wise comment toggle with Ctrl + Shift + /
+vim.keymap.set('n', '<C-S-/>', '<Plug>(comment_toggle_blockwise_current)', { noremap = true, silent = true })
+vim.keymap.set('v', '<C-S-/>', '<Plug>(comment_toggle_blockwise_visual)', { noremap = true, silent = true })
+
+-- Visual Block mode for comments
+vim.keymap.set('x', '<C-/>', '<Plug>(comment_toggle_linewise_visual)', { noremap = true, silent = true })
+vim.keymap.set('x', '<C-S-/>', '<Plug>(comment_toggle_blockwise_visual)', { noremap = true, silent = true })
+
+-- portal
 map("n", "<leader>o", "<cmd>Portal jumplist backward<CR>", { desc = "Portal Backward" })
 map("n", "<leader>i", "<cmd>Portal jumplist forward<CR>", { desc = "Portal Forward" })
 map("n", "<leader>co", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+
+-- resize splits
+-- Resize vertical split (increase width) using <A-+>
+vim.keymap.set('n', '<A-=>', function()
+    vim.cmd('vertical resize +1')  -- Increase the width of the active split by 5 columns
+end)
+
+-- Resize vertical split (decrease width) using <A-->
+vim.keymap.set('n', '<A-->', function()  -- <A--> is mapped as <A-=> on some systems
+    vim.cmd('vertical resize -1')  -- Decrease the width of the active split by 5 columns
+end)
+
+-- Resize horizontal split (increase height) using <A-Shift-+>
+vim.keymap.set('n', '<A-S-=>', function()
+    vim.cmd('resize +1')  -- Increase the height of the active split by 5 lines
+end)
+
+-- Resize horizontal split (decrease height) using <A-Shift-->
+vim.keymap.set('n', '<A-S-->', function()
+    vim.cmd('resize -1')  -- Decrease the height of the active split by 5 lines
+end)
+
+-- Exit terminal input mode when pressing ESC
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+-- -- Open a horizontal terminal with Shift + `
+-- vim.keymap.set("n", "<S-`>", function()
+--   require("nvchad.term").new({ pos = "sp" })  -- sp = split (horizontal)
+-- end)
+--
+-- -- Open a vertical terminal with Ctrl + Shift + `
+-- vim.keymap.set("n", "<C-S-`>", function()
+--   require("nvchad.term").new({ pos = "vsp" })  -- vsp = vertical split
+-- end)
 
 -- wip code runner function
 -- TODO: cleanup, safe execution of c and cpp
