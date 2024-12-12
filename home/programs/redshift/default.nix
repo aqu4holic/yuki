@@ -8,7 +8,7 @@
             night = 3200;
         };
 
-        latitude = 18.0;
-        longitude = 110.0;
+        latitude = 12.25;
+        longitude = 109.0;
     };
 }
