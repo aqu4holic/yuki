@@ -6,6 +6,9 @@
 super + Return
     kitty
 
+super + q
+    kitty
+
 # program launcher
 super + c
     rofi -show drun -theme "$HOME/.config/rofi/themes/app_launcher.rasi"
@@ -103,9 +106,12 @@ super + bracket{left,right}
 alt + Tab
     bspc node -f last
 
-# focus the last node
+# windows like
 super + grave
-    bspc node -f last
+    skippy-xd --expose
+
+alt + grave
+    skippy-xd --expose
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -221,8 +227,16 @@ super + {F2, F3}
 super + Home
     ~/bin/screenshot -fm
 
+# fullscreen screenshot save
+super + Print
+    ~/bin/screenshot -fm
+
 # cropped save
 super + shift + Home
+    ~/bin/screenshot -s
+
+# cropped save
+super + shift + Print
     ~/bin/screenshot -s
 
 # clipboard fullscreen
@@ -236,6 +250,13 @@ super + shift + s
 # clipboard cropped + edit
 ctrl + Home
     ~/bin/screenshot -sc
+
+# clipboard cropped + edit
+ctrl + Print
+    ~/bin/screenshot -sc
+
+Print
+    ~/bin/screenshot -fcm
 
 #
 # utils
