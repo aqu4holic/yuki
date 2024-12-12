@@ -117,6 +117,10 @@ rules = [
 
 [icon]
 prepend_rules = [
+    { if = "hidden & dir",  text = "👻" },  # Hidden directories
+
+    { name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
+
     { name = ".SRCINFO", text = "󰣇", fg = "#89b4fa" },
     { name = ".Xauthority", text = "", fg = "#fab387" },
     { name = ".Xresources", text = "", fg = "#fab387" },

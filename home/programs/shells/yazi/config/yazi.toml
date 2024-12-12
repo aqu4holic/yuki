@@ -20,6 +20,7 @@ max_height      = 1200
 cache_dir       = ""
 image_filter    = "triangle"
 image_quality   = 80
+image_delay     = 5
 sixel_fraction  = 15
 ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
@@ -88,8 +89,28 @@ image_alloc      = 536870912  # 512MB
 image_bound      = [ 0, 0 ]
 suppress_preload = false
 
-[plugin]
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
 
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
+
+[plugin]
+prepend_previewers = [
+    # { name = "*.md", run = "glow" },
+    # { mime = "text/csv", run = "miller"},
+    { name = "*/", run = "eza-preview" },
+    { name = "*.ipynb", run = "nbpreview" },
+    { mime = "{image,audio,video}/*", run = "mediainfo"},
+    { mime = "application/x-subrip", run = "mediainfo"},
+]
+append_previewers = [
+    # { name = "*", run = "hexyl" },
+]
 preloaders = [
     # { name = "*", cond = "!mime", run = "mime", multi = true, prio = "high" },
     # Image
