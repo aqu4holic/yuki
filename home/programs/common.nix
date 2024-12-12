@@ -35,15 +35,23 @@
         # utils
         ripgrep # recursively searches directories for a regex pattern
         jq # A lightweight and flexible command-line JSON processor
+        yq # yaml processor
+        yj # wtf is this
         eza # A modern replacement for ‘ls’
         fzf # A command-line fuzzy finder
         fd
-        bat
-        zoxide
+        bat # file preview
+        zoxide # command history
+        # glow
+        # miller
+        # hexyl
+        xdragon # drag and drop
 
-        ffmpeg
+        ffmpeg-full
         poppler
         ffmpegthumbnailer
+
+        texliveFull
 
         # networking tools
         mtr # A network diagnostic tool
@@ -79,11 +87,14 @@
         qimgv # img viewer
         inkscape # svg manipulator
         qalculate-gtk # calculator
-        simplescreenrecorder # screen recorder
+        # simplescreenrecorder # screen recorder
+        obs-studio # screen recorder
         screenkey # display keys pressed on screen
+        skippy-xd
 
         copyq
         imagemagick
+        ghostscript
         xclip
         maim
         redshift
@@ -97,6 +108,7 @@
         pandoc
         exiftool
         # ueberzugpp
+        mediainfo
 
         # # web
         # nginx
@@ -110,8 +122,8 @@
         telegram-desktop
         mpv
         # wpsoffice
-        libreoffice-qt6-fresh
-        # zed-editor
+        # libreoffice-qt6-fresh
+        zed-editor
         microsoft-edge
         # rnote # note taker
         qbittorrent-enhanced
@@ -120,7 +132,7 @@
         rustdesk-flutter
         anydesk
         # zen-browser
-        inputs.zen-browser.packages."${system}".default
+        inputs.zen-browser.packages."${system}".generic
         anki-bin
 
         # nix related
@@ -162,12 +174,17 @@
         # java
         java = {
             enable = true;
-            package = pkgs.jdk22;
+            package = pkgs.jdk23;
         };
     };
 
     services = {
         network-manager-applet.enable = true;
         copyq.enable = true;
+
+        gnome-keyring = {
+            enable = true;
+
+        };
     };
 }

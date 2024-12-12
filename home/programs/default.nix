@@ -15,5 +15,6 @@
 
         ./flameshot
         ./redshift
+        ./fusuma
     ];
 }

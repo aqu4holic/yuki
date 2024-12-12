@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
     home.file.".xinitrc" = {
-        source = ../../../bin/.xinitrc ;
+        source = ../../../bin/.xinitrc;
     };
 }

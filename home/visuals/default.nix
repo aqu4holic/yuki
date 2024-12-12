@@ -13,5 +13,7 @@
         ./eww
 
         ./polybar
+
+        ./skippy
     ];
 }

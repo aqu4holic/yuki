@@ -9,11 +9,15 @@ let
     bamboo = pkgs.callPackage ./pkgs/ibus-bamboo.nix {};
 in
 {
+    imports = [
+        ./services.nix
+    ];
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.${username} = {
         isNormalUser = true;
         description = username;
-        extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "adbusers" ];
+        extraGroups = [ "input" "networkmanager" "wheel" "video" "audio" "docker" "adbusers" ];
     };
 
     security.sudo.extraConfig = ''
@@ -106,6 +110,12 @@ in
         };
     };
 
+    # services.getty.autologinUser = username;
+    systemd.services."getty@tty1" = {
+        overrideStrategy = "asDropin";
+        serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} -o '-p -- ${username}' --noclear --skip-login --keep-baud %I 115200,38400,9600 $TERM"];
+    };
+
     systemd = {
         targets = {
             sleep = {
@@ -129,10 +139,6 @@ in
 
     security.protectKernelImage = false;
 
-    # services.getty = {
-    #     autologinUser = username;
-    # };
-
     # wm
     services.displayManager = {
         defaultSession = "none+bspwm";
@@ -155,7 +161,7 @@ in
         packages = with pkgs; [
             # normal fonts
             noto-fonts
-            noto-fonts-cjk
+            noto-fonts-cjk-sans
             noto-fonts-emoji
             newcomputermodern
 
@@ -260,6 +266,7 @@ in
         # utils
         killall
         xdotool
+        xorg.xev
 
         # libs
         bc
@@ -345,6 +352,9 @@ in
 
     # set environment variables
 
+    # GTK portal config
+    # environment.variables.GTK_USE_PORTAL = 1;
+
     # ibus
     environment.variables.GTK_IM_MODULE = "ibus";
     environment.variables.QT_IM_MODULE = "ibus";
@@ -358,4 +368,7 @@ in
 
     # direnv shell
     environment.variables.DIRENV_WARN_TIMEOUT = 0;
+
+    # qt scale
+    environment.variables.QT_SCALE_FACTOR = "1.3";
 }
