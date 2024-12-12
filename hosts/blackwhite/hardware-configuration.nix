@@ -14,7 +14,7 @@
     # boot.extraModulePackages = [ ];
     boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = pkgs.linuxPackages_6_11;
 
     fileSystems."/" =
     { device = "/dev/disk/by-label/yuki";
