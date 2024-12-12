@@ -1,13 +1,19 @@
 add_newline = true
 
-format = '''[╭─](#d10475) ❄️ $username$hostname$directory$git_branch$git_commit$git_state$git_status$jobs$nix_shell$python${custom.venv}$conda$nodejs$direnv$docker${custom.subshell}$cmd_duration
-[╰─](#d10475) $character'''
+# format = '''$directory$git_branch$git_commit$git_state$git_status$jobs$nix_shell$python${custom.venv}$conda$nodejs$direnv$docker${custom.subshell_indicator}$cmd_duration
+# $character'''
+
+# format = '''$directory$git_branch$git_commit$git_state$git_metrics$git_status$jobs$nix_shell$python$conda$nodejs$direnv$docker$cmd_duration
+# $character'''
+
+format = '''$directory${custom.git_indicator_l}$git_branch$git_commit$git_state$git_metrics$git_status${custom.git_indicator_r}$jobs$nix_shell$python$conda$nodejs$direnv$docker$cmd_duration
+$character'''
 
 # right_format = '$time'
 
 [character]
-success_symbol = '[ ](bold green)'
-error_symbol = '[ ](bold red)'
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
 # success_symbol = '😸'
 # error_symbol = '😿'
 
@@ -22,35 +28,25 @@ zsh_indicator = '[ZSH](bright-white) '
 disabled = false
 show_always = true
 format =  '[$user]($style)'
-style_user = 'bold #00c8ff'
-style_root = 'bold #ff006a'
+style_user = 'bold #01c8ff'
+style_root = 'bold #ff007a'
 
 [hostname]
-format = '[@](bold fg:#f9e2af)[${hostname}]($style) '
+format = '[@](bold fg:#f10e2af)[${hostname}]($style) '
 disabled = false
-style = 'bold #ff006a'
+style = 'bold #ff007a'
 ssh_only = false
 
 [git_branch]
 disabled = false
 only_attached = true
-format = '[\[](bold fg:#f54287)[$symbol$branch]($style) '
+format = '[$symbol$branch]($style) '
 symbol = ' '
 style = 'bold bright-yellow bold'
 
-[git_commit]
-disabled = false
-only_detached = true
-format = '[ﰖ$hash]($style) '
-style = 'bold bright-yellow bold'
-
-[git_state]
-disabled = false
-style = 'bold bright-purple bold'
-
 [git_status]
 disabled = false
-format = '([$all_status$ahead_behind]($style)[\]](bold fg:#f54287) )'
+format = '([$all_status$ahead_behind](bold fg:#53dbbd))'
 style = 'bold bright-green bold'
 conflicted = '='
 ahead = '⇡'
@@ -64,17 +60,41 @@ renamed = '»'
 deleted = '✘'
 typechanged = ''
 
-[custom.git_indicator]
+[git_commit]
 disabled = false
-style = 'bold fg:#6bff77'
+only_detached = true
+format = '[ﰖ$hash]($style) '
+style = 'bold bright-yellow bold'
+
+[git_metrics]
+disabled = false
+added_style = 'bold blue'
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
+[git_state]
+disabled = false
+style = 'bold bright-purple bold'
+
+[custom.git_indicator_l]
+disabled = false
+when = true
+style = 'bold fg:#7bff77'
 require_repo = true
 symbol = ''
-format = '[\[$git_branch$git_commit$git_state$git_status\]]'
+format = '[\[]($style)'
+
+[custom.git_indicator_r]
+disabled = false
+when = true
+style = 'bold fg:#7bff77'
+require_repo = true
+symbol = ''
+format = '[\]]($style) '
 
 [directory]
 disabled = false
 format = '[$read_only]($read_only_style)[$path]($style) '
-style = 'bold fg:#75aeff'
+style = 'bold fg:#76aeff'
 use_os_path_sep = true
 read_only = '🔒 '
 truncation_length = 0
@@ -90,7 +110,7 @@ style = 'bright-blue'
 disabled = false
 use_12hr = true
 format = '[$time]($style) 🕙'
-style = '#00ffc3'
+style = '#01ffc3'
 
 [jobs]
 disabled = false
@@ -128,56 +148,62 @@ when = '[ -n "$VIRTUAL_ENV" ]'
 style = 'yellow bold'
 format = '[$output]($style) '
 
+# [python]
+# disabled = false
+# symbol = '󰌠'
+# format = '[\[${symbol}]($style) '
+# style = 'yellow bold'
+
 [python]
 disabled = false
-symbol = '󰌠'
-format = '[\[${symbol}]($style) '
+symbol = '󰌠 '
+format = '[\[${symbol}${virtualenv}\]]($style) '
 style = 'yellow bold'
 
 [conda]
 disabled = false
 symbol = '🐍 '
 format = '[\[${symbol}\(${environment}\)\]]($style) '
-style = 'bold fg:#81bff2'
+style = 'bold fg:#82bff2'
 
 [nodejs]
 disabled = false
 symbol = ' '
 format = '[\[${symbol}\(${environment}\)\]]($style) '
-style = 'bold fg:#34eb98'
+style = 'bold fg:#35eb98'
 
 [direnv]
 disabled = false
 symbol = ' '
 format = '[\[${symbol}\(${loaded}/${allowed}\)\]]($style) '
-style = 'bold fg:#34eb98'
+style = 'bold fg:#35eb98'
 
 [docker_context]
 disabled = false
 symbol = '🐳'
 format = '[\[${symbol} \(${context}\)\]]($style) '
-style = 'bold fg:#346beb'
+style = 'bold fg:#347beb'
 
 [nix_shell]
 disabled = false
 impure_msg = '[impure shell](bold red)'
 pure_msg = '[pure shell](bold green)'
 unknown_msg = '[unknown shell](bold yellow)'
-style = 'bold fg:#6bfdff'
+style = 'bold fg:#7bfdff'
 symbol = '❄️'
 format = '[\[$symbol $state (\($name\))\]]($style) '
 
 # bash/zsh
 # [custom.subshell_indicator]
-# command = 'echo $((SHLVL - 4))'
-# when = 'test $SHLVL -gt 4'
-# style = 'bold fg:#6bff77'
+# command = 'echo $((SHLVL - 5))'
+# when = 'test $SHLVL -gt 5'
+# style = 'bold fg:#7bff77'
 # symbol = ''
 # format = '[\[${symbol} \(${output}\)\]]($style) '
 
 [custom.subshell_indicator]
-command = 'math $SHLVL - 4'
-when = 'test $SHLVL -gt 4'
-style = 'bold fg:#6bff77'
+command = 'math $SHLVL - 5'
+when = 'test $SHLVL -gt 5'
+style = 'bold fg:#7bff77'
 symbol = ''
 format = '[\[${symbol} \(${output}\)\]]($style) '

@@ -57,45 +57,60 @@
 
             eval "$(ssh-agent -c)" &>/dev/null
 
-            function joshuto() {
-                ID="$$"
-                mkdir -p /tmp/$USER
-                OUTPUT_FILE="/tmp/$USER/joshuto-cwd-$ID"
-                # env ~/bin/joshuto_ueberzugpp --output-file "$OUTPUT_FILE" $@
-                env joshuto --output-file "$OUTPUT_FILE" $@
-                exit_code=$?
-
-                case "$exit_code" in
-                    # regular exit
-                    0)
-                        ;;
-                    # output contains current directory
-                    101)
-                        JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
-                        cd "$JOSHUTO_CWD"
-                        ;;
-                    # output selected files
-                    102)
-                        ;;
-                    *)
-                        echo "Exit code: $exit_code"
-                        ;;
-                esac
+            function y() {
+            	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+            	yazi "$@" --cwd-file="$tmp"
+            	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+            		builtin cd -- "$cwd"
+            	fi
+            	rm -f -- "$tmp"
             }
         '';
 
         shellAliases = {
             update = "sudo nixos-rebuild switch";
-            j = "joshuto";
+
+            y = "yy"; # yazi function
             v = "nvim";
             c = "code";
+            b = "bat";
+            d = "dua i";
+            cls = "clear";
+
             g = "git";
-            e = "erd";
+            lg = "lazygit";
             gaa = "git add .";
             gcm = "git commit -m";
+            gcma = "git commit -ma";
             gp = "git push";
-            ca = "conda activate";
-            cs = "conda-shell -c zsh";
+            gs = "git status";
+
+            gdb = ''gdb -q -ex "set verbose off" -ex "set complaints 0" -ex "set confirm off" -ex "set exec-done-display off"'';
+
+            joern = "~/bin/joern/joern-cli/joern";
+            joern-cpg2scpg = "~/bin/joern/joern-cli/joern-cpg2scpg";
+            joern-export = "~/bin/joern/joern-cli/joern-export";
+            joern-flow = "~/bin/joern/joern-cli/joern-flow";
+            joern-parse = "~/bin/joern/joern-cli/joern-parse";
+            joern-scan = "~/bin/joern/joern-cli/joern-scan";
+            joern-slice = "~/bin/joern/joern-cli/joern-slice";
+            joern-vectors = "~/bin/joern/joern-cli/joern-vectors";
+
+            vc = "python3 -m venv venv";
+            va = "source venv/bin/activate";
+            vca = "python3 -m venv venv && source venv/bin/activate";
+
+            ccv = "conda create --name venv";
+            cav = "conda activate venv";
+            ccav = "conda create --name venv && conda activate venv";
+            ccn = "conda create --name";
+            cac = "conda activate";
+            cda = "conda deactivate";
+            cfa = "conda env create -f environment.yaml";
+            crm = "conda remove --all -n";
+
+            s = "kitten ssh";
+            cs = "conda-shell -c fish";
         };
 
         history = {

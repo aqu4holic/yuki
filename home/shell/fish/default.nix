@@ -4,11 +4,13 @@
         enable = true;
 
         shellInit = ''
-            bash ~/.profile
-            source ~/.conda/etc/fish/conf.d/conda.fish
+            # bash ~/.profile
 
-            # for bluetooth, it will crash without this
-            dbus-update-activation-environment DISPLAY
+            if status --is-login
+                if test -z "$DISPLAY" -a $XDG_VTNR = 1
+                    exec startx -- -keeptty
+                end
+            end
 
             # fish_add_path /home/blackwhite/bin
 
@@ -30,72 +32,22 @@
                 end
                 rm -f -- "$tmp"
             end
+        '';
 
-            function bind_bang
-                switch (commandline --current-token)[-1]
-                case "!"
-                    # Without the `--`, the functionality can break when completing
-                    # flags used in the history (since, in certain edge cases
-                    # `commandline` will assume that *it* should try to interpret
-                    # the flag)
-                    commandline --current-token -- $history[1]
-                    commandline --function repaint
-                case "*"
-                    commandline --insert !
-                end
+        shellInitLast = ''
+            # for bluetooth, it will crash without this
+            dbus-update-activation-environment DISPLAY
+            source ~/.conda/etc/fish/conf.d/conda.fish
+
+            function starship_transient_prompt_func
+                starship module directory
+                starship module character
             end
-
-            function bind_dollar
-                switch (commandline --current-token)[-1]
-                # This case lets us still type a literal `!$` if we need to (by
-                # typing `!\$`). Probably overkill.
-                case "*!\\"
-                    # Without the `--`, the functionality can break when completing
-                    # flags used in the history (since, in certain edge cases
-                    # `commandline` will assume that *it* should try to interpret
-                    # the flag)
-                    commandline --current-token -- (echo -ns (commandline --current-token)[-1] | head -c '-1')
-                    commandline --insert '$'
-                case "!"
-                    commandline --current-token ""
-                    commandline --function history-token-search-backward
-
-
-                # Main difference from referenced version is this `*!` case
-                # =========================================================
-                #
-                # If the `!$` is preceded by any text, search backward for tokens
-                # that contain that text as a substring. E.g., if we'd previously
-                # run
-                #
-                #   git checkout -b a_feature_branch
-                #   git checkout master
-                #
-                # then the `fea!$` in the following would be replaced with
-                # `a_feature_branch`
-                #
-                #   git branch -d fea!$
-                #
-                # and our command line would look like
-                #
-                #   git branch -d a_feature_branch
-                #
-                case "*!"
-                    # Without the `--`, the functionality can break when completing
-                    # flags used in the history (since, in certain edge cases
-                    # `commandline` will assume that *it* should try to interpret
-                    # the flag)
-                    commandline --current-token -- (echo -ns (commandline --current-token)[-1] | head -c '-1')
-                    commandline --function history-token-search-backward
-                case "*"
-                    commandline --insert '$'
-                end
+            function starship_transient_rprompt_func
+                starship module cmd_duration
             end
-
-            function fish_user_key_bindings
-                bind ! bind_bang
-                bind '$' bind_dollar
-            end
+            starship init fish | source
+            enable_transience
         '';
 
         shellAliases = {
@@ -118,15 +70,6 @@
 
             gdb = ''gdb -q -ex "set verbose off" -ex "set complaints 0" -ex "set confirm off" -ex "set exec-done-display off"'';
 
-            joern = "~/bin/joern/joern-cli/joern";
-            joern-cpg2scpg = "~/bin/joern/joern-cli/joern-cpg2scpg";
-            joern-export = "~/bin/joern/joern-cli/joern-export";
-            joern-flow = "~/bin/joern/joern-cli/joern-flow";
-            joern-parse = "~/bin/joern/joern-cli/joern-parse";
-            joern-scan = "~/bin/joern/joern-cli/joern-scan";
-            joern-slice = "~/bin/joern/joern-cli/joern-slice";
-            joern-vectors = "~/bin/joern/joern-cli/joern-vectors";
-
             vc = "python3 -m venv venv";
             va = "source venv/bin/activate.fish";
             vca = "python3 -m venv venv && source venv/bin/activate.fish";
@@ -136,12 +79,16 @@
             #     exit
             # '';
 
-            ccreate = "conda create --name venv";
-            cactivate = "conda activate venv";
-            cca = "conda create --name venv && conda activate venv";
+            ccv = "conda create --name venv";
+            cav = "conda activate venv";
+            ccav = "conda create --name venv && conda activate venv";
+            ccn = "conda create --name";
+            cac = "conda activate";
+            cda = "conda deactivate";
+            cfa = "conda env create -f environment.yaml";
+            crm = "conda remove --all -n";
 
             s = "kitten ssh";
-            ca = "conda activate";
             cs = "conda-shell -c fish";
         };
     };

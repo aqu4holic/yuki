@@ -7,7 +7,7 @@
     };
 
     xdg.configFile."starship.toml" = {
-        source = ./starship.toml;
+        source = ./minimal_starship.toml;
 
         recursive = true;
     };
