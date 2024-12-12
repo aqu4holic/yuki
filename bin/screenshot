@@ -12,6 +12,6 @@ case $1 in
             && notify-send -i "stock_bell" -a "(A) maim" "Fullscreen Screenshot" "A screenshot was saved to $path/screenshot_$time.png";;
     "-sm") maim --hidecursor --select "$path/screenshot_$time.png" \
             && notify-send -i "stock_bell" -a "(A) maim" "Region Screenshot" "A screenshot was saved to $path/screenshot_$time.png";;
-    "-s") flameshot gui --clipboard --last-region --path "$path/screenshot_$time.png";;
-    "-sc") flameshot gui --clipboard --last-region;;
+    "-s") flameshot gui --clipboard --path "$path/screenshot_$time.png";;
+    "-sc") flameshot gui --clipboard;;
 esac

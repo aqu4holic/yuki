@@ -1,0 +1,19 @@
+swipe:
+    3:
+        left:
+            command: "xdotool key super+bracketleft"
+        right:
+            command: "xdotool key super+bracketright"
+        up:
+            command: "skippy-xd"
+pinch:
+    in:
+        command: "xdotool key ctrl+minus"
+    out:
+        command: "xdotool key ctrl+plus"
+threshold:
+    swipe: 0.1
+    pinch: 0.1
+interval:
+    swipe: 0.25
+    pinch: 0.1

@@ -1,15 +1,27 @@
 #!/usr/bin/env bash
 
-wallpaper_path=~/Pictures/wallpapers
-img="$(ls ${wallpaper_path} | shuf -n 1)"
+# Default sleep time (in seconds)
+default_sleep_time=300
 
+# Read sleep time from arguments or use the default
+sleep_time=${1:-$default_sleep_time}
+
+# Ensure the sleep time is a valid number
+if ! [[ "$sleep_time" =~ ^[0-9]+$ ]]; then
+    echo "Error: Sleep time must be a positive integer."
+    exit 1
+fi
+
+# Path to the wallpapers
+wallpaper_path=~/Pictures/wallpapers
+
+# Set the initial wallpaper
+img="$(ls "${wallpaper_path}" | shuf -n 1)"
 feh --bg-fill "${wallpaper_path}/$img" &
 
-# change background every 5 mins
-# while true; do
-#     img="$(ls ${wallpaper_path} | shuf -n 1)"
-
-#     feh --bg-fill "${wallpaper_path}/$img" &
-
-#     sleep 300
-# done
+# Change background at intervals
+while true; do
+    img="$(ls "${wallpaper_path}" | shuf -n 1)"
+    feh --bg-fill "${wallpaper_path}/$img" &
+    sleep "$sleep_time"
+done
