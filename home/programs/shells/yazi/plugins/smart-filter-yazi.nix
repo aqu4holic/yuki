@@ -7,8 +7,8 @@ stdenv.mkDerivation rec {
     src = fetchFromGitHub {
         owner = "yazi-rs";
         repo = "plugins";
-        rev = "fb3ae9093bdd06b257516e90acbe73821410d849";
-        sha256 = "sha256-mBn29LLHLeeGf2ifwNaonyh0jdSo1goIiIgvgtc4QLE=";
+        rev = "139c36e4a77660b85fd919b1c813257c938f3db3";
+        sha256 = "sha256-84lrFEdJ2oqEaZj5VfLU1HLrvX6LziWo+HtKNT2JErw=";
     };
 
     installPhase = ''

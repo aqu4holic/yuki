@@ -42,6 +42,7 @@
         gdb
         gnumake
         clang-tools
+        gopls
 
         ### rust ###
         # rust-analyzer

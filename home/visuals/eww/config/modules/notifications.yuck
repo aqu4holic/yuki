@@ -31,7 +31,7 @@
                 (for notify in {notifications.notifications}
                     (box :orientation "h" :space-evenly false :class "notification-box"
                         (notification :notify {notify})
-                    )
+                    )   
                 )
                 (label :vexpand true :valign "center" :text "No notifications" :visible {notifications.notifications != "[]" ? false : true})
             )

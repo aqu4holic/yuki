@@ -3,22 +3,28 @@
     fonts.fontconfig.enable = true;
 
     home.packages = with pkgs; [
+        # normal fonts
+        times-newer-roman
+
         # icon fonts
         material-design-icons
         material-icons
 
-        # normal fonts
+        # (
+        #     pkgs.nerdfonts.override {
+        #         fonts = [
+        #             "FiraCode"
+        #             "JetBrainsMono"
+        #             "Iosevka"
+        #             # "MPlus"
+        #         ];
+        #     }
+        # )
+        nerd-fonts.fira-code
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.iosevka
+        # "MPlus"
 
-        (
-            pkgs.nerdfonts.override {
-                fonts = [
-                    "FiraCode"
-                    "JetBrainsMono"
-                    "Iosevka"
-                    # "MPlus"
-                ];
-            }
-        )
     ];
 
     # run `fc-cache -frv`

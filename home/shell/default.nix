@@ -17,5 +17,6 @@
         EDITOR = "nvim";
         BROWSER = "zen";
         TERMINAL = "kitty";
+        TERM = "kitty";
     };
 }

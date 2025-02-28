@@ -5,7 +5,6 @@
 
         plugins = with pkgs; {
             # glow = callPackage ./plugins/glow-yazi.nix {};
-            eza-preview = callPackage ./plugins/eza-preview-yazi.nix {};
             nbpreview = callPackage ./plugins/nbpreview-yazi.nix {};
             # hexyl = callPackage ./plugins/hexyl-yazi.nix {};
             # miller = callPackage ./plugins/miller-yazi.nix {};
@@ -26,16 +25,18 @@
             restore = callPackage ./plugins/restore-yazi.nix {};
             open-with-cmd = callPackage ./plugins/open-with-cmd-yazi.nix {};
 
+            # eza-preview = callPackage ./plugins/eza-preview-yazi.nix {};
+            eza-preview = ./plugins/eza-preview.yazi;
             smart-enter = ./plugins/smart-enter.yazi;
             smart-paste = ./plugins/smart-paste.yazi;
-            smart-tab = ./plugins/parent-arrow.yazi;
+            smart-tab = ./plugins/smart-tab.yazi;
             arrow = ./plugins/arrow.yazi;
             parent-arrow = ./plugins/parent-arrow.yazi;
         };
 
-        flavors = with pkgs; {
-            catppuccin-mocha = callPackage ./flavors/catppuccin-mocha-yazi.nix {};
-        };
+        # flavors = with pkgs; {
+        #     catppuccin-mocha = callPackage ./flavors/catppuccin-mocha-yazi.nix {};
+        # };
     };
 
     xdg.configFile."yazi" = {

@@ -46,6 +46,7 @@
         # miller
         # hexyl
         xdragon # drag and drop
+        git-filter-repo
 
         ffmpeg-full
         poppler
@@ -100,6 +101,9 @@
         redshift
         syncthing
 
+        # messenger app
+        caprine
+
         # yazi
         atool
         xlsx2csv
@@ -122,9 +126,9 @@
         telegram-desktop
         mpv
         # wpsoffice
-        # libreoffice-qt6-fresh
+        libreoffice-qt6-fresh
         zed-editor
-        microsoft-edge
+        # microsoft-edge
         # rnote # note taker
         qbittorrent-enhanced
         pkg-config

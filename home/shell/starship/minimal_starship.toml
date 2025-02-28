@@ -67,7 +67,7 @@ format = '[ﰖ$hash]($style) '
 style = 'bold bright-yellow bold'
 
 [git_metrics]
-disabled = false
+disabled = true
 added_style = 'bold blue'
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 

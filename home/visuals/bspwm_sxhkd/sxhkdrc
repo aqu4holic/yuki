@@ -11,18 +11,19 @@ super + q
 
 # program launcher
 super + c
-    rofi -show drun -theme "$HOME/.config/rofi/themes/app_launcher.rasi"
+    rofi -show drun -me-select-entry '' -me-accept-entry
+    # rofi -show drun -theme "$HOME/.config/rofi/themes/app_launcher.rasi"
 
 # emoji selector launcher
 super + shift + e
-    rofi -modi emoji -show emoji -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
+    rofi -modi emoji -show emoji stdout -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
 
 super + semicolon
     rofi -modi emoji -show emoji stdout -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
 
 # Open Power menu
 super + shift + z
-    ~/bin/power_menu
+    $HOME/.local/bin/power_menu
 
 # calculator
 super + shift + c
@@ -33,7 +34,7 @@ super + F12
 
 # calendar
 super + shift + f
-    ~/bin/calendar_launcher
+    $HOME/.local/bin/calendar_launcher
 
 # control center
 super + shift + x
@@ -41,7 +42,7 @@ super + shift + x
 
 # wifi
 super + shift + y
-    ~/bin/wifi_menu
+    $HOME/.local/bin/wifi_menu
 
 # make sxhkd reload its config
 super + shift + r
@@ -53,7 +54,7 @@ super + shift + r
 
 # quit bspwm
 super + shift + q
-    ~/bin/close_bspwm
+    $HOME/.local/bin/close_bspwm
 
 # restart bspwm
 super + shift + r
@@ -121,22 +122,22 @@ super + {o,i}
 
 # focus to given desktop
 super + {1-9,0}
-    ~/bin/switch_desktop '^{1-9,10}'
+    $HOME/.local/bin/switch_desktop '^{1-9,10}'
     # bspc desktop -f '^{1-9,0}'
 
 # send to given desktop
 super + shift + {1-9,0}
-    ~/bin/switch_desktop '^{1-9,10}' move
+    $HOME/.local/bin/switch_desktop '^{1-9,10}' move
     # bspc node -d '^{1-9,10}'
 
 # focus the last desktop
 super + Tab
-    ~/bin/switch_desktop -1 last
+    $HOME/.local/bin/switch_desktop -1 last
     # bspc desktop -f last
 
 # send and follow to given desktop
 super + alt + {1-9,0}
-    ~/bin/switch_desktop '^{1-9,10}' follow
+    $HOME/.local/bin/switch_desktop '^{1-9,10}' follow
     # bspc node -d '^{1-9,10}' -f
 
 #
@@ -185,14 +186,14 @@ super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
 super + F7
-    ~/bin/dual_monitor mirror
+    $HOME/.local/bin/dual_monitor mirror
 
 super + shift + F7
-    ~/bin/dual_monitor extend
+    $HOME/.local/bin/dual_monitor extend
 
 # toggle polybar
 super + alt + shift + x
-    ~/bin/toggle_polybar
+    $HOME/.local/bin/toggle_polybar
 
 #
 # brightness and volume
@@ -225,38 +226,38 @@ super + {F2, F3}
 
 # fullscreen screenshot save
 super + Home
-    ~/bin/screenshot -fm
+    $HOME/.local/bin/screenshot -fm
 
 # fullscreen screenshot save
 super + Print
-    ~/bin/screenshot -fm
+    $HOME/.local/bin/screenshot -fm
 
 # cropped save
 super + shift + Home
-    ~/bin/screenshot -s
+    $HOME/.local/bin/screenshot -s
 
 # cropped save
 super + shift + Print
-    ~/bin/screenshot -s
+    $HOME/.local/bin/screenshot -s
 
 # clipboard fullscreen
 super + s
-    ~/bin/screenshot -fcm
+    $HOME/.local/bin/screenshot -fcm
 
 # clipboard cropped
 super + shift + s
-    ~/bin/screenshot -scm
+    $HOME/.local/bin/screenshot -scm
 
 # clipboard cropped + edit
 ctrl + Home
-    ~/bin/screenshot -sc
+    $HOME/.local/bin/screenshot -sc
 
 # clipboard cropped + edit
 ctrl + Print
-    ~/bin/screenshot -sc
+    $HOME/.local/bin/screenshot -sc
 
 Print
-    ~/bin/screenshot -fcm
+    $HOME/.local/bin/screenshot -fcm
 
 #
 # utils
@@ -264,11 +265,11 @@ Print
 
 # lock screen
 super + g
-    ~/bin/lockscreen
+    $HOME/.local/bin/lockscreen
 
 super + shift +  v
     copyq menu
 
 # touchpad
 super + F10
-    ~/bin/toggle_touchpad
+    $HOME/.local/bin/toggle_touchpad

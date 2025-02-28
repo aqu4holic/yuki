@@ -166,14 +166,16 @@ in
             newcomputermodern
 
             # nerdfonts
-            (
-                nerdfonts.override {
-                    fonts = [
-                        "FiraCode"
-                        "JetBrainsMono"
-                    ];
-                }
-            )
+            # (
+            #     nerdfonts.override {
+            #         fonts = [
+            #             "FiraCode"
+            #             "JetBrainsMono"
+            #         ];
+            #     }
+            # )
+            nerd-fonts.fira-code
+            nerd-fonts.jetbrains-mono
         ];
 
         # use fonts specified by user rather than default ones
@@ -221,7 +223,7 @@ in
     users.defaultUserShell = pkgs.fish;
 
     # Install firefox.
-    programs.firefox.enable = true;
+    # programs.firefox.enable = true;
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
@@ -239,6 +241,8 @@ in
         fastfetch
         yazi
         zathura # pdf viewer
+
+        screen
 
         # network
         networkmanagerapplet
@@ -352,23 +356,25 @@ in
 
     # set environment variables
 
-    # GTK portal config
-    # environment.variables.GTK_USE_PORTAL = 1;
+    environment.variables = {
+        # GTK portal config
+        # GTK_USE_PORTAL = 1;
 
-    # ibus
-    environment.variables.GTK_IM_MODULE = "ibus";
-    environment.variables.QT_IM_MODULE = "ibus";
-    environment.variables.QT4_IM_MODULE = "ibus";
-    environment.variables.CLUTTER_IM_MODULE = "ibus";
-    environment.variables.GLFW_IM_MODULE = "ibus";
-    environment.variables.XMODIFIERS = "@im=ibus";
+        # ibus
+        GTK_IM_MODULE = "ibus";
+        QT_IM_MODULE = "ibus";
+        QT4_IM_MODULE = "ibus";
+        CLUTTER_IM_MODULE = "ibus";
+        GLFW_IM_MODULE = "ibus";
+        XMODIFIERS = "@im=ibus";
 
-    # java
-    environment.variables._JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";
+        # java
+        _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";
 
-    # direnv shell
-    environment.variables.DIRENV_WARN_TIMEOUT = 0;
+        # direnv shell
+        DIRENV_WARN_TIMEOUT = 0;
 
-    # qt scale
-    environment.variables.QT_SCALE_FACTOR = "1.3";
+        # qt scale
+        QT_SCALE_FACTOR = "1.3";
+    };
 }

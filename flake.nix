@@ -6,7 +6,7 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
         catppuccin.url = "github:catppuccin/nix";
-        zen-browser.url = "github:ch4og/zen-browser-flake";
+        zen-browser.url = "github:aqu4holic/zen-browser-flake";
         spicetify-nix = {
               url = "github:Gerg-L/spicetify-nix";
               inputs.nixpkgs.follows = "nixpkgs";

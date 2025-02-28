@@ -89,7 +89,14 @@
             crm = "conda remove --all -n";
 
             s = "kitten ssh";
+            rs = "rsync -avP";
             cs = "conda-shell -c fish";
+
+            # screen
+            sr = "screen -r";
+            ss = "screen -S";
+            sls = "screen -ls";
+            sd = "screen -d";
         };
     };
 

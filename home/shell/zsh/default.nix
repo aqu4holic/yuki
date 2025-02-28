@@ -87,14 +87,14 @@
 
             gdb = ''gdb -q -ex "set verbose off" -ex "set complaints 0" -ex "set confirm off" -ex "set exec-done-display off"'';
 
-            joern = "~/bin/joern/joern-cli/joern";
-            joern-cpg2scpg = "~/bin/joern/joern-cli/joern-cpg2scpg";
-            joern-export = "~/bin/joern/joern-cli/joern-export";
-            joern-flow = "~/bin/joern/joern-cli/joern-flow";
-            joern-parse = "~/bin/joern/joern-cli/joern-parse";
-            joern-scan = "~/bin/joern/joern-cli/joern-scan";
-            joern-slice = "~/bin/joern/joern-cli/joern-slice";
-            joern-vectors = "~/bin/joern/joern-cli/joern-vectors";
+            joern = "$HOME/.local/bin/joern/joern-cli/joern";
+            joern-cpg2scpg = "$HOME/.local/bin/joern/joern-cli/joern-cpg2scpg";
+            joern-export = "$HOME/.local/bin/joern/joern-cli/joern-export";
+            joern-flow = "$HOME/.local/bin/joern/joern-cli/joern-flow";
+            joern-parse = "$HOME/.local/bin/joern/joern-cli/joern-parse";
+            joern-scan = "$HOME/.local/bin/joern/joern-cli/joern-scan";
+            joern-slice = "$HOME/.local/bin/joern/joern-cli/joern-slice";
+            joern-vectors = "$HOME/.local/bin/joern/joern-cli/joern-vectors";
 
             vc = "python3 -m venv venv";
             va = "source venv/bin/activate";

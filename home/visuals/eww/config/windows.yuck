@@ -1,9 +1,9 @@
 ;; Calendar Window ;;
 
 (defwindow calendar
-	:geometry (geometry :x "-19px"
-						:y "50px"
-						:width "350px"
+	:geometry (geometry :x "-19px" 
+						:y "50px" 
+						:width "350px" 
 						:height "70px"
 						:anchor "top right")
 (cal))
@@ -36,7 +36,7 @@
 (defwindow osd
     :monitor 0
     :stacking "overlay"
-    :geometry (geometry
+    :geometry (geometry 
                     :anchor "bottom center"
                     :width "2px"
                     :height "2px"

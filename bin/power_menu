@@ -62,10 +62,10 @@ run_cmd() {
         elif [[ $1 == '--hibernate' ]]; then
             systemctl hibernate
         elif [[ $1 == '--suspend' ]]; then
-            # ~/bin/lockscreen \
+            # $HOME/.local/bin/lockscreen \
             systemctl suspend
         elif [[ $1 == '--logout' ]]; then
-            ~/bin/close_bspwm
+            $HOME/.local/bin/close_bspwm
         fi
     else
         exit 0
@@ -85,7 +85,7 @@ case ${chosen} in
         run_cmd --hibernate
         ;;
     $lock)
-        ~/bin/lockscreen
+        $HOME/.local/bin/lockscreen
         ;;
     $suspend)
         run_cmd --suspend

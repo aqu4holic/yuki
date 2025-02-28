@@ -1,11 +1,5 @@
 { config, xdg, pkgs, ... }:
 {
-    home.packages = with pkgs; [
-        xdg-desktop-portal
-        xdg-desktop-portal-gtk
-        gnome-keyring
-    ];
-
     xdg = {
         cacheHome = config.home.homeDirectory + "/.local/cache";
         enable = true;
@@ -43,8 +37,12 @@
         # };
     };
 
-    xdg.configFile."mimeapps.list" = {
-        source = ./mimeapps.list;
-        recursive = true;
-    };
+    # home.sessionVariables = {
+    #     XDG_CURRENT_DESKTOP = "GNOME";
+    # };
+
+    # xdg.configFile."mimeapps.list" = {
+    #     source = ./mimeapps.list;
+    #     recursive = true;
+    # };
 }

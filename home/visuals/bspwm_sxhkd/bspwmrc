@@ -2,7 +2,7 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-~/bin/dual_monitor
+$HOME/.local/bin/dual_monitor
 
 xset s off &
 xset -dpms &
@@ -19,16 +19,16 @@ xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Natural Scrolling Ena
 
 # polybar, eww and picom
 picom &
-"$HOME/bin/launch.sh" &
+"$HOME/.local/bin/launch.sh" &
 "$HOME/.config/eww/scripts/start.sh" &
 
-~/bin/random_background 180 &
+$HOME/.local/bin/random_background 180 &
 # feh --bg-fill "${wallpaper_path}/${wallpaper_name}" &
 
 skippy-xd --start-daemon &
 ibus-daemon -drxR &
 nm-applet &
-pgrep -x battery_alert >/dev/null || ~/bin/battery_alert &
+pgrep -x battery_alert >/dev/null || $HOME/.local/bin/battery_alert &
 pidof syncthing || syncthing -no-browser &
 pidof redshift || redshift &
 trash-empty -f 40 &
@@ -53,4 +53,4 @@ bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action2 resize_corner
 
-"$HOME/bin/set_bspwm_rule" &
+"$HOME/.local/bin/set_bspwm_rule" &

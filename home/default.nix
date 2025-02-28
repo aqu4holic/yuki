@@ -38,13 +38,17 @@
             source = ../bin/.profile;
         };
 
-        file."bin" = {
+        file.".local/bin" = {
             source = ../bin;
 
             recursive = true;
 
             executable = true;
         };
+
+        sessionPath = [
+            "$HOME/.local/bin"
+        ];
    };
 
     # Let home Manager install and manage itself.
