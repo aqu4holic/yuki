@@ -24,3 +24,4 @@ sudo /run/current-system/bin/switch-to-configuration boot
 ```
 
 redo eww
+xdg-portal is broken, cant use it

@@ -100,7 +100,12 @@
         };
     };
 
-    # xdg.configFile."fish/fish_variables" = {
-    #     source = ./fish_variables;
-    # };
+    xdg.configFile."fish/fish_variables" = {
+        source = ./fish_variables;
+        target = "fish/fish_variables_source";
+
+        onChange = ''
+            cat ~/.config/fish/fish_variables_source > ~/.config/fish/fish_variables && chmod 600 ~/.config/fish/fish_variables
+        '';
+    };
 }
