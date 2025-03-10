@@ -8,8 +8,8 @@ stdenv.mkDerivation rec {
     src = fetchFromGitHub {
         owner = "dedukun";
         repo = "relative-motions.yazi";
-        rev = "1d6d686d030c2c4841b58a2f1d6e7f3c965dbd0e";       # You can specify a specific commit hash instead
-        sha256 = "sha256-pN8ToSMmvGr8b2EFpwV6V8PGC2773iRv0HdglqtUS3U=";  # Replace with the actual sha256 hash
+        rev = "810306563e1928855f5cf61f83801544e3eb3788";       # You can specify a specific commit hash instead
+        sha256 = "sha256-sIS7vtpY8z8D1nHMmr/uZoKREeGsIZuNSG8SnKkjREI=";  # Replace with the actual sha256 hash
     };
 
     # No build or install steps needed, just copy the source to $out

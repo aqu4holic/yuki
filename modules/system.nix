@@ -119,19 +119,19 @@ in
     systemd = {
         targets = {
             sleep = {
-                enable = true;
+                enable = false;
                 unitConfig.DefaultDependencies = "no";
             };
             suspend = {
-                enable = true;
+                enable = false;
                 unitConfig.DefaultDependencies = "no";
             };
             hibernate = {
-                enable = true;
+                enable = false;
                 unitConfig.DefaultDependencies = "no";
             };
             "hybrid-sleep" = {
-                enable = true;
+                enable = false;
                 unitConfig.DefaultDependencies = "no";
             };
         };

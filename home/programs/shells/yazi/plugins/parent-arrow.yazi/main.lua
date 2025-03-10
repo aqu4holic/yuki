@@ -5,7 +5,7 @@ local function entry(_, job)
 
 	local target = parent.files[parent.cursor + 1 + job.args[1]]
 	if target and target.cha.is_dir then
-		ya.manager_emit("cd", { target.url })
+		ya.mgr_emit("cd", { target.url })
 	end
 end
 

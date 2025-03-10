@@ -5,10 +5,15 @@
         flavor = "mocha";
         accent = "maroon";
 
-        # pointerCursor = {
+        # grub = {
         #     enable = true;
-        #     accent = "blue";
         #     flavor = "mocha";
+        # };
+        #
+        # kvantum = {
+        #     enable = true;
+        #     flavor = "mocha";
+        #     accent = "maroon";
         # };
     };
 }

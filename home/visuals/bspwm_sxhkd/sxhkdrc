@@ -15,7 +15,7 @@ super + c
     # rofi -show drun -theme "$HOME/.config/rofi/themes/app_launcher.rasi"
 
 # emoji selector launcher
-super + shift + e
+super + e
     rofi -modi emoji -show emoji stdout -theme "$HOME/.config/rofi/themes/emoji_menu.rasi"
 
 super + semicolon

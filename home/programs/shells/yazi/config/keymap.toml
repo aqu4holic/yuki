@@ -46,23 +46,23 @@ desc = "cd back to the root of the current Git repository"
 # wraparound file navigation
 [[manager.prepend_keymap]]
 on  = "k"
-run = "plugin arrow --args=-1"
+run = "plugin arrow -1"
 desc = "File navigation wraparound"
 
 [[manager.prepend_keymap]]
 on  = "j"
-run = "plugin arrow --args=1"
+run = "plugin arrow 1"
 desc = "File navigation wraparound"
 
 # Navigation in the parent directory without leaving the CWD
 [[manager.prepend_keymap]]
 on  = "K"
-run = "plugin parent-arrow --args=-1"
+run = "plugin parent-arrow -1"
 desc = "Navigation in the parent directory without leaving the CWD"
 
 [[manager.prepend_keymap]]
 on  = "J"
-run = "plugin parent-arrow --args=1"
+run = "plugin parent-arrow 1"
 desc = "Navigation in the parent directory without leaving the CWD"
 
 # bookmark
@@ -128,8 +128,8 @@ desc = "Diff the selected with the hovered file"
 
 [[manager.prepend_keymap]]
 on   = "T"
-run  = "plugin max-preview"
-desc = "Maximize or restore preview"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
 
 [[manager.prepend_keymap]]
 on   = "F"
@@ -210,8 +210,8 @@ keymap = [
     { on = [ "<Left>" ],  run = "leave",    desc = "Go back to the parent directory" },
     { on = [ "<Right>" ], run = "enter",    desc = "Enter the child directory" },
 
-    { on = [ "g", "g" ], run = "arrow -99999999", desc = "Move cursor to the top" },
-    { on = [ "G" ],      run = "arrow 99999999",  desc = "Move cursor to the bottom" },
+    { on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
+    { on = [ "G" ],      run = "arrow bot",  desc = "Move cursor to the bottom" },
 
     # Selection
     # { on = [ "<Space>" ], run = [ "select --state=none", "arrow 1" ], desc = "Toggle the current selection state" },

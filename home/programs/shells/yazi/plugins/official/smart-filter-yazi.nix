@@ -1,5 +1,5 @@
 { lib, stdenv, fetchFromGitHub }:
-
+let inherit (import ./rev_sha.nix) main_rev main_sha256; in
 stdenv.mkDerivation rec {
     pname = "smart-filter-yazi";
     version = "latest";
@@ -7,12 +7,13 @@ stdenv.mkDerivation rec {
     src = fetchFromGitHub {
         owner = "yazi-rs";
         repo = "plugins";
-        rev = "139c36e4a77660b85fd919b1c813257c938f3db3";
-        sha256 = "sha256-84lrFEdJ2oqEaZj5VfLU1HLrvX6LziWo+HtKNT2JErw=";
+        rev = main_rev;
+        sha256 = main_sha256;
     };
 
     installPhase = ''
         mkdir -p $out
         cp -r $src/smart-filter.yazi/* $out/
+        [ -f LICENSE ] && cp LICENSE $out/ || touch $out/LICENSE
     '';
 }
