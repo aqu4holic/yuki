@@ -15,6 +15,7 @@ return {
             require("options")
         end,
     },
+
     {
         "goolord/alpha-nvim",
         lazy = false;
@@ -181,8 +182,20 @@ return {
     },
 
     {
-        'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim', },
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        -- or if using mini.icons/mini.nvim
+        -- dependencies = { "echasnovski/mini.icons" },
+        opts = {
+            files = {
+                previewer = "bat",
+            },
+        },
+        init = function ()
+            require("fzf-lua")
+        end,
+        lazy = false,
     },
 
     -- {
@@ -247,14 +260,14 @@ return {
         end,
     },
 
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        config = function()
-            require("telescope").setup()
-            require("telescope").load_extension("fzf")
-        end,
-    },
+    -- {
+    --     "nvim-telescope/telescope-fzf-native.nvim",
+    --     build = "make",
+    --     config = function()
+    --         require("telescope").setup()
+    --         require("telescope").load_extension("fzf")
+    --     end,
+    -- },
 
     {
         "nvim-treesitter/nvim-treesitter",

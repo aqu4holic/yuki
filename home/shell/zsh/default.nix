@@ -42,8 +42,6 @@
             bindkey "^[[1;5D" backward-word
 
             source ~/.profile
-            # for conda
-            source ~/.conda/etc/profile.d/conda.sh
 
             zstyle ':completion:*' menu select
             zstyle ':completion:*' matcher-list ''' \
@@ -99,15 +97,6 @@
             vc = "python3 -m venv venv";
             va = "source venv/bin/activate";
             vca = "python3 -m venv venv && source venv/bin/activate";
-
-            ccv = "conda create --name venv";
-            cav = "conda activate venv";
-            ccav = "conda create --name venv && conda activate venv";
-            ccn = "conda create --name";
-            cac = "conda activate";
-            cda = "conda deactivate";
-            cfa = "conda env create -f environment.yaml";
-            crm = "conda remove --all -n";
 
             s = "kitten ssh";
             cs = "conda-shell -c fish";

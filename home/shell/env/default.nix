@@ -9,4 +9,8 @@
             # enableZshIntegration = true;
         };
     };
+
+    home.packages = with pkgs; [
+        devenv
+    ];
 }

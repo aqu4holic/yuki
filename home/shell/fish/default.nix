@@ -37,7 +37,6 @@
         shellInitLast = ''
             # for bluetooth, it will crash without this
             dbus-update-activation-environment DISPLAY
-            source ~/.conda/etc/fish/conf.d/conda.fish
 
             function starship_transient_prompt_func
                 starship module directory
@@ -79,18 +78,8 @@
             #     exit
             # '';
 
-            ccv = "conda create --name venv";
-            cav = "conda activate venv";
-            ccav = "conda create --name venv && conda activate venv";
-            ccn = "conda create --name";
-            cac = "conda activate";
-            cda = "conda deactivate";
-            cfa = "conda env create -f environment.yaml";
-            crm = "conda remove --all -n";
-
             s = "kitten ssh";
             rs = "rsync -avP";
-            cs = "conda-shell -c fish";
 
             # screen
             sr = "screen -r";

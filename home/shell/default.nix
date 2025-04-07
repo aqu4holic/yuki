@@ -3,7 +3,7 @@
     imports = [
         ./kitty
 
-        ./direnv
+        ./env
 
         ./fish
         ./zsh

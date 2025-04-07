@@ -50,6 +50,7 @@ in
     };
 
     nix.settings.auto-optimise-store = true;
+    nix.settings.trusted-users = [ "root" username ];
 
     # Set your time zone.
     time.timeZone = "Asia/Ho_Chi_Minh";

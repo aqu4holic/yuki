@@ -8,7 +8,9 @@ if [[ $external_monitor = *disconnected* ]]; then
 else
     if [[ "$mode" == "mirror" ]]; then
         xrandr --output eDP-1 --primary --mode 2560x1440 --rotate normal --output HDMI-1-0 --mode 1920x1080 --rotate normal --right-of eDP-1
+        notify-send -a "System" "Monitor mirrored"
     elif [[ "$mode" == "extend" ]]; then
         xrandr --output eDP-1 --primary --mode 2560x1440 --rotate normal --output HDMI-1-0 --mode 1920x1080 --scale-from 2560x1440 --same-as eDP-1
+        notify-send -a "System" "Monitor extended"
     fi
 fi

@@ -11,7 +11,7 @@
 
         portal = {
             enable = true;
-            xdgOpenUsePortal = true;
+            xdgOpenUsePortal = false;
 
             extraPortals = with pkgs; [
                 xdg-desktop-portal
@@ -35,7 +35,19 @@
         #     enable = true;
         #     assosiations.added =
         # };
+        mimeApps.defaultApplications = {
+            "image/png" = [
+                "qimgv.desktop"
+            ];
+            "image/jpeg" = [
+                "qimgv.desktop"
+            ];
+            "image/jpg" = [
+                "qimgv.desktop"
+            ];
+        };
     };
+
 
     # home.sessionVariables = {
     #     XDG_CURRENT_DESKTOP = "GNOME";

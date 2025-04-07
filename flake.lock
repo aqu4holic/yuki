@@ -136,11 +136,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1740752720,
-        "narHash": "sha256-8M1PlGQxOsecLi6zOCH8hqGvOxkPWvTe8Z+PRq6J8Cs=",
+        "lastModified": 1742396529,
+        "narHash": "sha256-pfu3KDa4vwx4nQeV1hp+mPFdK7MlA5tlSfiEAFlnZzw=",
         "owner": "aqu4holic",
         "repo": "zen-browser-flake",
-        "rev": "b7a0424c981e7e30322d3a13306dec01782b02f5",
+        "rev": "6cb879bac7f21ab65fbe758b1b63d67a448bf631",
         "type": "github"
       },
       "original": {

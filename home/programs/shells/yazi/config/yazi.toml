@@ -54,6 +54,12 @@ play = [
 zathura = [
     { run = 'zathura "$@"', orphan = true, for = "unix", desc = "Open with Zathura" },
 ]
+zen = [
+    { run = 'zen "$@"', orphan = true, for = "unix", desc = "Open with Zen Browser" },
+]
+qimgv = [
+    { run = 'qimgv "$@"', orphan = true, for = "unix", desc = "Open with qimgv" },
+]
 extract-folder = [
     { run = 'filename="${1%.*}"; mkdir -p "$filename"; unar -o "$filename" "$1"', desc = "Extract to folder", for = "unix" },
 ]
@@ -63,7 +69,7 @@ rules = [
     { name = "*/", use = [ "edit", "open", "reveal" ] },
 
     { mime = "text/*",          use = [ "edit", "reveal" ] },
-    { mime = "image/*",         use = [ "open", "reveal" ] },
+    { mime = "image/*",         use = [ "qimgv", "open", "reveal" ] },
     { mime = "{audio,video}/*", use = [ "play", "reveal" ] },
     { mime = "inode/x-empty",   use = [ "edit", "reveal" ] },
 
@@ -76,7 +82,7 @@ rules = [
     { mime = "*", use = [ "open", "reveal" ] },
 ]
 prepend_rules = [
-    { name = "*.pdf", use = ["zathura", "reveal"] },
+    { name = "*.pdf", use = [ "zen", "zathura", "reveal"] },
     { mime = "application/*zip", use = [ "extract", "extract-folder", "reveal" ] },
     { mime = "application/{tar,bzip*,7z-compressed,xz,rar}", use = [ "extract", "extract-folder", "reveal" ] },
 ]

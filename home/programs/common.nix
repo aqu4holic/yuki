@@ -102,7 +102,7 @@
         syncthing
 
         # messenger app
-        caprine
+        # caprine
 
         # yazi
         atool
@@ -129,6 +129,7 @@
         libreoffice-qt6-fresh
         zed-editor
         # microsoft-edge
+        chromium
         # rnote # note taker
         qbittorrent-enhanced
         pkg-config
@@ -165,7 +166,6 @@
         # toybox
 
         # libs
-        conda
         xorg.xhost
         clang-tools
     ];
