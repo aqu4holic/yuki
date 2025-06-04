@@ -16,5 +16,8 @@
         ./flameshot
         ./redshift
         ./fusuma
+
+        ./gaming
+        ./flatpak
     ];
 }

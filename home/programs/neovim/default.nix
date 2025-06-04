@@ -62,7 +62,6 @@
         ### python ###
         pyright
         ruff
-        ruff-lsp
 
         # java
         maven

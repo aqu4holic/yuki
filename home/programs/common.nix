@@ -47,6 +47,7 @@
         # hexyl
         xdragon # drag and drop
         git-filter-repo
+        postman
 
         ffmpeg-full
         poppler
@@ -63,6 +64,7 @@
         socat # replacement of openbsd-netcat
         nmap # A utility for network discovery and security auditing
         ipcalc  # it is a calculator for the IPv4/v6 addresses
+        networkmanager-openvpn
 
         # misc file manipulator
         file
@@ -80,6 +82,7 @@
         fortune-kind
         graphviz
         yt-dlp
+        rich-cli
 
         # misc ui
         kdePackages.okular # pdf viewer
@@ -120,6 +123,12 @@
         # mysql84
 
         # apps
+        xfce.thunar
+        xfce.thunar-volman
+        xfce.thunar-vcs-plugin
+        xfce.thunar-media-tags-plugin
+        xfce.thunar-archive-plugin
+        gvfs
         obsidian
         vesktop
         zotero
@@ -134,11 +143,13 @@
         qbittorrent-enhanced
         pkg-config
         teams-for-linux
-        rustdesk-flutter
+        # rustdesk-flutter
         anydesk
         # zen-browser
         inputs.zen-browser.packages."${system}".generic
         anki-bin
+        jetbrains.idea-ultimate
+        code-cursor
 
         # nix related
         #

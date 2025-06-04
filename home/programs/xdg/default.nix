@@ -21,7 +21,8 @@
 
             config = {
                 common = {
-                    default = [ "gtk" ];
+                    # default = [ "gtk" ];
+                    default = "*";
                     "org.freedesktop.impl.portal.Secret" = [
                         "gnome-keyring"
                     ];
