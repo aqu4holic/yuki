@@ -17,7 +17,16 @@ in
     users.users.${username} = {
         isNormalUser = true;
         description = username;
-        extraGroups = [ "input" "networkmanager" "wheel" "video" "audio" "docker" "adbusers" ];
+        extraGroups = [
+            "input"
+            "networkmanager"
+            "wheel"
+            "video"
+            "audio"
+            "docker"
+            "adbusers"
+            "libvirtd"
+        ];
     };
 
     security.sudo.extraConfig = ''
@@ -100,18 +109,14 @@ in
         };
 
         displayManager = {
+            defaultSession = "none+bspwm";
+
             startx = {
                 enable = true;
             };
-
-            # autoLogin = {
-            #     enable = true;
-            #     user = username;
-            # };
         };
     };
 
-    # services.getty.autologinUser = username;
     systemd.services."getty@tty1" = {
         overrideStrategy = "asDropin";
         serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} -o '-p -- ${username}' --noclear --skip-login --keep-baud %I 115200,38400,9600 $TERM"];
@@ -139,11 +144,6 @@ in
     };
 
     security.protectKernelImage = false;
-
-    # wm
-    services.displayManager = {
-        defaultSession = "none+bspwm";
-    };
 
     # touchpad config
     services.libinput = {
@@ -223,8 +223,29 @@ in
     programs.fish.enable = true;
     users.defaultUserShell = pkgs.fish;
 
-    # Install firefox.
-    # programs.firefox.enable = true;
+    # openvpn
+    programs.openvpn3 = {
+        enable = true;
+        package = pkgs.openvpn3;
+        log-service.settings = {
+            log_level = 6;
+            log_dbus_details = true;
+            journald = true;
+        };
+        netcfg.settings = {
+            systemd_resolved = true;
+        };
+    };
+    services.resolved.enable = true;
+
+    # services.openvpn.servers = {
+    #     fptVPN = {
+    #         config = ''
+    #             config /home/blackwhite/test.ovpn
+    #         '';
+    #         updateResolvConf = true;
+    #     };
+    # };
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
@@ -306,7 +327,7 @@ in
         formatted;
 
     # Enable sound with pipewire.
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
@@ -323,14 +344,28 @@ in
 
     programs.noisetorch.enable = true;
 
-    # enable docker
-    virtualisation.docker.enable = true;
+    # virtualisation
+    virtualisation = {
+        docker = {
+            enable = true;
 
-    # use docker without root access (rootless docker)
-    virtualisation.docker.rootless = {
-        enable = true;
-        setSocketVariable = true;
+            # use docker without root access (rootless docker)
+            rootless = {
+                enable = true;
+                setSocketVariable = true;
+            };
+        };
+
+        # # virt-manager
+        # spiceUSBRedirection.enable = true;
+        # libvirtd = {
+        #     enable = true;
+        #     qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+        # };
     };
+    # services.qemuGuest.enable = true;
+    # services.spice-vdagentd.enable = true;  # enable copy and paste between host and guest
+    # programs.virt-manager.enable = true;
 
     hardware.bluetooth = {
         enable = true;
@@ -351,12 +386,7 @@ in
     };
     services.blueman.enable = true;
 
-    # flatpak
-    services.flatpak.enable = true;
-    xdg.portal.enable = true;
-
     # set environment variables
-
     environment.variables = {
         # GTK portal config
         # GTK_USE_PORTAL = 1;

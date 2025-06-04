@@ -13,6 +13,7 @@ setxkbmap -option caps:swapescape &
 
 # xinput set-prop 'HP, Inc HyperX Pulsefire Haste Wireless' 'libinput Accel Speed' -0.5 &
 xinput set-prop 'Logitech USB Receiver Mouse' 'libinput Accel Speed' 0.5 &
+xinput set-prop 'pointer:Pixart Imaging, Inc. incott 8K wireless mouse' 'libinput Accel Speed' 0.5 &
 
 xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Accel Speed' 0.5 &
 xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Natural Scrolling Enabled' 0 &
@@ -22,7 +23,7 @@ picom &
 "$HOME/.local/bin/launch.sh" &
 "$HOME/.config/eww/scripts/start.sh" &
 
-$HOME/.local/bin/random_background 180 &
+$HOME/.local/bin/random_background 120 &
 # feh --bg-fill "${wallpaper_path}/${wallpaper_name}" &
 
 skippy-xd --start-daemon &

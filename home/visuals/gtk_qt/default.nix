@@ -2,13 +2,6 @@
 {
     gtk = {
         enable = true;
-        catppuccin = {
-            enable = true;
-            flavor = "mocha";
-            accent = "maroon";
-            size = "standard";
-            tweaks = [ "rimless" ];
-        };
 
         font = {
             name = "MonoLisa";
@@ -27,12 +20,5 @@
         platformTheme.name = "kvantum";
 
         style.name = "kvantum";
-
-        style.catppuccin = {
-            enable = true;
-            apply = true;
-            flavor = "mocha";
-            accent = "maroon";
-        };
     };
 }

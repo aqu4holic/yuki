@@ -14,21 +14,28 @@
     # boot.extraModulePackages = [ ];
     boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
-    boot.kernelPackages = pkgs.linuxPackages_6_11;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
-    fileSystems."/" =
-    { device = "/dev/disk/by-label/yuki";
+    fileSystems."/" = {
+        device = "/dev/disk/by-label/yuki";
         fsType = "ext4";
     };
 
-    fileSystems."/boot" =
-    { device = "/dev/disk/by-label/boot";
+    fileSystems."/boot" = {
+        device = "/dev/disk/by-label/boot";
         fsType = "vfat";
         options = [ "fmask=0022" "dmask=0022" ];
     };
 
-    swapDevices =
-    [ { device = "/dev/disk/by-label/swap"; }
+    fileSystems."/mnt/windows" = {
+        device = "/dev/disk/by-label/most\\x20of\\x20the\\x20stuffs";
+        fsType = "ntfs";
+    };
+
+    swapDevices = [
+        {
+            device = "/dev/disk/by-label/swap";
+        }
     ];
 
 

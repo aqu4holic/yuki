@@ -10,9 +10,5 @@
             enable = true;
             defaultCursor = "left_ptr";
         };
-
-        # gtk = {
-        #     enable = true;
-        # };
     };
 }

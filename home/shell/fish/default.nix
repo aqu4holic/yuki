@@ -60,23 +60,20 @@
             cls = "clear";
 
             g = "git";
+
             lg = "lazygit";
-            gaa = "git add .";
-            gcm = "git commit -m";
-            gcma = "git commit -ma";
             gp = "git push";
             gs = "git status";
+            gcl = "git clone";
+            gaa = "git add --all";
+            gcm = "git commit -m";
+            gcma = "git commit -ma";
 
             gdb = ''gdb -q -ex "set verbose off" -ex "set complaints 0" -ex "set confirm off" -ex "set exec-done-display off"'';
 
-            vc = "python3 -m venv venv";
-            va = "source venv/bin/activate.fish";
-            vca = "python3 -m venv venv && source venv/bin/activate.fish";
-            # venv_fix = ''
-            #     nix shell github:GuillaumeDesforges/fix-python
-            #     fix-python --venv venv
-            #     exit
-            # '';
+            vc = "python3 -m venv .venv";
+            va = "source .venv/bin/activate.fish";
+            vca = "python3 -m venv .venv && source .venv/bin/activate.fish";
 
             s = "kitten ssh";
             rs = "rsync -avP";
@@ -94,7 +91,7 @@
         target = "fish/fish_variables_source";
 
         onChange = ''
-            cat ~/.config/fish/fish_variables_source > ~/.config/fish/fish_variables && chmod 600 ~/.config/fish/fish_variables
+            cp ~/.config/fish/fish_variables_source ~/.config/fish/fish_variables && chmod 600 ~/.config/fish/fish_variables
         '';
     };
 }

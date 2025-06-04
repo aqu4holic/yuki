@@ -7,10 +7,8 @@
 
         catppuccin.url = "github:catppuccin/nix";
         zen-browser.url = "github:aqu4holic/zen-browser-flake";
-        spicetify-nix = {
-              url = "github:Gerg-L/spicetify-nix";
-              inputs.nixpkgs.follows = "nixpkgs";
-        };
+        nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+        spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
         home-manager = {
             url = "github:nix-community/home-manager";
@@ -35,6 +33,7 @@
                 ./hosts/blackwhite
 
                 inputs.catppuccin.nixosModules.catppuccin
+                inputs.nix-flatpak.nixosModules.nix-flatpak
                 # inputs.zen-browser.nixosModules.zen-browser
 
                 inputs.home-manager.nixosModules.home-manager {
@@ -50,9 +49,10 @@
                             imports = [
                                 ./home
 
-                                inputs.catppuccin.homeManagerModules.catppuccin
+                                inputs.catppuccin.homeModules.catppuccin
                                 inputs.spicetify-nix.homeManagerModules.default
                                 # inputs.zen-browser.homeManagerModules.zen-browser
+                                inputs.nix-flatpak.homeManagerModules.nix-flatpak
                             ];
                         };
                     };

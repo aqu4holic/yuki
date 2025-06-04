@@ -10,6 +10,10 @@
 
         ./nvidia.nix
         ./hardware-configuration.nix
+
+        ./flatpak.nix
+        ./gaming.nix
+        ./catppuccin.nix
     ];
 
     # Bootloader.
@@ -26,11 +30,6 @@
             useOSProber = true;
 
             configurationLimit = 10;
-
-            catppuccin = {
-                enable = true;
-                flavor = "mocha";
-            };
 
             splashImage = lib.mkForce ../../home/photos/3icy1h7kj4m51.png;
         };

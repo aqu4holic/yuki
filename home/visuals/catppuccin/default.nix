@@ -5,15 +5,18 @@
         flavor = "mocha";
         accent = "maroon";
 
-        # grub = {
-        #     enable = true;
-        #     flavor = "mocha";
-        # };
-        #
-        # kvantum = {
-        #     enable = true;
-        #     flavor = "mocha";
-        #     accent = "maroon";
-        # };
+        kvantum = {
+            enable = true;
+            flavor = "mocha";
+            accent = "maroon";
+        };
+
+        gtk = {
+            enable = true;
+            flavor = "mocha";
+            accent = "maroon";
+            size = "standard";
+            tweaks = [ "rimless" ];
+        };
     };
 }
