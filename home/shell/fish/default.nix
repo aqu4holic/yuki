@@ -62,7 +62,8 @@
             g = "git";
 
             lg = "lazygit";
-            gp = "git push";
+            gph = "git push";
+            gpl = "git pull";
             gs = "git status";
             gcl = "git clone";
             gaa = "git add --all";

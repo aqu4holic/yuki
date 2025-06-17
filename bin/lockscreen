@@ -21,7 +21,7 @@ time_pos_x=350
 time_pos_y=200
 ind_pos=100
 
-i3lock -n --force-clock \
+i3lock-color -n --force-clock \
     -i "$lockscreen_img" \
     -e \
     --indicator \

@@ -73,6 +73,7 @@
         lshw
         trash-cli # trash folder manipulator
         duf # disk viewer
+        dust
         dua
         navi
 
@@ -163,7 +164,7 @@
         # htop
         iotop # io monitoring
         iftop # network monitoring
-        nvtopPackages.nvidia
+        nvitop
 
         # system call monitoring
         strace # system call monitoring
