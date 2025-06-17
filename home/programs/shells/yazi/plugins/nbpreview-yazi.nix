@@ -9,8 +9,8 @@ stdenv.mkDerivation rec {
     src = fetchFromGitHub {
         owner = "AnirudhG07";
         repo = "nbpreview.yazi";
-        rev = "f8879b382f441e881fc10bd18a523fd910737067";  # Replace with a specific commit hash if preferred
-        sha256 = "sha256-iHfvLSUveHSRvYw5xFGuhSsTRC3xlY+PaooHnmA7Zzs=";
+        rev = "7fb073fd29a98807bc6032327b475ec9b0b5479f";  # Replace with a specific commit hash if preferred
+        sha256 = "sha256-bg/sXnY8m+bCNp1kwz7+t15LxZoICe2fYWGX1Q4QSCo=";
     };
 
     # No build or install steps needed, just copy the source to $out

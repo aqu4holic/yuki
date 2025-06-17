@@ -41,7 +41,7 @@ function M:peek(job)
     end
 
     local child = Command("eza")
-        :args(args)
+        :arg(args)
         :stdout(Command.PIPED)
         :stderr(Command.PIPED)
         :spawn()

@@ -2,41 +2,41 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "!"
 run  = 'shell "$SHELL" --block'
 desc = "Open shell here"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "l"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "<C-v>"
 run  = "plugin smart-paste"
 desc = "Paste into the hovered directory or CWD"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "t"
 run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "<C-n>"
 run = '''
 	shell 'dragon -x -T "$1"' --confirm
 '''
 desc = "Drag and drop via dragon"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = ["c", "y"]
 run = [ '''
 	shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' --confirm
 ''' ]
 desc = "Copy selected files to the system clipboard while yanking"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "r" ]
 run = '''
 	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
@@ -44,177 +44,177 @@ run = '''
 desc = "cd back to the root of the current Git repository"
 
 # wraparound file navigation
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "k"
 run = "plugin arrow -1"
 desc = "File navigation wraparound"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "j"
 run = "plugin arrow 1"
 desc = "File navigation wraparound"
 
 # Navigation in the parent directory without leaving the CWD
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "K"
 run = "plugin parent-arrow -1"
 desc = "Navigation in the parent directory without leaving the CWD"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "J"
 run = "plugin parent-arrow 1"
 desc = "Navigation in the parent directory without leaving the CWD"
 
 # bookmark
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "u", "a" ]
 run = "plugin yamb --args=save"
 desc = "Add bookmark"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "u", "g" ]
 run = "plugin yamb --args=jump_by_key"
 desc = "Jump bookmark by key"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "u", "G" ]
 run = "plugin yamb --args=jump_by_fzf"
 desc = "Jump bookmark by fzf"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "u", "d" ]
 run = "plugin yamb --args=delete_by_key"
 desc = "Delete bookmark by key"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "u", "D" ]
 run = "plugin yamb --args=delete_by_fzf"
 desc = "Delete bookmark by fzf"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "u", "A" ]
 run = "plugin yamb --args=delete_all"
 desc = "Delete all bookmarks"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "u", "r" ]
 run = "plugin yamb --args=rename_by_key"
 desc = "Rename bookmark by key"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "u", "R" ]
 run = "plugin yamb --args=rename_by_fzf"
 desc = "Rename bookmark by fzf"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "m" ]
 run = "plugin relative-motions"
 desc = "Trigger a new relative motion"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "f", "j" ]
 run  = "plugin first-non-directory"
 desc = "Jumps to the first file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "<C-d>"
 run  = "plugin diff"
 desc = "Diff the selected with the hovered file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "F"
 run  = "plugin smart-filter"
 desc = "Smart filter"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "c", "a" ]
 run  = "plugin compress"
 desc = "Archive selected files"
 
 # sudo cp/mv
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "p", "p"]
 run = "plugin sudo -- paste"
 desc = "sudo paste"
 
 # sudo cp/mv --force
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "P"]
 run = "plugin sudo -- paste --force"
 desc = "sudo paste"
 
 # sudo mv
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "r"]
 run = "plugin sudo -- rename"
 desc = "sudo rename"
 
 # sudo ln -s (absolute-path)
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "p", "l"]
 run = "plugin sudo -- link"
 desc = "sudo link"
 
 # sudo ln -s (relative-path)
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "p", "r"]
 run = "plugin sudo -- link --relative"
 desc = "sudo link relative path"
 
 # sudo ln
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "p", "L"]
 run = "plugin sudo -- hardlink"
 desc = "sudo hardlink"
 
 # sudo touch/mkdir
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "a"]
 run = "plugin sudo -- create"
 desc = "sudo create"
 
 # sudo trash
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "d"]
 run = "plugin sudo -- remove"
 desc = "sudo trash"
 
 # sudo delete
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "D"]
 run = "plugin sudo -- remove --permanently"
 desc = "sudo delete"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "i" ]
 run  = "plugin lazygit"
 desc = "run lazygit"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "c", "S" ]
 run  = "plugin what-size --args='--clipboard'"
 desc = "Calc size of selection or cwd (copy to clipboard)"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "c", "s" ]
 run  = "plugin what-size"
 desc = "Calc size of selection or cwd"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "M"
 run = "plugin mount"
 
-[manager]
+[mgr]
 keymap = [
     { on = [ "<Esc>" ], run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
     { on = [ "<C-[>" ], run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
