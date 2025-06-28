@@ -2,7 +2,7 @@
 {
     programs.ssh = {
         enable = true;
-        addKeysToAgent = "yes";
+        # addKeysToAgent = "yes";
 
         # extraConfig = builtins.readFile ./config;
     };
