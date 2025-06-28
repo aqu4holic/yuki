@@ -7,6 +7,7 @@
             # bash ~/.profile
 
             if status --is-login
+                # ssh-add ~/.ssh/blackwhite_yuki
                 if test -z "$DISPLAY" -a $XDG_VTNR = 1
                     exec startx -- -keeptty
                 end
@@ -14,7 +15,7 @@
 
             # fish_add_path /home/blackwhite/bin
 
-            eval (ssh-agent -c) &>/dev/null
+            # eval (ssh-agent -c) &>/dev/null
             eval (direnv hook fish)
 
             # function fish_greeting

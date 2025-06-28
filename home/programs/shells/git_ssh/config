@@ -1,6 +1,7 @@
 Host *
     ForwardAgent no
-    AddKeysToAgent no
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/blackwhite_yuki
     Compression no
     ServerAliveInterval 0
     ServerAliveCountMax 3

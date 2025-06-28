@@ -5,7 +5,7 @@
         before = [ "xdg-desktop-portal.service" ];
     };
 
-    # programs.ssh = {
-    #     startAgent = true;
-    # };
+    programs.ssh = {
+        startAgent = true;
+    };
 }
