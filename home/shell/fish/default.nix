@@ -14,6 +14,7 @@
 
             # fish_add_path /home/blackwhite/bin
 
+            eval (ssh-agent -c) &>/dev/null
             eval (direnv hook fish)
 
             # function fish_greeting
