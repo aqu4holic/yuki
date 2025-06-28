@@ -29,7 +29,7 @@
             ''
         )
 
-        nodejs
+        bun
         yarn
         ripgrep
         unzip

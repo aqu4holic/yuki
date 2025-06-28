@@ -6,7 +6,6 @@
         ./env
 
         ./fish
-        ./zsh
 
         ./starship
 

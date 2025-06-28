@@ -29,13 +29,39 @@ in
         ];
     };
 
-    security.sudo.extraConfig = ''
-        Defaults timestamp_timeout=-1
-        Defaults env_keep += "TERM TERMINFO"
-    '';
+    security = {
+        sudo = {
+            enable = false;
+            execWheelOnly = true;
+            wheelNeedsPassword = true;
+            extraConfig = ''
+                Defaults timestamp_timeout=-1
+                Defaults env_keep += "TERM TERMINFO"
+            '';
+        };
+
+        sudo-rs = {
+            enable = true;
+            execWheelOnly = true;
+            wheelNeedsPassword = true;
+            extraConfig = ''
+                Defaults timestamp_timeout=2628000000000000
+                Defaults env_keep += "TERM TERMINFO"
+            '';
+        };
+    };
 
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
+        substituters = [
+            "https://nix-community.cachix.org"
+            "https://cache.nixos.org/"
+            "https://cuda-maintainers.cachix.org"
+        ];
+        trusted-public-keys = [
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+        ];
     };
 
     # Allow unfree packages
@@ -58,6 +84,7 @@ in
         options = lib.mkDefault "--delete-older-than 7d";
     };
 
+    nix.optimise.automatic = true;
     nix.settings.auto-optimise-store = true;
     nix.settings.trusted-users = [ "root" username ];
 
@@ -82,39 +109,10 @@ in
     i18n.inputMethod = {
         enable = true;
         type = "ibus";
-        ibus.engines = [
+        ibus.engines = with pkgs; [
             bamboo
-            pkgs.ibus-engines.anthy
+            ibus-engines.anthy
         ];
-    };
-
-    # Enable the X11 windowing system.
-    # services.xserver.enable = true;
-
-    # Enable the GNOME Desktop Environment.
-    # services.xserver.displayManager.gdm.enable = true;
-    # services.xserver.desktopManager.gnome.enable = false;
-
-    # Configure keymap in X11
-    # services.xserver = {
-    #    layout = "us";
-    #    xkbVariant = "";
-    # };
-
-    services.xserver = {
-        enable = true;
-
-        windowManager.bspwm = {
-            enable = true;
-        };
-
-        displayManager = {
-            defaultSession = "none+bspwm";
-
-            startx = {
-                enable = true;
-            };
-        };
     };
 
     systemd.services."getty@tty1" = {
@@ -238,21 +236,11 @@ in
     };
     services.resolved.enable = true;
 
-    # services.openvpn.servers = {
-    #     fptVPN = {
-    #         config = ''
-    #             config /home/blackwhite/test.ovpn
-    #         '';
-    #         updateResolvConf = true;
-    #     };
-    # };
-
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
         vim
         neovim
-        vscode
         fish
         # zsh
         kitty
@@ -279,14 +267,6 @@ in
         brightnessctl
 
         # for customization
-        bspwm
-        bsp-layout
-        feh
-        sxhkd
-        rofi
-        eww
-        picom
-        polybar
         i3lock-color
 
         # utils
@@ -298,12 +278,11 @@ in
         bc
         libnotify
         libgcc
-
         gcc
         cmake
 
-        nodejs
-
+        # devs
+        bun
         go
 
         # rust
@@ -335,11 +314,11 @@ in
         alsa.support32Bit = true;
         pulse.enable = true;
         # If you want to use JACK applications, uncomment this
-        #jack.enable = true;
+        # jack.enable = true;
 
         # use the example session manager (no others are packaged yet so this is enabled by default,
         # no need to redefine it in your config for now)
-        #media-session.enable = true;
+        # media-session.enable = true;
     };
 
     programs.noisetorch.enable = true;
@@ -348,10 +327,26 @@ in
     virtualisation = {
         docker = {
             enable = true;
+            # daemon.settings = {
+            #     experimental = true;
+            #     default-address-pools = [
+            #         {
+            #             base = "172.30.0.0/16";
+            #             size = 24;
+            #         }
+            #     ];
+            #     dns = [ "1.1.1.1" "8.8.8.8" ];
+            #     iptables = false;
+            #     registry-mirrors = [ "https://mirror.gcr.io" ];
+            # };
 
             # use docker without root access (rootless docker)
             rootless = {
-                enable = true;
+                enable = false;
+                # daemon.settings = {
+                #     dns = [ "1.1.1.1" "8.8.8.8" ];
+                #     registry-mirrors = [ "https://mirror.gcr.io" ];
+                # };
                 setSocketVariable = true;
             };
         };

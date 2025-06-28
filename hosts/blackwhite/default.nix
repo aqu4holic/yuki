@@ -7,12 +7,13 @@
 {
     imports = [ # Include the results of the hardware scan.
         ../../modules/system.nix
+        ./display.nix
 
         ./nvidia.nix
         ./hardware-configuration.nix
 
         ./flatpak.nix
-        ./gaming.nix
+        # ./gaming.nix
         ./catppuccin.nix
     ];
 

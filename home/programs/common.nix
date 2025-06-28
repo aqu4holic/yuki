@@ -1,8 +1,8 @@
 { inputs, config, pkgs, libs, ... }:
-
 {
     imports = [
         ./python
+        # ./fcd
     ];
 
     # Packages that should be installed to the user profile.
@@ -13,6 +13,7 @@
         (
             writeShellScriptBin "clean_cache" ''
                 nix-collect-garbage --delete-old
+                nix-store --gc
                 sudo nix-collect-garbage -d
                 sudo /run/current-system/bin/switch-to-configuration boot
             ''
@@ -185,6 +186,7 @@
     programs = {
         jq.enable = true; # A lightweight and flexible command-line JSON processor
         feh.enable = true; # image viewer
+        cava.enable = true; # audio visualizer
         zoxide.enable = true;
 
         # java

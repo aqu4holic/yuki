@@ -5,7 +5,7 @@ let
     # 1. Declare the Flatpaks you *want* on your system
     desiredFlatpaks = [
         "com.github.flxzt.rnote"
-        "com.usebottles.bottles" # gaming
+        # "com.usebottles.bottles" # gaming
     ];
 in
 {

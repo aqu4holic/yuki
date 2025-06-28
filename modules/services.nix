@@ -4,4 +4,8 @@
         wantedBy = [ "xdg-desktop-portal.service" ];
         before = [ "xdg-desktop-portal.service" ];
     };
+
+    programs.ssh = {
+        startAgent = true;
+    };
 }

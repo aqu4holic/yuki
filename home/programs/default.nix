@@ -17,7 +17,7 @@
         ./redshift
         ./fusuma
 
-        ./gaming
+        # ./gaming
         ./flatpak
     ];
 }

@@ -16,8 +16,6 @@
 
             eval (direnv hook fish)
 
-            eval (ssh-agent -c) &>/dev/null
-
             # function fish_greeting
             #     echo hiiiii (set_color 00C8FF -o)$USER (set_color F9E2AF)@ (set_color FF006A)$hostname(set_color normal)(set_color white)!
             # end
@@ -77,7 +75,7 @@
             vca = "python3 -m venv .venv && source .venv/bin/activate.fish";
 
             s = "kitten ssh";
-            rs = "rsync -avP";
+            rs = "rsync -ah --partial --info=progress2 --stats";
 
             # screen
             sr = "screen -r";
