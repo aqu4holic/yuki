@@ -1,18 +1,13 @@
 {
     imports = [
         ./x11
-        ./bspwm_sxhkd
-        ./picom
+
+        ./hyprland
 
         ./catppuccin
 
         ./cursor
         ./gtk_qt
-
-        ./rofi
-        ./eww
-
-        ./polybar
 
         ./skippy
     ];

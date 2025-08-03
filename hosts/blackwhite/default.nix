@@ -32,7 +32,7 @@
 
             configurationLimit = 10;
 
-            splashImage = lib.mkForce ../../home/photos/3icy1h7kj4m51.png;
+            splashImage = lib.mkForce ../../assets/wallpaper/3icy1h7kj4m51.png;
         };
     };
 

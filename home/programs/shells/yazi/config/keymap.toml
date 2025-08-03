@@ -25,7 +25,7 @@ desc = "Create a tab and enter the hovered directory"
 [[mgr.prepend_keymap]]
 on  = "<C-n>"
 run = '''
-	shell 'dragon -x -T "$1"' --confirm
+	shell 'dragon-drop -x -T "$1"' --confirm
 '''
 desc = "Drag and drop via dragon"
 

@@ -1,4 +1,14 @@
 { config, pkgs, lib, ... }:
+let
+    customNVIDIADriver = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+        version = "570.172.08";
+        sha256_64bit = "sha256-AlaGfggsr5PXsl+nyOabMWBiqcbHLG4ij617I4xvoX0=";
+        sha256_aarch64 = "sha256-FVRyFvK1FKznckpatMMydmmQSkHK+41NkEjTybYJY9g=";
+        openSha256 = "sha256-aTV5J4zmEgRCOavo6wLwh5efOZUG+YtoeIT/tnrC1Hg=";
+        settingsSha256 = "sha256-N/1Ra8Teq93U3T898ImAT2DceHjDHZL1DuriJeTYEa4=";
+        persistencedSha256 = "sha256-x4K0Gp89LdL5YJhAI0AydMRxl6fyBylEnj+nokoBrK8=";
+    };
+in
 {
     # NVIDIA settings
 
@@ -6,14 +16,26 @@
     hardware.graphics = {
         enable = true;
         enable32Bit = true;
+        extraPackages = with pkgs; [
+            nvidia-vaapi-driver
+            intel-media-driver
+        ];
+
+        extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
     };
+    # boot.kernelParams = [
+    #     "i915.force_probe=46a6"
+    # ];
+    # environment.sessionVariables = { LIBVA_DRIVER_NAME = lib.mkForce "iHD"; };
 
     # Load nvidia driver for Xorg and Wayland
-    services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
     hardware = {
         enableRedistributableFirmware = true;
     };
+
+    boot.extraModulePackages = [ customNVIDIADriver ];
 
     hardware.nvidia = {
 
@@ -39,24 +61,17 @@
         # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
         # Only available from driver 515.43.04+
         # Currently alpha-quality/buggy, so false is currently the recommended setting.
-        open = false;
+        open = true;
 
         # Enable the Nvidia settings menu,
         # accessible via `nvidia-settings`.
         nvidiaSettings = true;
 
         # Optionally, you may need to select the appropriate driver version for your specific GPU.
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
-        # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        #     version = "560.35.03";
-        #     sha256_64bit = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
-        #     sha256_aarch64 = "";
-        #     openSha256 = "";
-        #     settingsSha256 = "";
-        #     persistencedSha256 = "";
-        # };
+        # package = config.boot.kernelPackages.nvidiaPackages.stable;
+        package = customNVIDIADriver;
 
-        nvidiaPersistenced = false;
+        nvidiaPersistenced = true;
 
         prime = {
             intelBusId = "PCI:0:2:0";
@@ -87,21 +102,4 @@
     services.tlp.settings = {
         CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
     };
-
-    # boot.extraModprobeConfig = ''
-    #     blacklist nouveau
-    #     options nouveau modeset=0
-    # '';
-
-    # services.udev.extraRules = ''
-    #     # Remove NVIDIA USB xHCI Host Controller devices, if present
-    #     ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
-    #     # Remove NVIDIA USB Type-C UCSI devices, if present
-    #     ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
-    #     # Remove NVIDIA Audio devices, if present
-    #     ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
-    #     # Remove NVIDIA VGA/3D controller devices
-    #     ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
-    # '';
-    # boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
 }

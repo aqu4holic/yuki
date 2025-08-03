@@ -10,5 +10,9 @@
             enable = true;
             defaultCursor = "left_ptr";
         };
+
+        hyprcursor = {
+            enable = true;
+        };
     };
 }

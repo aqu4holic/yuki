@@ -1,19 +1,41 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 {
     # Enable the X11 windowing system.
-    services.xserver = {
-        enable = true;
+    services = {
+        xserver = {
+            enable = true;
 
-        windowManager.bspwm = {
+            windowManager.bspwm = {
+                enable = true;
+            };
+
+            displayManager = {
+                startx = {
+                    enable = true;
+                };
+            };
+        };
+
+        # displayManager = {
+        #     defaultSession = "none+bspwm";
+        # };
+    };
+
+    # Enable the Hyprland compositor.
+    programs = {
+        hyprland = {
+            enable = true;
+            # withUWSM = true;
+            xwayland.enable = true;
+        };
+
+        hyprlock = {
             enable = true;
         };
 
-        displayManager = {
-            defaultSession = "none+bspwm";
-
-            startx = {
-                enable = true;
-            };
+        waybar = {
+            enable = true;
         };
+
     };
 }

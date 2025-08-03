@@ -40,9 +40,9 @@ home-manager.nixosModules.home-manager {
 let username = "your_username_here";
 ```
 
-5. Make bin/ folder executable
+5. Make assets/bin/ folder executable
 ```bash
-chmod +x yuki/bin/*
+chmod +x yuki/assets/bin/*
 ```
 
 6. Rebuild the system

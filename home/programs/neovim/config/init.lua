@@ -5,6 +5,8 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 vim.opt.inccommand = "split"
 
+vim.opt.scrolloff = 15
+
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

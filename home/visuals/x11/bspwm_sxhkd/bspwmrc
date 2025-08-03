@@ -1,0 +1,57 @@
+#!usr/bin/env bash
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+$HOME/.local/bin/dual_monitor
+
+xset s off &
+xset -dpms &
+
+xsetroot -cursor_name left_ptr &
+xset r rate 200 35 &
+setxkbmap -option caps:swapescape &
+
+# xinput set-prop 'HP, Inc HyperX Pulsefire Haste Wireless' 'libinput Accel Speed' -0.5 &
+xinput set-prop 'Logitech USB Receiver Mouse' 'libinput Accel Speed' 0.5 &
+xinput set-prop 'pointer:Pixart Imaging, Inc. incott 8K wireless mouse' 'libinput Accel Speed' 0.5 &
+
+xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Accel Speed' 0.5 &
+xinput set-prop 'SYNA0001:00 06CB:CE78 Touchpad' 'libinput Natural Scrolling Enabled' 0 &
+
+# polybar, eww and picom
+picom &
+"$HOME/.local/bin/launch.sh" &
+"$HOME/.config/eww/scripts/start.sh" &
+
+$HOME/.local/bin/random_background 120 &
+# feh --bg-fill "${wallpaper_path}/${wallpaper_name}" &
+
+skippy-xd --start-daemon &
+ibus-daemon -drxR &
+nm-applet &
+pgrep -x battery_alert >/dev/null || $HOME/.local/bin/battery_alert &
+pidof syncthing || syncthing -no-browser &
+pidof redshift || redshift &
+trash-empty -f 40 &
+copyq --start-server &
+
+bspc wm -O eDP-1 HDMI-1-0
+bspc monitor eDP-1 -d 1 2 3 4 5 6 7
+bspc monitor HDMI-1-0 -d 8 9
+
+bspc config border_width 2
+bspc config window_gap 10
+
+bspc config focused_border_color \#bf0086
+
+bspc config split_ratio 0.55
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+
+# bspc config focus_follows_pointer true
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action2 resize_corner
+
+"$HOME/.local/bin/set_bspwm_rule" &

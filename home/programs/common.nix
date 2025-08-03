@@ -35,7 +35,6 @@
 
         # utils
         ripgrep # recursively searches directories for a regex pattern
-        jq # A lightweight and flexible command-line JSON processor
         yq # yaml processor
         yj # wtf is this
         eza # A modern replacement for ‘ls’
@@ -66,6 +65,7 @@
         nmap # A utility for network discovery and security auditing
         ipcalc  # it is a calculator for the IPv4/v6 addresses
         networkmanager-openvpn
+        networkmanagerapplet # network manager applet
 
         # misc file manipulator
         file
@@ -85,6 +85,7 @@
         graphviz
         yt-dlp
         rich-cli
+        comma
 
         # misc ui
         kdePackages.okular # pdf viewer
@@ -94,11 +95,9 @@
         inkscape # svg manipulator
         qalculate-gtk # calculator
         # simplescreenrecorder # screen recorder
-        obs-studio # screen recorder
         screenkey # display keys pressed on screen
         skippy-xd
 
-        copyq
         imagemagick
         ghostscript
         xclip
@@ -125,20 +124,22 @@
         # mysql84
 
         # apps
-        xfce.thunar
-        xfce.thunar-volman
-        xfce.thunar-vcs-plugin
-        xfce.thunar-media-tags-plugin
-        xfce.thunar-archive-plugin
+        # xfce.thunar
+        # xfce.thunar-volman
+        # xfce.thunar-vcs-plugin
+        # xfce.thunar-media-tags-plugin
+        # xfce.thunar-archive-plugin
+        qt6.qtwayland
+        kdePackages.dolphin
+        kdePackages.dolphin-plugins
         gvfs
         obsidian
         vesktop
         zotero
         telegram-desktop
-        mpv
         # wpsoffice
         libreoffice-qt6-fresh
-        zed-editor
+        # zed-editor
         # microsoft-edge
         chromium
         # rnote # note taker
@@ -165,7 +166,8 @@
         # htop
         iotop # io monitoring
         iftop # network monitoring
-        nvitop
+        # nvitop
+        nvtopPackages.full
 
         # system call monitoring
         strace # system call monitoring
@@ -183,6 +185,8 @@
         clang-tools
     ];
 
+    # graphics
+    nixGL.vulkan.enable = true;
     programs = {
         jq.enable = true; # A lightweight and flexible command-line JSON processor
         feh.enable = true; # image viewer
@@ -194,15 +198,19 @@
             enable = true;
             package = pkgs.jdk23;
         };
+
+        # nix-index
+        command-not-found.enable = false; # command not found handler
+        nix-index = {
+            enable = true;
+            enableFishIntegration = true;
+        };
     };
 
     services = {
         network-manager-applet.enable = true;
+        blueman-applet.enable = true;
+        easyeffects.enable = true; # audio effects
         copyq.enable = true;
-
-        gnome-keyring = {
-            enable = true;
-
-        };
     };
 }

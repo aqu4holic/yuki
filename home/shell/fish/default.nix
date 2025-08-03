@@ -6,12 +6,12 @@
         shellInit = ''
             # bash ~/.profile
 
-            if status --is-login
-                # ssh-add ~/.ssh/blackwhite_yuki
-                if test -z "$DISPLAY" -a $XDG_VTNR = 1
-                    exec startx -- -keeptty
-                end
-            end
+            # if status --is-login
+            #     # ssh-add ~/.ssh/blackwhite_yuki
+            #     if test -z "$DISPLAY" -a $XDG_VTNR = 1
+            #         exec startx -- -keeptty
+            #     end
+            # end
 
             # fish_add_path /home/blackwhite/bin
 
@@ -72,9 +72,9 @@
 
             gdb = ''gdb -q -ex "set verbose off" -ex "set complaints 0" -ex "set confirm off" -ex "set exec-done-display off"'';
 
-            vc = "python3 -m venv .venv";
+            vc = "uv venv";
             va = "source .venv/bin/activate.fish";
-            vca = "python3 -m venv .venv && source .venv/bin/activate.fish";
+            vca = "uv venv && source .venv/bin/activate.fish";
 
             s = "kitten ssh";
             rs = "rsync -ah --partial --info=progress2 --stats";

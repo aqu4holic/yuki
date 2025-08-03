@@ -1,16 +1,12 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, ... }:
 let
     username = "blackwhite";
-
     bamboo = pkgs.callPackage ./pkgs/ibus-bamboo.nix {};
 in
 {
     imports = [
         ./services.nix
+        ./programs.nix
     ];
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -53,19 +49,23 @@ in
 
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
+        builders-use-substitutes = true;
         substituters = [
             "https://nix-community.cachix.org"
             "https://cache.nixos.org/"
             "https://cuda-maintainers.cachix.org"
+            "https://anyrun.cachix.org"
         ];
         trusted-public-keys = [
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
             "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+            "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
         ];
     };
 
     # Allow unfree packages
     nixpkgs.config = {
+        # cudaSupport = true;
         allowUnfree = true;
         allowInsecure = true;
         allowBroken = true;
@@ -88,6 +88,35 @@ in
     nix.settings.auto-optimise-store = true;
     nix.settings.trusted-users = [ "root" username ];
 
+    # autologin
+    services.getty.greetingLine = ''
+        <<< ${config.system.nixos.distroName} ${config.system.nixos.label} (\m) @ \l >>>
+        <<< \t, \d >>>
+        <<< ${username}@${config.networking.hostName} >>>
+    '';
+    services.getty.helpLine = lib.mkForce ''If you don't know what you're doing, leave :)'';
+    systemd.services = {
+        "getty@tty1" = {
+            overrideStrategy = "asDropin";
+            serviceConfig.ExecStart = [ ""
+                ''
+                    @${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} \
+                    -o '-p -- ${username}' --noclear --skip-login --keep-baud %I 115200,38400,9600 $TERM
+                ''
+            ];
+        };
+
+        "getty@tty2" = {
+            overrideStrategy = "asDropin";
+            serviceConfig.ExecStart = [ ""
+                ''
+                    @${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} \
+                    -o '-p -- ${username}' --noclear --skip-login --keep-baud %I 115200,38400,9600 $TERM
+                ''
+            ];
+        };
+    };
+
     # Set your time zone.
     time.timeZone = "Asia/Ho_Chi_Minh";
 
@@ -108,37 +137,18 @@ in
 
     i18n.inputMethod = {
         enable = true;
-        type = "ibus";
-        ibus.engines = with pkgs; [
-            bamboo
-            ibus-engines.anthy
+        # type = "ibus";
+        # ibus.engines = with pkgs; [
+        #     bamboo
+        #     ibus-engines.anthy
+        # ];
+
+        type = "fcitx5";
+        fcitx5.addons = with pkgs; [
+            fcitx5-mozc
+            fcitx5-gtk
+            fcitx5-bamboo
         ];
-    };
-
-    systemd.services."getty@tty1" = {
-        overrideStrategy = "asDropin";
-        serviceConfig.ExecStart = ["" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} -o '-p -- ${username}' --noclear --skip-login --keep-baud %I 115200,38400,9600 $TERM"];
-    };
-
-    systemd = {
-        targets = {
-            sleep = {
-                enable = false;
-                unitConfig.DefaultDependencies = "no";
-            };
-            suspend = {
-                enable = false;
-                unitConfig.DefaultDependencies = "no";
-            };
-            hibernate = {
-                enable = false;
-                unitConfig.DefaultDependencies = "no";
-            };
-            "hybrid-sleep" = {
-                enable = false;
-                unitConfig.DefaultDependencies = "no";
-            };
-        };
     };
 
     security.protectKernelImage = false;
@@ -163,26 +173,12 @@ in
             noto-fonts-cjk-sans
             noto-fonts-emoji
             newcomputermodern
-
-            # nerdfonts
-            # (
-            #     nerdfonts.override {
-            #         fonts = [
-            #             "FiraCode"
-            #             "JetBrainsMono"
-            #         ];
-            #     }
-            # )
             nerd-fonts.fira-code
             nerd-fonts.jetbrains-mono
         ];
 
-        # use fonts specified by user rather than default ones
         enableDefaultPackages = false;
 
-        # user defined fonts
-        # the reason there's Noto Color Emoji everywhere is to override DejaVu's
-        # B&W emojis that would sometimes show instead of some Color emojis
         fontconfig.defaultFonts = {
             serif = ["Noto Serif" "Noto Color Emoji"];
             sansSerif = ["Noto Sans" "Noto Color Emoji"];
@@ -191,119 +187,8 @@ in
         };
     };
 
-    programs.nix-ld = {
-        enable = true;
-
-        libraries = with pkgs; [
-            zlib
-            zstd
-            stdenv.cc.cc
-            stdenv.cc
-            curl
-            openssl
-            attr
-            libssh
-            bzip2
-            libxml2
-            acl
-            libsodium
-            util-linux
-            xz
-            systemd
-        ];
-    };
-
-    programs.dconf.enable = true;
-    programs.adb.enable = true;
-
-    # programs.zsh.enable = true;
-    # users.defaultUserShell = pkgs.zsh;
-    programs.fish.enable = true;
-    users.defaultUserShell = pkgs.fish;
-
-    # openvpn
-    programs.openvpn3 = {
-        enable = true;
-        package = pkgs.openvpn3;
-        log-service.settings = {
-            log_level = 6;
-            log_dbus_details = true;
-            journald = true;
-        };
-        netcfg.settings = {
-            systemd_resolved = true;
-        };
-    };
-    services.resolved.enable = true;
-
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    environment.systemPackages = with pkgs; [
-        vim
-        neovim
-        fish
-        # zsh
-        kitty
-        curl
-        git
-        sysstat
-        lm_sensors # for `sensors` command
-        fastfetch
-        yazi
-        zathura # pdf viewer
-
-        screen
-
-        # network
-        networkmanagerapplet
-
-        # audio
-        pulseaudio
-        noisetorch
-        playerctl
-        pamixer
-
-        # display
-        brightnessctl
-
-        # for customization
-        i3lock-color
-
-        # utils
-        killall
-        xdotool
-        xorg.xev
-
-        # libs
-        bc
-        libnotify
-        libgcc
-        gcc
-        cmake
-
-        # devs
-        bun
-        go
-
-        # rust
-        # rustup
-        # rustc
-        # cargo
-
-        # jre_minimal
-        # jdk22
-    ];
-
     # Enable CUPS to print documents.
     services.printing.enable = true;
-
-    environment.etc."current_system_packages".text =
-    let
-        packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-        sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
-        formatted = builtins.concatStringsSep "\n" sortedUnique;
-    in
-        formatted;
 
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
@@ -313,54 +198,9 @@ in
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
-        # If you want to use JACK applications, uncomment this
-        # jack.enable = true;
-
-        # use the example session manager (no others are packaged yet so this is enabled by default,
-        # no need to redefine it in your config for now)
-        # media-session.enable = true;
     };
 
     programs.noisetorch.enable = true;
-
-    # virtualisation
-    virtualisation = {
-        docker = {
-            enable = true;
-            # daemon.settings = {
-            #     experimental = true;
-            #     default-address-pools = [
-            #         {
-            #             base = "172.30.0.0/16";
-            #             size = 24;
-            #         }
-            #     ];
-            #     dns = [ "1.1.1.1" "8.8.8.8" ];
-            #     iptables = false;
-            #     registry-mirrors = [ "https://mirror.gcr.io" ];
-            # };
-
-            # use docker without root access (rootless docker)
-            rootless = {
-                enable = false;
-                # daemon.settings = {
-                #     dns = [ "1.1.1.1" "8.8.8.8" ];
-                #     registry-mirrors = [ "https://mirror.gcr.io" ];
-                # };
-                setSocketVariable = true;
-            };
-        };
-
-        # # virt-manager
-        # spiceUSBRedirection.enable = true;
-        # libvirtd = {
-        #     enable = true;
-        #     qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
-        # };
-    };
-    # services.qemuGuest.enable = true;
-    # services.spice-vdagentd.enable = true;  # enable copy and paste between host and guest
-    # programs.virt-manager.enable = true;
 
     hardware.bluetooth = {
         enable = true;
@@ -382,17 +222,28 @@ in
     services.blueman.enable = true;
 
     # set environment variables
-    environment.variables = {
+    environment.sessionVariables = {
         # GTK portal config
         # GTK_USE_PORTAL = 1;
+        NIXPKGS_ALLOW_UNFREE = 1;
 
         # ibus
-        GTK_IM_MODULE = "ibus";
-        QT_IM_MODULE = "ibus";
-        QT4_IM_MODULE = "ibus";
-        CLUTTER_IM_MODULE = "ibus";
-        GLFW_IM_MODULE = "ibus";
-        XMODIFIERS = "@im=ibus";
+        # GTK_IM_MODULE = "ibus";
+        # QT_IM_MODULE = "ibus";
+        # CLUTTER_IM_MODULE = "ibus";
+        # GLFW_IM_MODULE = "ibus";
+        # XMODIFIERS = "@im=ibus";
+
+        # fcitx5
+        # GTK_IM_MODULE = lib.mkForce null;
+        # QT_IM_MODULE = "fcitx";
+        # XMODIFIERS = "@im=fcitx";
+        # GLFW_IM_MODULE = "fcitx";
+        # INPUT_METHOD = "fcitx";
+        # IMSETTINGS_MODULE = "fcitx";
+        # CLUTTER_IM_MODULE = "fcitx";
+        # SDL_IM_MODULE = "fcitx";
+        # QT4_IM_MODULE = "fcitx";
 
         # java
         _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";
@@ -401,6 +252,6 @@ in
         DIRENV_WARN_TIMEOUT = 0;
 
         # qt scale
-        QT_SCALE_FACTOR = "1.3";
+        # QT_SCALE_FACTOR = "1.3";
     };
 }

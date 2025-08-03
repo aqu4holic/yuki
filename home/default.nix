@@ -35,11 +35,11 @@
         stateVersion = "23.11";
 
         file.".profile" = {
-            source = ../bin/.profile;
+            source = ../assets/bin/.profile;
         };
 
         file.".local/bin" = {
-            source = ../bin;
+            source = ../assets/bin;
 
             recursive = true;
 

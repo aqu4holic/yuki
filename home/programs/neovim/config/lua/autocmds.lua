@@ -1,27 +1,27 @@
 local create_autocmd = vim.api.nvim_create_autocmd
 
 -- Ibus typing
-local ibus_cur = "BambooUs"
-local ibus_en = "BambooUs"
-
-create_autocmd("InsertEnter", {
-    pattern = { "*" },
-    callback = function()
-        os.execute("ibus engine " .. ibus_cur)
-    end,
-})
-
-create_autocmd("InsertLeave", {
-    pattern = { "*" },
-    callback = function()
-        local f = io.popen("ibus engine", "r")
-        if f then
-            ibus_cur = f:read("*a")
-            f:close()
-        end
-        os.execute("ibus engine " .. ibus_en)
-    end,
-})
+-- local ibus_cur = "BambooUs"
+-- local ibus_en = "BambooUs"
+--
+-- create_autocmd("InsertEnter", {
+--     pattern = { "*" },
+--     callback = function()
+--         os.execute("ibus engine " .. ibus_cur)
+--     end,
+-- })
+--
+-- create_autocmd("InsertLeave", {
+--     pattern = { "*" },
+--     callback = function()
+--         local f = io.popen("ibus engine", "r")
+--         if f then
+--             ibus_cur = f:read("*a")
+--             f:close()
+--         end
+--         os.execute("ibus engine " .. ibus_en)
+--     end,
+-- })
 
 ---@param padding_amount integer
 ---@param margin_amount integer

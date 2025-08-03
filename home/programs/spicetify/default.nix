@@ -1,28 +1,18 @@
 { config, pkgs, lib, inputs, ... }:
 let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
-    # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    #     "spotify"
-    # ];
-
-    # imports = [ inputs.spicetify-nix.homeManagerModule ];
-
-    # home.packages = with pkgs; [
-    #     spotify
-    # ];
-
     programs.spicetify = {
         enable = true;
         theme = spicePkgs.themes.catppuccin;
         colorScheme = "mocha";
 
         enabledExtensions = with spicePkgs.extensions; [
-            fullAppDisplayMod
+            fullAppDisplay
             shuffle # shuffle+ (special characters are sanitized out of ext names)
-            hidePodcasts
-            # genre
+            # hidePodcasts
+            betterGenres
             powerBar
             playlistIcons
             goToSong

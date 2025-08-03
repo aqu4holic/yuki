@@ -5,6 +5,7 @@
     home.packages = with pkgs; [
         # normal fonts
         times-newer-roman
+        rubik
 
         # icon fonts
         material-design-icons
@@ -29,7 +30,7 @@
 
     # run `fc-cache -frv`
     home.file.".local/share/fonts" = {
-        source = ./custom_fonts;
+        source = ../../assets/custom_fonts;
         recursive = true;
     };
 }

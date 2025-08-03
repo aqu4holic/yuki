@@ -1,7 +1,7 @@
 { config, xdg, pkgs, ... }:
 {
     xdg = {
-        cacheHome = config.home.homeDirectory + "/.local/cache";
+        # cacheHome = config.home.homeDirectory + "/.local/cache";
         enable = true;
 
         userDirs = {
@@ -11,22 +11,35 @@
 
         portal = {
             enable = true;
-            xdgOpenUsePortal = false;
+            xdgOpenUsePortal = true;
 
             extraPortals = with pkgs; [
-                xdg-desktop-portal
+                xdg-desktop-portal-hyprland
                 xdg-desktop-portal-gtk
+                # (let
+                #     gtkPortal = xdg-desktop-portal-gtk.overrideAttrs (prevAttrs: {
+                #         buildInputs = builtins.filter
+                #             (x: x != gnome-desktop && x != gnome-settings-daemon)
+                #             prevAttrs.buildInputs;
+                #         mesonFlags = [ "-Dwallpaper=disabled" ];
+                #     });
+                # in gtkPortal)
+                # kdePackages.xdg-desktop-portal-kde
                 gnome-keyring
             ];
 
             config = {
-                common = {
-                    # default = [ "gtk" ];
-                    default = "*";
-                    "org.freedesktop.impl.portal.Secret" = [
-                        "gnome-keyring"
-                    ];
+                hyprland = {
+                    default = [ "hyprland" "gtk" ];
+                    "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+                    "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
                 };
+
+                # common = {
+                #     default = [ "hyprland" "gtk" ];
+                #     "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+                #     "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+                # };
             };
         };
 
@@ -50,9 +63,9 @@
     };
 
 
-    # home.sessionVariables = {
-    #     XDG_CURRENT_DESKTOP = "GNOME";
-    # };
+    home.sessionVariables = {
+        GTK_USE_PORTAL = "1";
+    };
 
     # xdg.configFile."mimeapps.list" = {
     #     source = ./mimeapps.list;

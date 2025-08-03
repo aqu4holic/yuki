@@ -5,13 +5,14 @@
 
         ./shells
 
-        ./vscode
+        ./ide
         ./neovim
         ./zathura
         ./vencord
         ./qimgv
         ./spicetify
         ./lazygit
+        ./video_related
 
         ./flameshot
         ./redshift
